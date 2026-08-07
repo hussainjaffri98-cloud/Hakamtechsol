@@ -89,50 +89,49 @@ const Navbar = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute left-0 right-0 top-full mt-4 w-full"
+                    className="absolute left-1/2 top-full z-[999] mt-4 w-[min(100vw-2rem,1280px)] -translate-x-1/2 overflow-hidden rounded-[32px] border border-slate-800 bg-[#0b0f19] shadow-[0_24px_80px_rgba(2,6,23,0.45)]"
                   >
-                    <div className="mx-auto w-full max-w-7xl rounded-[32px] border border-slate-800 bg-[#0b1329]/95 p-6 shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur-xl">
-                      <div className="grid gap-8 lg:grid-cols-[1.05fr_1.95fr]">
-                        <div className="rounded-[24px] border border-slate-800 bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.16),_transparent_55%),_linear-gradient(135deg,_#111936,_#0b1329)] p-6">
-                          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">Build to win</p>
-                          <h3 className="mt-3 text-2xl font-semibold text-white">Launch premium digital products with speed and clarity.</h3>
-                          <p className="mt-3 text-sm leading-7 text-slate-400">
-                            From product strategy to delivery, we craft high-performing platforms with measurable business impact.
-                          </p>
-                          <div className="mt-6 rounded-[20px] border border-slate-800/80 bg-slate-950/50 p-4">
-                            <div className="flex items-center gap-3">
-                              <img src={logo} alt="Hakam TechSol logo" className="h-12 w-auto" />
-                              <div>
-                                <p className="text-sm font-semibold text-white">Hakam TechSol</p>
-                                <p className="text-sm text-slate-400">Modern software, built for ambitious teams.</p>
-                              </div>
+                    <div className="grid grid-cols-12">
+                      <div className="col-span-12 min-w-[280px] w-full border-b border-slate-800 bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.16),_transparent_55%),_linear-gradient(135deg,_#111936,_#0b1329)] p-6 lg:col-span-4 lg:border-b-0 lg:border-r">
+                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">Build to win</p>
+                        <h3 className="mt-3 text-2xl font-semibold text-white">Launch premium digital products with speed and clarity.</h3>
+                        <p className="mt-3 text-sm leading-7 text-slate-400">
+                          From product strategy to delivery, we craft high-performing platforms with measurable business impact.
+                        </p>
+                        <div className="mt-6 rounded-[20px] border border-slate-800/80 bg-slate-950/50 p-4">
+                          <div className="flex items-center gap-3">
+                            <img src={logo} alt="Hakam TechSol logo" className="h-12 w-auto" />
+                            <div>
+                              <p className="text-sm font-semibold text-white">Hakam TechSol</p>
+                              <p className="text-sm text-slate-400">Modern software, built for ambitious teams.</p>
                             </div>
                           </div>
                         </div>
-
-                        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                          {megaMenuGroups.map((group) => (
-                            <div key={group.title}>
-                              <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-white">{group.title}</h4>
-                              <ul className="mt-3 space-y-2">
-                                {group.items.map((item) => (
-                                  <li key={item}>
-                                    <a
-                                      href="/services"
-                                      className="group flex items-center justify-between rounded-xl border border-transparent px-2 py-2 text-sm text-slate-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-400/30 hover:bg-cyan-500/10 hover:text-cyan-400"
-                                    >
-                                      <span>{item}</span>
-                                      <span className="text-cyan-400 transition-transform duration-300 group-hover:translate-x-1">›</span>
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
                       </div>
 
-                      <div className="mt-6 flex justify-end">
+                      <div className="col-span-12 grid grid-cols-1 gap-8 p-6 md:grid-cols-3 lg:col-span-8">
+                        {megaMenuGroups.map((group) => (
+                          <div key={group.title} className="flex flex-col gap-3">
+                            <h4 className="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-white">{group.title}</h4>
+                            <ul className="flex flex-col gap-2">
+                              {group.items.map((item) => (
+                                <li key={item} className="w-full">
+                                  <a
+                                    href="/services"
+                                    className="block w-full whitespace-nowrap rounded-xl border border-transparent px-2 py-2 text-sm text-slate-300 transition-all duration-300 hover:translate-x-1 hover:border-cyan-400/30 hover:bg-cyan-500/10 hover:text-cyan-400"
+                                  >
+                                    {item}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="border-t border-slate-800 bg-[#0b0f19] px-6 py-4">
+                      <div className="flex justify-end">
                         <Link to="/services" className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300 transition-all duration-300 hover:scale-[1.02] hover:bg-cyan-500/20">
                           View All Services <ArrowRight size={15} />
                         </Link>
