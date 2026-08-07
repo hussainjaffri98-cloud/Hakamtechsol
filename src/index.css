@@ -17,10 +17,14 @@
 @layer base {
   * {
     @apply border-border;
+    scroll-behavior: smooth;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
-    /* 2. Yahan 'overflow-x-hidden' add kiya hai scroll bar khatam karne ke liye */
     @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
   }
 
@@ -150,5 +154,35 @@
 
   .glow-blue {
     box-shadow: var(--glow-blue);
+  }
+
+  .motion-card {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .motion-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 24px 60px -20px rgba(15, 23, 42, 0.2);
+  }
+
+  .button-ripple {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .button-ripple::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.28) 0%, transparent 70%);
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.45s ease, opacity 0.45s ease;
+    pointer-events: none;
+  }
+
+  .button-ripple:active::after {
+    transform: scale(2.2);
+    opacity: 1;
   }
 }
