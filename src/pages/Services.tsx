@@ -104,11 +104,11 @@ const Services = () => {
 
   return (
     <PageTransition>
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#0B0F1A] text-slate-300">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 bg-secondary/30">
+      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -119,12 +119,12 @@ const Services = () => {
            
             <motion.h1
               variants={fadeInUp}
-              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-white"
             >
               Solutions That{" "}
               <span className="text-gradient">Power Growth</span>
             </motion.h1>
-            <motion.p variants={fadeInUp} className="text-lg text-muted-foreground">
+            <motion.p variants={fadeInUp} className="text-lg text-slate-400">
               From concept to deployment, we offer comprehensive technology services
               designed to elevate your business to new heights.
             </motion.p>
@@ -223,10 +223,10 @@ const Services = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-hero-gradient flex items-center justify-center">
-                  <service.icon className="text-primary-foreground" size={28} />
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-hero-gradient">
+                  <service.icon className="text-white" size={28} />
                 </div>
-                <h2 className="text-3xl md:text-4xl font-display font-bold">
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-white">
                   {service.title}
                 </h2>
               </div>
@@ -237,8 +237,8 @@ const Services = () => {
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
                 {service.features.map((feature) => (
                   <div key={feature} className="flex items-center gap-3">
-                    <CheckCircle className="text-accent flex-shrink-0" size={18} />
-                    <span className="text-sm text-foreground">{feature}</span>
+                    <CheckCircle className="flex-shrink-0 text-cyan-300" size={18} />
+                    <span className="text-sm text-slate-300">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -258,7 +258,7 @@ const Services = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }} // Halka sa delay pro look ke liye
             >
-              <div className="rounded-2xl overflow-hidden shadow-card-hover border border-white/10">
+              <div className="overflow-hidden rounded-[24px] border border-white/10 bg-white/5 shadow-[0_24px_80px_rgba(2,6,23,0.35)] backdrop-blur-lg">
                 <img
                   src={service.image}
                   alt={service.title}
@@ -281,7 +281,7 @@ const Services = () => {
 </section>
       
       {/* Additional Services */}
-      <section className="py-10 lg:py-17 bg-secondary/25 px-8 lg:px-16">
+      <section className="py-10 lg:py-17 px-8 lg:px-16">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -295,7 +295,7 @@ const Services = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-4">
               Additional Services
             </h2>
-            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+            <p className="mx-auto mt-4 max-w-2xl text-slate-400">
               Beyond our core offerings, we provide a range of specialized services to
               support your complete digital journey.
             </p>
@@ -309,18 +309,18 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-card rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 group"
+                className="rounded-[24px] border border-white/10 bg-white/5 p-6 shadow-[0_16px_50px_rgba(2,6,23,0.25)] backdrop-blur-lg transition-all duration-300 group hover:-translate-y-2 hover:scale-[1.02] hover:bg-white/10"
               >
-                <div className="w-12 h-12 rounded-xl bg-secondary group-hover:bg-hero-gradient flex items-center justify-center mb-4 transition-colors duration-300">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 transition-colors duration-300 group-hover:bg-hero-gradient">
                   <service.icon
-                    className="text-accent group-hover:text-primary-foreground transition-colors duration-300"
+                    className="text-cyan-300 transition-colors duration-300 group-hover:text-white"
                     size={24}
                   />
                 </div>
-                <h3 className="text-xl font-display font-semibold mb-2">
+                <h3 className="mb-2 text-xl font-display font-semibold text-white">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground text-sm">{service.description}</p>
+                <p className="text-sm text-slate-400">{service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -359,13 +359,13 @@ const Services = () => {
                 transition={{ delay: index * 0.15 }}
                 className="relative text-center"
               >
-                <div className="text-6xl font-display font-bold text-gradient opacity-30 mb-4">
+                <div className="mb-4 text-6xl font-display font-bold text-cyan-400/30">
                   {item.step}
                 </div>
-                <h3 className="text-xl font-display font-semibold mb-2">{item.title}</h3>
-                <p className="text-muted-foreground text-sm">{item.desc}</p>
+                <h3 className="mb-2 text-xl font-display font-semibold text-white">{item.title}</h3>
+                <p className="text-sm text-slate-400">{item.desc}</p>
                 {index < 3 && (
-                  <div className="hidden md:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-border" />
+                  <div className="absolute left-[60%] top-8 hidden h-0.5 w-[80%] bg-white/10 md:block" />
                 )}
               </motion.div>
             ))}
@@ -374,22 +374,22 @@ const Services = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 lg:py-32 bg-hero-gradient text-primary-foreground">
+      <section className="py-20 lg:py-32 bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.22),_transparent_60%)]">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
+            <h2 className="mb-6 text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white">
               Let's Build Your Next Big Thing
             </h2>
-            <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-8">
+            <p className="mx-auto mb-8 max-w-2xl text-slate-300/80">
               Ready to transform your ideas into reality? Our team is here to help
               you every step of the way.
             </p>
             <Link to="/contact">
-              <Button size="lg" className="bg-card text-foreground hover:bg-card/90 hover:scale-105 transition-all gap-2">
+              <Button size="lg" className="gap-2 bg-white text-slate-900 transition-all duration-300 hover:scale-[1.03] hover:bg-slate-100">
                 Start Your Project <ArrowRight size={18} />
               </Button>
             </Link>

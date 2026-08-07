@@ -44,7 +44,7 @@ const Navbar = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.45, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
-        isScrolled ? "border-white/10 bg-slate-950/70 backdrop-blur-2xl" : "border-white/10 bg-transparent"
+        isScrolled ? "border-white/10 bg-[#0B0F1A]/80 backdrop-blur-md" : "border-white/10 bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -62,7 +62,7 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path}
                 className={`group relative text-sm font-medium transition-colors duration-300 ${
-                  location.pathname === link.path ? "text-white" : "text-slate-300 hover:text-white"
+                  location.pathname === link.path ? "text-white" : "text-gray-300 hover:text-white"
                 }`}
               >
                 <span>{link.name}</span>
@@ -75,7 +75,7 @@ const Navbar = () => {
               onMouseEnter={() => setActiveDropdown("services")}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <button className="flex items-center gap-1 text-sm font-medium text-slate-300 transition-colors duration-300 hover:text-white">
+              <button className="flex items-center gap-1 text-sm font-medium text-gray-300 transition-colors duration-300 hover:text-white">
                 Services
                 <ChevronDown size={16} />
               </button>
@@ -86,7 +86,7 @@ const Navbar = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute left-1/2 top-10 w-[720px] -translate-x-1/2 rounded-[24px] border border-white/10 bg-slate-950/95 p-6 shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur-2xl"
+                    className="absolute left-0 top-full mt-4 w-[720px] rounded-2xl border border-white/10 bg-[#0F172A]/95 p-6 shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur-lg"
                   >
                     <div className="grid grid-cols-[1.05fr_0.95fr] gap-6">
                       <div className="rounded-[20px] border border-white/10 bg-white/5 p-5">
@@ -123,7 +123,7 @@ const Navbar = () => {
               onMouseEnter={() => setActiveDropdown("portfolio")}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <button className="flex items-center gap-1 text-sm font-medium text-slate-300 transition-colors duration-300 hover:text-white">
+              <button className="flex items-center gap-1 text-sm font-medium text-gray-300 transition-colors duration-300 hover:text-white">
                 Portfolio
                 <ChevronDown size={16} />
               </button>
@@ -134,7 +134,7 @@ const Navbar = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute left-1/2 top-10 w-[480px] -translate-x-1/2 rounded-[24px] border border-white/10 bg-slate-950/95 p-5 shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur-2xl"
+                    className="absolute left-0 top-full mt-4 w-[360px] rounded-2xl border border-white/10 bg-[#0F172A]/95 p-5 shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur-lg"
                   >
                     <div className="grid gap-3">
                       {portfolioItems.map((project) => (
@@ -165,7 +165,7 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
 
-            <Link to="/contact" className="text-sm font-medium text-slate-300 transition-colors duration-300 hover:text-white">
+            <Link to="/contact" className="text-sm font-medium text-gray-300 transition-colors duration-300 hover:text-white">
               Contact
             </Link>
           </div>
@@ -191,7 +191,7 @@ const Navbar = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 220, damping: 24 }}
-            className="fixed inset-y-0 right-0 top-16 w-[88vw] max-w-sm border-l border-white/10 bg-slate-950/95 p-6 backdrop-blur-2xl lg:hidden"
+            className="fixed inset-y-0 right-0 top-16 w-[88vw] max-w-sm border-l border-white/10 bg-[#0B0F1A]/95 p-6 backdrop-blur-lg lg:hidden"
           >
             <div className="flex flex-col gap-4">
               {[
