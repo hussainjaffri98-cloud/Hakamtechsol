@@ -59,7 +59,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Call Us",
-      details: "03131027500",
+      details: "+92 309 2271214 ",
       subtext: "Mon-Fri, 9am-6pm EST",
     },
     {

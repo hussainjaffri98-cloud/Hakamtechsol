@@ -31,6 +31,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<"services" | "portfolio" | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isServicesHovered, setIsServicesHovered] = useState(false);
   const location = useLocation();
   const { scrollY } = useScroll();
   const isServicesMenuOpen = activeDropdown === "services";
@@ -56,6 +57,7 @@ const Navbar = () => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setActiveDropdown(null);
+        setIsServicesHovered(false);
       }
     };
 
@@ -65,6 +67,20 @@ const Navbar = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isServicesMenuOpen]);
+
+  useEffect(() => {
+    if (!isServicesHovered && !isServicesMenuOpen) return;
+
+    const timer = window.setTimeout(() => {
+      if (isServicesHovered) {
+        setActiveDropdown("services");
+      } else if (!isServicesHovered && isServicesMenuOpen) {
+        setActiveDropdown(null);
+      }
+    }, 180);
+
+    return () => window.clearTimeout(timer);
+  }, [isServicesHovered, isServicesMenuOpen]);
 
   return (
     <>
@@ -99,11 +115,12 @@ const Navbar = () => {
               </Link>
             ))}
 
-            <div className="relative">
-              <button
-                className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors duration-300 hover:text-sky-600"
-                onClick={() => setActiveDropdown(activeDropdown === "services" ? null : "services")}
-              >
+            <div
+              className="relative"
+              onMouseEnter={() => setIsServicesHovered(true)}
+              onMouseLeave={() => setIsServicesHovered(false)}
+            >
+              <button className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors duration-300 hover:text-sky-600">
                 Services
                 <ChevronDown size={16} />
               </button>
@@ -235,12 +252,17 @@ const Navbar = () => {
               transition={{ duration: 0.22, ease: "easeOut" }}
               className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 pb-8 pt-20 sm:px-6 lg:px-8 lg:pt-24"
               onClick={(event) => event.stopPropagation()}
+              onMouseEnter={() => setIsServicesHovered(true)}
+              onMouseLeave={() => setIsServicesHovered(false)}
             >
               <div className="flex justify-end">
                 <button
                   type="button"
                   className="rounded-full border border-gray-200 bg-white p-2 text-slate-700 shadow-sm transition-colors duration-300 hover:text-sky-600"
-                  onClick={() => setActiveDropdown(null)}
+                  onClick={() => {
+                    setActiveDropdown(null);
+                    setIsServicesHovered(false);
+                  }}
                   aria-label="Close services menu"
                 >
                   <X size={20} />
@@ -275,7 +297,10 @@ const Navbar = () => {
                             <a
                               href="/services"
                               className="block w-full whitespace-nowrap rounded-xl border border-transparent px-2 py-2 text-sm text-slate-600 transition-all duration-300 hover:translate-x-1 hover:border-sky-200 hover:bg-sky-50 hover:text-sky-600"
-                              onClick={() => setActiveDropdown(null)}
+                              onClick={() => {
+                                setActiveDropdown(null);
+                                setIsServicesHovered(false);
+                              }}
                             >
                               {item}
                             </a>
@@ -289,7 +314,10 @@ const Navbar = () => {
 
               <div className="mt-6 border-t border-gray-200 bg-white px-0 py-4">
                 <div className="flex justify-end">
-                  <Link to="/services" className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-600 transition-all duration-300 hover:scale-[1.02] hover:bg-sky-100" onClick={() => setActiveDropdown(null)}>
+                  <Link to="/services" className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-600 transition-all duration-300 hover:scale-[1.02] hover:bg-sky-100" onClick={() => {
+                    setActiveDropdown(null);
+                    setIsServicesHovered(false);
+                  }}>
                     View All Services <ArrowRight size={15} />
                   </Link>
                 </div>
