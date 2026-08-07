@@ -239,7 +239,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed inset-0 z-[60] overflow-y-auto bg-slate-950/20 backdrop-blur-[2px]"
+            className="fixed left-0 right-0 top-[4.5rem] z-[60] overflow-y-auto bg-slate-950/20 pb-8 backdrop-blur-[2px] lg:top-[5rem]"
             onClick={() => setActiveDropdown(null)}
           >
             <motion.div
@@ -247,7 +247,7 @@ const Navbar = () => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 24, opacity: 0 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
-              className="mx-auto mt-20 w-[min(92vw,1400px)] overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_30px_100px_rgba(15,23,42,0.16)]"
+              className="mx-auto mt-4 w-[min(92vw,1400px)] overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_30px_100px_rgba(15,23,42,0.16)]"
               onClick={(event) => event.stopPropagation()}
               onMouseEnter={() => setIsServicesHovered(true)}
               onMouseLeave={() => setIsServicesHovered(false)}
