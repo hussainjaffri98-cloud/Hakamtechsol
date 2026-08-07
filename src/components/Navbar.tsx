@@ -69,17 +69,14 @@ const Navbar = () => {
   }, [isServicesMenuOpen]);
 
   useEffect(() => {
-    if (!isServicesHovered && !isServicesMenuOpen) return;
+    if (isServicesHovered) {
+      setActiveDropdown("services");
+      return;
+    }
 
-    const timer = window.setTimeout(() => {
-      if (isServicesHovered) {
-        setActiveDropdown("services");
-      } else if (!isServicesHovered && isServicesMenuOpen) {
-        setActiveDropdown(null);
-      }
-    }, 200);
-
-    return () => window.clearTimeout(timer);
+    if (isServicesMenuOpen) {
+      setActiveDropdown(null);
+    }
   }, [isServicesHovered, isServicesMenuOpen]);
 
   return (
