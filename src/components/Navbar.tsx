@@ -5,16 +5,19 @@ import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 
-const servicesItems = [
-  "Mobile App Development",
-  "Game Development",
-  "Staff Augmentation",
-  "Custom Software Development",
-  "Artificial Intelligence",
-  "Blockchain Development",
-  "Web Development",
-  "Cloud Services",
-  "Digital Marketing Services",
+const megaMenuGroups = [
+  {
+    title: "Product Engineering",
+    items: ["Mobile App Development", "Custom Software Development", "Web Development", "Game Development"],
+  },
+  {
+    title: "Data & AI",
+    items: ["Artificial Intelligence", "Cloud Services", "Blockchain Development", "Staff Augmentation"],
+  },
+  {
+    title: "Growth & Marketing",
+    items: ["Digital Marketing Services", "Brand Systems", "Product Launches", "Revenue Enablement"],
+  },
 ];
 
 const portfolioItems = [
@@ -86,32 +89,54 @@ const Navbar = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute left-0 top-full mt-4 w-[720px] rounded-2xl border border-white/10 bg-[#0F172A]/95 p-6 shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur-lg"
+                    className="absolute left-0 right-0 top-full mt-4 w-full"
                   >
-                    <div className="grid grid-cols-[1.05fr_0.95fr] gap-6">
-                      <div className="rounded-[20px] border border-white/10 bg-white/5 p-5">
-                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">Build to win</p>
-                        <h3 className="mt-3 text-2xl font-semibold text-white">Premium digital products for modern teams.</h3>
-                        <p className="mt-3 text-sm leading-7 text-slate-400">
-                          From strategy to launch, we create elegant experiences with measurable business impact.
-                        </p>
-                        <div className="mt-5 overflow-hidden rounded-2xl">
-                          <img src={logo} alt="Service showcase" className="h-36 w-full object-cover" />
+                    <div className="mx-auto w-full max-w-7xl rounded-[32px] border border-slate-800 bg-[#0b1329]/95 p-6 shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur-xl">
+                      <div className="grid gap-8 lg:grid-cols-[1.05fr_1.95fr]">
+                        <div className="rounded-[24px] border border-slate-800 bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.16),_transparent_55%),_linear-gradient(135deg,_#111936,_#0b1329)] p-6">
+                          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">Build to win</p>
+                          <h3 className="mt-3 text-2xl font-semibold text-white">Launch premium digital products with speed and clarity.</h3>
+                          <p className="mt-3 text-sm leading-7 text-slate-400">
+                            From product strategy to delivery, we craft high-performing platforms with measurable business impact.
+                          </p>
+                          <div className="mt-6 rounded-[20px] border border-slate-800/80 bg-slate-950/50 p-4">
+                            <div className="flex items-center gap-3">
+                              <img src={logo} alt="Hakam TechSol logo" className="h-12 w-auto" />
+                              <div>
+                                <p className="text-sm font-semibold text-white">Hakam TechSol</p>
+                                <p className="text-sm text-slate-400">Modern software, built for ambitious teams.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                          {megaMenuGroups.map((group) => (
+                            <div key={group.title}>
+                              <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-white">{group.title}</h4>
+                              <ul className="mt-3 space-y-2">
+                                {group.items.map((item) => (
+                                  <li key={item}>
+                                    <a
+                                      href="/services"
+                                      className="group flex items-center justify-between rounded-xl border border-transparent px-2 py-2 text-sm text-slate-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-400/30 hover:bg-cyan-500/10 hover:text-cyan-400"
+                                    >
+                                      <span>{item}</span>
+                                      <span className="text-cyan-400 transition-transform duration-300 group-hover:translate-x-1">›</span>
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
                         </div>
                       </div>
-                      <div className="grid grid-cols-2 gap-3">
-                        {servicesItems.map((item) => (
-                          <a key={item} href="/services" className="group flex items-center justify-between rounded-2xl border border-white/10 bg-slate-900/70 px-3 py-3 text-sm text-slate-300 transition-all duration-300 hover:border-cyan-400/40 hover:bg-slate-900 hover:text-white">
-                            <span>{item}</span>
-                            <ArrowRight size={15} className="opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
-                          </a>
-                        ))}
+
+                      <div className="mt-6 flex justify-end">
+                        <Link to="/services" className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300 transition-all duration-300 hover:scale-[1.02] hover:bg-cyan-500/20">
+                          View All Services <ArrowRight size={15} />
+                        </Link>
                       </div>
-                    </div>
-                    <div className="mt-5 flex justify-end">
-                      <Link to="/services" className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300 transition-all duration-300 hover:scale-[1.02] hover:bg-cyan-500/20">
-                        View All Services <ArrowRight size={15} />
-                      </Link>
                     </div>
                   </motion.div>
                 )}
