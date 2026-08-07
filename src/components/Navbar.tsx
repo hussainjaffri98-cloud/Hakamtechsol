@@ -77,7 +77,7 @@ const Navbar = () => {
       } else if (!isServicesHovered && isServicesMenuOpen) {
         setActiveDropdown(null);
       }
-    }, 180);
+    }, 200);
 
     return () => window.clearTimeout(timer);
   }, [isServicesHovered, isServicesMenuOpen]);
