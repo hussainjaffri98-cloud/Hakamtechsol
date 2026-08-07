@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
+
 import { Mail, Phone, MapPin, Send, Clock, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
+
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -50,13 +53,13 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      details: "info@hakamtechsoul.com",
+      details: "info@hakamtechsol.com",
       subtext: "We reply within 24 hours",
     },
     {
       icon: Phone,
       title: "Call Us",
-      details: "+1 (555) 123-4567",
+      details: "03131027500",
       subtext: "Mon-Fri, 9am-6pm EST",
     },
     {
@@ -68,8 +71,8 @@ const Contact = () => {
     {
       icon: Clock,
       title: "Business Hours",
-      details: "Monday - Friday",
-      subtext: "9:00 AM - 6:00 PM EST",
+      // details: "Monday - Friday",
+      subtext: "24/7 Available",
     },
   ];
 
@@ -87,12 +90,7 @@ const Contact = () => {
             variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
             className="max-w-3xl mx-auto text-center"
           >
-            <motion.span
-              variants={fadeInUp}
-              className="inline-block px-4 py-2 rounded-full bg-card text-accent font-medium text-sm mb-6"
-            >
-              Contact Us
-            </motion.span>
+            
             <motion.h1
               variants={fadeInUp}
               className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6"
@@ -109,7 +107,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-12 -mt-8">
+      <section className="py-12 -mt-8 px-4 lg:px-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, index) => (
@@ -135,7 +133,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Map */}
-      <section className="py-20 lg:py-32">
+      <section className="py-20 lg:py-32 px-4 lg:px-16">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             {/* Contact Form */}
@@ -263,28 +261,38 @@ const Contact = () => {
                 {/* Map Embed */}
                 <div className="rounded-2xl overflow-hidden shadow-card-hover h-[400px] bg-secondary">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30596073366!2d-74.25986548248684!3d40.69714941932609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1234567890"
+                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7236.505274815302!2d67.09204843914836!3d24.92346206155236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb338cb9fb8217f%3A0x9b93f73c2303295c!2sBlock%206%20Gulshan-e-Iqbal%2C%20Karachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1773937132996!5m2!1sen!2s"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Hakam TechSoul Office Location"
+                    title="Hakam TechSol Office Location"
                   />
                 </div>
 
                 {/* Quick Actions */}
                 <div className="mt-8 flex flex-wrap gap-4">
-                  <a
-                    href="mailto:info@hakamtechsoul.com"
+                  {/* <a
+                    href="mailto:alhakamsofts@gmail.com"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors"
                   >
                     <Mail size={18} className="text-accent" />
                     <span className="text-sm font-medium">Email Us Directly</span>
-                  </a>
+                  </a> */}
+ 
+<a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=alhakamsofts@gmail.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors"
+>
+  <Mail size={18} className="text-accent" />
+  <span className="text-sm font-medium">Email Us Directly</span>
+</a> 
                   <a
-                    href="tel:+15551234567"
+                    href="tel:+923092271214"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors"
                   >
                     <Phone size={18} className="text-accent" />
@@ -343,6 +351,7 @@ const Contact = () => {
           </motion.div>
         </div>
       </section>
+      
 
       <Footer />
     </div>
@@ -351,3 +360,6 @@ const Contact = () => {
 };
 
 export default Contact;
+
+
+

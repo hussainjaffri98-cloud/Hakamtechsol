@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const whatsappNumber = "15551234567";
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi Hakam TechSoul! I'd like to discuss a project.")}`;
+  const whatsappNumber = "+923092271214";
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi Hakam TechSol! I'd like to discuss a project.")}`;
 
   return (
     <>
@@ -24,7 +24,7 @@ const ChatWidget = () => {
             <div className="bg-hero-gradient p-4 text-primary-foreground">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="font-display font-semibold text-lg">Hakam TechSoul</h3>
+                  <h3 className="font-display font-semibold text-lg">Hakam TechSol</h3>
                   <p className="text-primary-foreground/80 text-xs">We typically reply instantly</p>
                 </div>
                 <button
@@ -54,7 +54,7 @@ const ChatWidget = () => {
                 </Button>
               </a>
 
-              <a href="mailto:info@hakamtechsoul.com" className="block">
+              <a href="mailto:info@hakamtechsol.com" className="block">
                 <Button variant="outline" className="w-full gap-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground">
                   <Send size={16} />
                   Send Email

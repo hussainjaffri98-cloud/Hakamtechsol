@@ -1,4 +1,4 @@
-// Hakam TechSoul Home Page
+// Hakam TechSol Home Page
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Code2, Smartphone, Users, CheckCircle, Zap, Shield, Star } from "lucide-react";
@@ -71,8 +71,8 @@ const Index = () => {
     },
     {
       icon: Users,
-      title: "Freelancing",
-      description: "Expert freelance developers ready to bring your vision to life.",
+      title: "AI Automation",
+      description: "Expert AI Automation developers ready to bring your vision to life.",
       image: freelanceImage,
     },
   ];
@@ -90,251 +90,75 @@ const Index = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroImage}
-            alt="Technology innovation"
-            className="w-full h-full object-cover opacity-30"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
+<section className="relative min-h-screen flex items-center justify-center pt-20 px-4 md:px-10 lg:px-20 overflow-hidden">
+  {/* Background */}
+  <div className="absolute inset-0 z-0">
+    <img
+      src={heroImage}
+      alt="Technology innovation"
+      className="w-full h-full object-cover opacity-30"
+    />
+    <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
+  </div>
+
+  <div className="container mx-auto relative z-10">
+    <div className="flex flex-col items-center justify-center text-center">
+      
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-4xl flex flex-col items-center" 
+      >
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight">
+          Transforming Ideas Into{" "}
+          <span className="text-gradient">Digital Reality</span>
+        </h1>
+
+        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl bg-color-black">
+          At Hakam TechSol, we craft innovative technology solutions that empower
+          businesses to thrive in the digital age. Your vision, our expertise.
+        </p>
+
+        {/* Buttons Container - Isko check karein */}
+        <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center items-center w-full">
+          {/* Pehla Button (Gradient wala) */}
+          <Link to="/contact" className="w-full sm:w-auto">
+            <Button 
+              size="lg" 
+              className="bg-hero-gradient text-white border-none hover:scale-105 transition-all w-full px-8 py-6 text-lg"
+            >
+              Start Your Project <ArrowRight size={18} className="ml-2" />
+            </Button>
+          </Link>
+
+          {/* Doosra Button (Outline wala) */}
+          <Link to="/services" className="w-full sm:w-auto">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-primary text-foreground hover:bg-primary/10 hover:scale-105 transition-all w-full px-8 py-6 text-lg"
+            >
+              Explore Services
+            </Button>
+          </Link>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - Text content */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={stagger}
-              className="max-w-2xl"
-            >
-              <motion.div variants={fadeInUp} className="mb-6">
-                <span className="inline-block px-4 py-2 rounded-full bg-secondary text-accent font-medium text-sm">
-                  🚀 Welcome to the Future of Tech
-                </span>
-              </motion.div>
-            <motion.h1
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl lg:text-7xl font-display font-bold mb-6 leading-tight"
-            >
-              Transforming Ideas Into{" "}
-              <span className="text-gradient">Digital Reality</span>
-            </motion.h1>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl"
-            >
-              At Hakam TechSoul, we craft innovative technology solutions that empower
-              businesses to thrive in the digital age. Your vision, our expertise.
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
-              <Link to="/contact">
-                <Button size="sm" className="rounded-full px-6 py-2 bg-hero-gradient text-primary-foreground hover:shadow-lg hover:-translate-y-0.5 hover:opacity-95 transition-all duration-200 gap-2">
-                  Start Your Project <ArrowRight size={16} />
-                </Button>
-              </Link>
-              <Link to="/services">
-                <Button size="lg" variant="outline" className="border-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all">
-                  Explore Services
-                </Button>
-              </Link>
-            </motion.div>
-
-            {/* Quick Features */}
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-wrap gap-6 mt-12 pt-8 border-t border-border"
-            >
-              {features.map(({ icon: Icon, text }) => (
-                <div key={text} className="flex items-center gap-2 text-muted-foreground">
-                  <Icon size={18} className="text-accent" />
-                  <span className="text-sm font-medium">{text}</span>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-
-            {/* Right side - Animated Logo */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              className="hidden lg:flex items-center justify-center"
-            >
-              <div className="relative">
-                {/* Animated circuit lines background */}
-                <motion.svg
-                  className="absolute -inset-8 w-[calc(100%+64px)] h-[calc(100%+64px)]"
-                  viewBox="0 0 400 400"
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {/* Left circuit lines */}
-                  <motion.path
-                    d="M50 200 H120 L140 180 H160"
-                    stroke="hsl(var(--accent))"
-                    strokeWidth="2"
-                    fill="none"
-                    variants={circuitLines}
-                  />
-                  <motion.path
-                    d="M30 220 H100 L120 200 H150"
-                    stroke="hsl(var(--primary))"
-                    strokeWidth="1.5"
-                    fill="none"
-                    variants={circuitLines}
-                    style={{ transitionDelay: "0.2s" }}
-                  />
-                  <motion.path
-                    d="M60 180 H110 L130 160 H155"
-                    stroke="hsl(var(--accent))"
-                    strokeWidth="1"
-                    fill="none"
-                    opacity="0.6"
-                    variants={circuitLines}
-                  />
-                  
-                  {/* Right circuit lines */}
-                  <motion.path
-                    d="M350 200 H280 L260 180 H240"
-                    stroke="hsl(var(--accent))"
-                    strokeWidth="2"
-                    fill="none"
-                    variants={circuitLines}
-                  />
-                  <motion.path
-                    d="M370 220 H300 L280 200 H250"
-                    stroke="hsl(var(--primary))"
-                    strokeWidth="1.5"
-                    fill="none"
-                    variants={circuitLines}
-                  />
-                  <motion.path
-                    d="M340 180 H290 L270 160 H245"
-                    stroke="hsl(var(--accent))"
-                    strokeWidth="1"
-                    fill="none"
-                    opacity="0.6"
-                    variants={circuitLines}
-                  />
-
-                  {/* Nodes/dots at line ends */}
-                  <motion.circle
-                    cx="50"
-                    cy="200"
-                    r="4"
-                    fill="hsl(var(--accent))"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 1.2, duration: 0.3 }}
-                  />
-                  <motion.circle
-                    cx="350"
-                    cy="200"
-                    r="4"
-                    fill="hsl(var(--accent))"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 1.2, duration: 0.3 }}
-                  />
-                  <motion.circle
-                    cx="30"
-                    cy="220"
-                    r="3"
-                    fill="hsl(var(--primary))"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 1.3, duration: 0.3 }}
-                  />
-                  <motion.circle
-                    cx="370"
-                    cy="220"
-                    r="3"
-                    fill="hsl(var(--primary))"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 1.3, duration: 0.3 }}
-                  />
-                </motion.svg>
-
-                {/* Glowing background */}
-                <motion.div
-                  className="absolute inset-0 rounded-full bg-accent/20 blur-3xl"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ 
-                    opacity: [0.3, 0.5, 0.3], 
-                    scale: [1, 1.1, 1] 
-                  }}
-                  transition={{ 
-                    duration: 3, 
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-
-                {/* Logo container with reveal animation */}
-                <motion.div
-                  variants={logoReveal}
-                  className="relative z-10 p-8"
-                >
-                  <motion.div
-                    animate={{
-                      boxShadow: [
-                        "0 0 20px rgba(59, 130, 246, 0.3)",
-                        "0 0 40px rgba(59, 130, 246, 0.5)",
-                        "0 0 20px rgba(59, 130, 246, 0.3)",
-                      ],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 border border-accent/20"
-                  >
-                    <motion.img
-                      src={logo}
-                      alt="Hakam TechSol Logo"
-                      className="w-64 h-auto"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5, duration: 0.6 }}
-                    />
-                  </motion.div>
-                </motion.div>
-
-                {/* Floating particles */}
-                {[...Array(6)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 rounded-full bg-accent"
-                    style={{
-                      left: `${20 + (i * 15)}%`,
-                      top: `${10 + (i % 3) * 30}%`,
-                    }}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ 
-                      opacity: [0.4, 0.8, 0.4],
-                      scale: [0.8, 1.2, 0.8],
-                      y: [0, -10, 0]
-                    }}
-                    transition={{ 
-                      duration: 2 + (i * 0.3),
-                      repeat: Infinity,
-                      delay: 1 + (i * 0.15),
-                      ease: "easeInOut"
-                    }}
-                  />
-                ))}
-              </div>
-            </motion.div>
-          </div>
+        {/* Features Section */}
+        <div className="flex flex-wrap justify-center gap-6 mt-12 pt-8 border-t border-border w-full">
+          {features.map(({ icon: Icon, text }) => (
+            <div key={text} className="flex items-center gap-2 text-muted-foreground">
+              <Icon size={18} className="text-accent" />
+              <span className="text-sm font-medium">{text}</span>
+            </div>
+          ))}
         </div>
-      </section>
+      </motion.div>
+    </div>
+  </div>
+</section>
       {/* Services Preview */}
-      <section className="py-20 lg:py-32 bg-secondary/50">
+      <section className="py-8 lg:py-10 bg-secondary/25">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -353,7 +177,7 @@ const Index = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 px-4 lg:px-16">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -394,7 +218,7 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 lg:py-32">
+      <section className="py-10 lg:py-24 px-4 lg:px-16">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div

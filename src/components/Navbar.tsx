@@ -22,7 +22,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="Hakam TechSol Logo" className="h-12 w-auto" />
+            <img src={logo} alt="Hakam TechSol Logo" className="h-10 px-8 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -49,9 +49,9 @@ const Navbar = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden md:block px-8">
             <Link to="/contact">
-              <Button className="bg-hero-gradient hover:opacity-90 hover:scale-105 transition-all">
+              <Button className="bg-hero-gradient hover:opacity-90 hover:scale-105  transition-all">
                 Get Started
               </Button>
             </Link>

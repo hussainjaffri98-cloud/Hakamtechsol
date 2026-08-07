@@ -59,17 +59,17 @@ const Services = () => {
     },
     {
       icon: Users,
-      title: "Freelancing Services",
+      title: "AI Automation",
       description:
-        "Access our pool of expert developers for your specific project needs. Whether you need temporary support or specialized skills, our freelance team delivers.",
+        "Access our pool of expert AI Automation developers for your specific project needs. Whether you need temporary support or specialized skills, our team delivers.",
       image: freelanceImage,
       features: [
-        "Dedicated Developer Hiring",
-        "Project-Based Engagement",
-        "Flexible Team Scaling",
-        "Technical Consultation",
-        "Code Review & Audit",
-        "Technology Migration",
+        "Customer Service",
+        "Content Creation",
+        "E-commerce",
+        "Finance",
+        // "Code Review & Audit",
+        // "Technology Migration",
       ],
     },
   ];
@@ -116,12 +116,7 @@ const Services = () => {
             variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
             className="max-w-3xl mx-auto text-center"
           >
-            <motion.span
-              variants={fadeInUp}
-              className="inline-block px-4 py-2 rounded-full bg-card text-accent font-medium text-sm mb-6"
-            >
-              Our Services
-            </motion.span>
+           
             <motion.h1
               variants={fadeInUp}
               className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6"
@@ -138,13 +133,13 @@ const Services = () => {
       </section>
 
       {/* Main Services */}
-      <section className="py-20 lg:py-32">
+      {/* <section className="py-10 lg:py-17 px-8 lg:px-16">
         <div className="container mx-auto px-4">
-          <div className="space-y-24 lg:space-y-32">
+          <div className="space-y-24 lg:space-y-17">
             {mainServices.map((service, index) => (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
@@ -201,10 +196,92 @@ const Services = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
+
+      {/* Main Services Section - Updated with dynamic animations */}
+<section className="py-10 lg:py-17 px-8 lg:px-16">
+  <div className="container mx-auto px-4">
+    <div className="space-y-24 lg:space-y-17">
+      {mainServices.map((service, index) => {
+        // Yeh logic check karega ke item left se aana chahiye ya right se
+        const isEven = index % 2 === 0;
+
+        return (
+          <div
+            key={service.title}
+            className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${
+              !isEven ? "lg:flex-row-reverse" : ""
+            }`}
+          >
+            {/* --- Text Content Side --- */}
+            <motion.div
+              className={!isEven ? "lg:order-2" : ""}
+              initial={{ opacity: 0, x: isEven ? -70 : 70 }} // Even hai toh left se, Odd hai toh right se
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-hero-gradient flex items-center justify-center">
+                  <service.icon className="text-primary-foreground" size={28} />
+                </div>
+                <h2 className="text-3xl md:text-4xl font-display font-bold">
+                  {service.title}
+                </h2>
+              </div>
+              <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
+                {service.description}
+              </p>
+
+              <div className="grid sm:grid-cols-2 gap-3 mb-8">
+                {service.features.map((feature) => (
+                  <div key={feature} className="flex items-center gap-3">
+                    <CheckCircle className="text-accent flex-shrink-0" size={18} />
+                    <span className="text-sm text-foreground">{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Link to="/contact">
+                <Button className="bg-hero-gradient hover:opacity-90 hover:scale-105 transition-all gap-2">
+                  Get Started <ArrowRight size={18} />
+                </Button>
+              </Link>
+            </motion.div>
+
+            {/* --- Image Side --- */}
+            <motion.div
+              className={`relative ${!isEven ? "lg:order-1" : ""}`}
+              initial={{ opacity: 0, x: isEven ? 70 : -70 }} // Image hamesha text ke opposite side se aayegi
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }} // Halka sa delay pro look ke liye
+            >
+              <div className="rounded-2xl overflow-hidden shadow-card-hover border border-white/10">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-[350px] lg:h-[450px] object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div
+                className={`absolute w-32 h-32 rounded-2xl -z-10 opacity-40 ${
+                  isEven
+                    ? "bg-hero-gradient -bottom-6 -right-6"
+                    : "bg-accent -bottom-6 -left-6"
+                }`}
+              />
+            </motion.div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+      
       {/* Additional Services */}
-      <section className="py-20 lg:py-32 bg-secondary/50">
+      <section className="py-10 lg:py-17 bg-secondary/25 px-8 lg:px-16">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
