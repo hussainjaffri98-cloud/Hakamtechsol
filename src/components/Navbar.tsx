@@ -33,6 +33,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const { scrollY } = useScroll();
+  const isServicesMenuOpen = activeDropdown === "services";
 
   useMotionValueEvent(scrollY, "change", (value) => setIsScrolled(value > 24));
 
@@ -41,8 +42,33 @@ const Navbar = () => {
     setActiveDropdown(null);
   }, [location.pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = isServicesMenuOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isServicesMenuOpen]);
+
+  useEffect(() => {
+    if (!isServicesMenuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveDropdown(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isServicesMenuOpen]);
+
   return (
-    <motion.nav
+    <>
+      <motion.nav
       initial={{ y: -24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.45, ease: "easeOut" }}
@@ -73,73 +99,14 @@ const Navbar = () => {
               </Link>
             ))}
 
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveDropdown("services")}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors duration-300 hover:text-sky-600">
+            <div className="relative">
+              <button
+                className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors duration-300 hover:text-sky-600"
+                onClick={() => setActiveDropdown(activeDropdown === "services" ? null : "services")}
+              >
                 Services
                 <ChevronDown size={16} />
               </button>
-              <AnimatePresence>
-                {activeDropdown === "services" && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="fixed left-1/2 top-[5.25rem] z-[999] w-[min(92vw,1120px)] -translate-x-1/2 overflow-hidden rounded-[32px] border border-gray-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.12)]"
-                  >
-                    <div className="grid grid-cols-12">
-                      <div className="col-span-12 min-w-[280px] w-full border-b border-gray-200 bg-slate-50 p-6 lg:col-span-4 lg:border-b-0 lg:border-r">
-                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600">Build to win</p>
-                        <h3 className="mt-3 text-2xl font-semibold text-slate-900">Launch premium digital products with speed and clarity.</h3>
-                        <p className="mt-3 text-sm leading-7 text-slate-600">
-                          From product strategy to delivery, we craft high-performing platforms with measurable business impact.
-                        </p>
-                        <div className="mt-6 rounded-[20px] border border-slate-200 bg-white p-4">
-                          <div className="flex items-center gap-3">
-                            <img src={logo} alt="Hakam TechSol logo" className="h-12 w-auto" />
-                            <div>
-                              <p className="text-sm font-semibold text-slate-900">Hakam TechSol</p>
-                              <p className="text-sm text-slate-600">Modern software, built for ambitious teams.</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-span-12 grid grid-cols-1 gap-8 p-6 md:grid-cols-3 lg:col-span-8">
-                        {megaMenuGroups.map((group) => (
-                          <div key={group.title} className="flex flex-col gap-3">
-                            <h4 className="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-slate-900">{group.title}</h4>
-                            <ul className="flex flex-col gap-2">
-                              {group.items.map((item) => (
-                                <li key={item} className="w-full">
-                                  <a
-                                    href="/services"
-                                    className="block w-full whitespace-nowrap rounded-xl border border-transparent px-2 py-2 text-sm text-slate-600 transition-all duration-300 hover:translate-x-1 hover:border-sky-200 hover:bg-sky-50 hover:text-sky-600"
-                                  >
-                                    {item}
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="border-t border-gray-200 bg-white px-6 py-4">
-                      <div className="flex justify-end">
-                        <Link to="/services" className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-600 transition-all duration-300 hover:scale-[1.02] hover:bg-sky-100">
-                          View All Services <ArrowRight size={15} />
-                        </Link>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
 
             <div
@@ -224,9 +191,23 @@ const Navbar = () => {
                 { name: "Services", path: "/services" },
                 { name: "Contact", path: "/contact" },
               ].map((link) => (
-                <Link key={link.path} to={link.path} className="rounded-2xl border border-gray-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700" onClick={() => setIsOpen(false)}>
-                  {link.name}
-                </Link>
+                link.name === "Services" ? (
+                  <button
+                    key={link.path}
+                    type="button"
+                    className="rounded-2xl border border-gray-200 bg-slate-50 px-4 py-3 text-left text-sm font-medium text-slate-700"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setActiveDropdown("services");
+                    }}
+                  >
+                    {link.name}
+                  </button>
+                ) : (
+                  <Link key={link.path} to={link.path} className="rounded-2xl border border-gray-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700" onClick={() => setIsOpen(false)}>
+                    {link.name}
+                  </Link>
+                )
               ))}
               <Link to="/contact" onClick={() => setIsOpen(false)}>
                 <Button className="w-full bg-[#0f6cbd] text-white hover:bg-blue-700">Book a Call</Button>
@@ -235,7 +216,89 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+      </motion.nav>
+
+      <AnimatePresence>
+        {isServicesMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed inset-0 z-[60] overflow-y-auto bg-white"
+            onClick={() => setActiveDropdown(null)}
+          >
+            <motion.div
+              initial={{ y: 24, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 24, opacity: 0 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+              className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 pb-8 pt-20 sm:px-6 lg:px-8 lg:pt-24"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  className="rounded-full border border-gray-200 bg-white p-2 text-slate-700 shadow-sm transition-colors duration-300 hover:text-sky-600"
+                  onClick={() => setActiveDropdown(null)}
+                  aria-label="Close services menu"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              <div className="mt-6 grid grid-cols-12">
+                <div className="col-span-12 min-w-[280px] w-full border-b border-gray-200 bg-slate-50 p-6 lg:col-span-4 lg:border-b-0 lg:border-r">
+                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600">Build to win</p>
+                  <h3 className="mt-3 text-2xl font-semibold text-slate-900">Launch premium digital products with speed and clarity.</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                    From product strategy to delivery, we craft high-performing platforms with measurable business impact.
+                  </p>
+                  <div className="mt-6 rounded-[20px] border border-slate-200 bg-white p-4">
+                    <div className="flex items-center gap-3">
+                      <img src={logo} alt="Hakam TechSol logo" className="h-12 w-auto" />
+                      <div>
+                        <p className="text-sm font-semibold text-slate-900">Hakam TechSol</p>
+                        <p className="text-sm text-slate-600">Modern software, built for ambitious teams.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-span-12 grid grid-cols-1 gap-8 p-6 md:grid-cols-3 lg:col-span-8">
+                  {megaMenuGroups.map((group) => (
+                    <div key={group.title} className="flex flex-col gap-3">
+                      <h4 className="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-slate-900">{group.title}</h4>
+                      <ul className="flex flex-col gap-2">
+                        {group.items.map((item) => (
+                          <li key={item} className="w-full">
+                            <a
+                              href="/services"
+                              className="block w-full whitespace-nowrap rounded-xl border border-transparent px-2 py-2 text-sm text-slate-600 transition-all duration-300 hover:translate-x-1 hover:border-sky-200 hover:bg-sky-50 hover:text-sky-600"
+                              onClick={() => setActiveDropdown(null)}
+                            >
+                              {item}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-6 border-t border-gray-200 bg-white px-0 py-4">
+                <div className="flex justify-end">
+                  <Link to="/services" className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-600 transition-all duration-300 hover:scale-[1.02] hover:bg-sky-100" onClick={() => setActiveDropdown(null)}>
+                    View All Services <ArrowRight size={15} />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
