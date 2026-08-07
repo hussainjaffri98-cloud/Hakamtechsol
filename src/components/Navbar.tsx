@@ -242,7 +242,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed inset-0 z-[60] overflow-y-auto bg-white"
+            className="fixed inset-0 z-[60] overflow-y-auto bg-slate-950/20 backdrop-blur-[2px]"
             onClick={() => setActiveDropdown(null)}
           >
             <motion.div
@@ -250,15 +250,15 @@ const Navbar = () => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 24, opacity: 0 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
-              className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 pb-8 pt-20 sm:px-6 lg:px-8 lg:pt-24"
+              className="mx-auto mt-20 w-[min(92vw,1400px)] overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_30px_100px_rgba(15,23,42,0.16)]"
               onClick={(event) => event.stopPropagation()}
               onMouseEnter={() => setIsServicesHovered(true)}
               onMouseLeave={() => setIsServicesHovered(false)}
             >
-              <div className="flex justify-end">
+              <div className="flex justify-end border-b border-slate-200 px-6 py-4 lg:px-8">
                 <button
                   type="button"
-                  className="rounded-full border border-gray-200 bg-white p-2 text-slate-700 shadow-sm transition-colors duration-300 hover:text-sky-600"
+                  className="rounded-full border border-slate-200 bg-white p-2 text-slate-700 shadow-sm transition-colors duration-300 hover:text-sky-600"
                   onClick={() => {
                     setActiveDropdown(null);
                     setIsServicesHovered(false);
@@ -269,34 +269,38 @@ const Navbar = () => {
                 </button>
               </div>
 
-              <div className="mt-6 grid grid-cols-12">
-                <div className="col-span-12 min-w-[280px] w-full border-b border-gray-200 bg-slate-50 p-6 lg:col-span-4 lg:border-b-0 lg:border-r">
+              <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_2.2fr]">
+                <div className="border-b border-slate-200 bg-slate-50 p-8 lg:border-b-0 lg:border-r lg:p-10">
                   <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600">Build to win</p>
-                  <h3 className="mt-3 text-2xl font-semibold text-slate-900">Launch premium digital products with speed and clarity.</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
-                    From product strategy to delivery, we craft high-performing platforms with measurable business impact.
+                  <h3 className="mt-4 text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl">
+                    Launch premium digital products with clarity and momentum.
+                  </h3>
+                  <p className="mt-4 max-w-xl text-base leading-8 text-slate-600">
+                    From product strategy to delivery, we create modern software experiences that help ambitious teams move faster and grow stronger.
                   </p>
-                  <div className="mt-6 rounded-[20px] border border-slate-200 bg-white p-4">
-                    <div className="flex items-center gap-3">
-                      <img src={logo} alt="Hakam TechSol logo" className="h-12 w-auto" />
+                  <div className="mt-8 rounded-[24px] border border-slate-200 bg-white p-5 shadow-sm">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-100 text-sky-600">
+                        <ArrowRight size={20} />
+                      </div>
                       <div>
-                        <p className="text-sm font-semibold text-slate-900">Hakam TechSol</p>
+                        <p className="text-base font-semibold text-slate-900">Hakam TechSol</p>
                         <p className="text-sm text-slate-600">Modern software, built for ambitious teams.</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="col-span-12 grid grid-cols-1 gap-8 p-6 md:grid-cols-3 lg:col-span-8">
-                  {megaMenuGroups.map((group) => (
-                    <div key={group.title} className="flex flex-col gap-3">
-                      <h4 className="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-slate-900">{group.title}</h4>
-                      <ul className="flex flex-col gap-2">
+                <div className="grid grid-cols-1 gap-0 p-6 sm:p-8 lg:grid-cols-3 lg:gap-6 lg:p-10">
+                  {megaMenuGroups.map((group, index) => (
+                    <div key={group.title} className={`${index < megaMenuGroups.length - 1 ? "lg:border-r lg:border-slate-200 lg:pr-6" : ""}`}>
+                      <h4 className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-900">{group.title}</h4>
+                      <ul className="mt-4 space-y-2">
                         {group.items.map((item) => (
-                          <li key={item} className="w-full">
+                          <li key={item}>
                             <a
                               href="/services"
-                              className="block w-full whitespace-nowrap rounded-xl border border-transparent px-2 py-2 text-sm text-slate-600 transition-all duration-300 hover:translate-x-1 hover:border-sky-200 hover:bg-sky-50 hover:text-sky-600"
+                              className="block rounded-xl px-2 py-2 text-sm leading-7 text-slate-600 transition-all duration-300 hover:translate-x-1 hover:text-sky-600"
                               onClick={() => {
                                 setActiveDropdown(null);
                                 setIsServicesHovered(false);
@@ -312,12 +316,16 @@ const Navbar = () => {
                 </div>
               </div>
 
-              <div className="mt-6 border-t border-gray-200 bg-white px-0 py-4">
+              <div className="border-t border-slate-200 bg-white px-6 py-5 lg:px-8">
                 <div className="flex justify-end">
-                  <Link to="/services" className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-600 transition-all duration-300 hover:scale-[1.02] hover:bg-sky-100" onClick={() => {
-                    setActiveDropdown(null);
-                    setIsServicesHovered(false);
-                  }}>
+                  <Link
+                    to="/services"
+                    className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-600 transition-all duration-300 hover:scale-[1.02] hover:bg-sky-100"
+                    onClick={() => {
+                      setActiveDropdown(null);
+                      setIsServicesHovered(false);
+                    }}
+                  >
                     View All Services <ArrowRight size={15} />
                   </Link>
                 </div>
