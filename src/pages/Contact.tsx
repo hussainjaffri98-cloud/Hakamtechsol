@@ -78,7 +78,7 @@ const Contact = () => {
 
   return (
     <PageTransition>
-    <div className="min-h-screen bg-[#0B0F1A] text-slate-300">
+    <div className="min-h-screen bg-white text-slate-700">
       <Navbar />
 
       {/* Hero Section */}
@@ -93,12 +93,12 @@ const Contact = () => {
             
             <motion.h1
               variants={fadeInUp}
-              className="mb-6 text-4xl font-display font-bold text-white md:text-5xl lg:text-6xl"
+              className="mb-6 text-4xl font-display font-bold text-slate-900 md:text-5xl lg:text-6xl"
             >
               Let's Start a{" "}
               <span className="text-gradient">Conversation</span>
             </motion.h1>
-            <motion.p variants={fadeInUp} className="text-lg text-slate-400">
+            <motion.p variants={fadeInUp} className="text-lg text-slate-600">
               Have a project in mind or just want to say hello? We'd love to hear from
               you. Reach out and let's create something amazing together.
             </motion.p>
@@ -116,16 +116,16 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="rounded-[24px] border border-white/10 bg-white/5 p-6 text-center shadow-[0_16px_50px_rgba(2,6,23,0.25)] backdrop-blur-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/10"
+                className="rounded-[24px] border border-slate-200 bg-white p-6 text-center shadow-[0_16px_50px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-sky-200"
               >
-                <div className="w-12 h-12 rounded-xl bg-hero-gradient flex items-center justify-center mx-auto mb-4">
-                  <info.icon className="text-primary-foreground" size={24} />
+                <div className="w-12 h-12 rounded-xl bg-[#0f6cbd] flex items-center justify-center mx-auto mb-4">
+                  <info.icon className="text-white" size={24} />
                 </div>
-                <h3 className="mb-2 font-display text-lg font-semibold text-white">
+                <h3 className="mb-2 font-display text-lg font-semibold text-slate-900">
                   {info.title}
                 </h3>
-                <p className="font-medium text-slate-200">{info.details}</p>
-                <p className="text-sm text-slate-400">{info.subtext}</p>
+                <p className="font-medium text-slate-700">{info.details}</p>
+                <p className="text-sm text-slate-600">{info.subtext}</p>
               </motion.div>
             ))}
           </div>
@@ -143,10 +143,10 @@ const Contact = () => {
               viewport={{ once: true }}
             >
               <div className="flex items-center gap-3 mb-6">
-                <MessageSquare className="text-cyan-300" size={28} />
-                <h2 className="text-3xl font-display font-bold text-white">Send Us a Message</h2>
+                <MessageSquare className="text-sky-600" size={28} />
+                <h2 className="text-3xl font-display font-bold text-slate-900">Send Us a Message</h2>
               </div>
-              <p className="text-muted-foreground mb-8">
+              <p className="mb-8 text-slate-600">
                 Fill out the form below and we'll get back to you as soon as possible.
                 All fields are required.
               </p>
@@ -230,7 +230,7 @@ const Contact = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full gap-2 bg-hero-gradient transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_16px_40px_rgba(34,211,238,0.22)]"
+                  className="w-full gap-2 bg-[#0f6cbd] transition-all duration-300 hover:scale-[1.02] hover:bg-blue-700"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -252,14 +252,14 @@ const Contact = () => {
               className="relative"
             >
               <div className="sticky top-32">
-                <h2 className="mb-6 text-3xl font-display font-bold text-white">Our Location</h2>
-                <p className="mb-8 text-slate-400">
+                <h2 className="mb-6 text-3xl font-display font-bold text-slate-900">Our Location</h2>
+                <p className="mb-8 text-slate-600">
                   Visit our office or schedule a virtual meeting. We're always excited
                   to meet new clients and discuss potential collaborations.
                 </p>
 
                 {/* Map Embed */}
-                <div className="h-[400px] overflow-hidden rounded-[24px] border border-white/10 bg-white/5 shadow-[0_24px_80px_rgba(2,6,23,0.35)] backdrop-blur-lg">
+                <div className="h-[400px] overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)]">
                   <iframe
                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7236.505274815302!2d67.09204843914836!3d24.92346206155236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb338cb9fb8217f%3A0x9b93f73c2303295c!2sBlock%206%20Gulshan-e-Iqbal%2C%20Karachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1773937132996!5m2!1sen!2s"
                     width="100%"
@@ -278,7 +278,7 @@ const Contact = () => {
                     href="mailto:alhakamsofts@gmail.com"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors"
                   >
-                    <Mail size={18} className="text-accent" />
+                    <Mail size={18} className="text-sky-600" />
                     <span className="text-sm font-medium">Email Us Directly</span>
                   </a> */}
  
@@ -286,16 +286,16 @@ const Contact = () => {
   href="https://mail.google.com/mail/?view=cm&fs=1&to=alhakamsofts@gmail.com"
   target="_blank"
   rel="noopener noreferrer"
-  className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 transition-colors hover:bg-white/10"
+  className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 transition-colors hover:bg-slate-100"
 >
-  <Mail size={18} className="text-cyan-300" />
+  <Mail size={18} className="text-sky-600" />
   <span className="text-sm font-medium">Email Us Directly</span>
 </a> 
                   <a
                     href="tel:+923092271214"
-                    className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 transition-colors hover:bg-white/10"
+                    className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 transition-colors hover:bg-slate-100"
                   >
-                    <Phone size={18} className="text-cyan-300" />
+                    <Phone size={18} className="text-sky-600" />
                     <span className="text-sm font-medium">Call Now</span>
                   </a>
                 </div>
@@ -313,10 +313,10 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="mb-4 text-3xl font-display font-bold text-white md:text-4xl">
+            <h2 className="mb-4 text-3xl font-display font-bold text-slate-900 md:text-4xl">
               Frequently Asked Questions
             </h2>
-            <p className="mx-auto mb-8 max-w-2xl text-slate-400">
+            <p className="mx-auto mb-8 max-w-2xl text-slate-600">
               Have questions? We've compiled answers to the most common inquiries
               to help you get started quickly.
             </p>
@@ -341,10 +341,10 @@ const Contact = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="rounded-[24px] border border-white/10 bg-white/5 p-6 text-left shadow-[0_16px_50px_rgba(2,6,23,0.2)] backdrop-blur-lg"
+                  className="rounded-[24px] border border-slate-200 bg-white p-6 text-left shadow-[0_16px_50px_rgba(15,23,42,0.08)]"
                 >
-                  <h3 className="mb-2 font-display font-semibold text-white">{faq.q}</h3>
-                  <p className="text-sm text-slate-400">{faq.a}</p>
+                  <h3 className="mb-2 font-display font-semibold text-slate-900">{faq.q}</h3>
+                  <p className="text-sm text-slate-600">{faq.a}</p>
                 </motion.div>
               ))}
             </div>

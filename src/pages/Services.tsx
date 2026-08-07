@@ -104,7 +104,7 @@ const Services = () => {
 
   return (
     <PageTransition>
-    <div className="min-h-screen bg-[#0B0F1A] text-slate-300">
+    <div className="min-h-screen bg-white text-slate-700">
       <Navbar />
 
       {/* Hero Section */}
@@ -119,12 +119,12 @@ const Services = () => {
            
             <motion.h1
               variants={fadeInUp}
-              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-white"
+              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-slate-900"
             >
               Solutions That{" "}
               <span className="text-gradient">Power Growth</span>
             </motion.h1>
-            <motion.p variants={fadeInUp} className="text-lg text-slate-400">
+            <motion.p variants={fadeInUp} className="text-lg text-slate-600">
               From concept to deployment, we offer comprehensive technology services
               designed to elevate your business to new heights.
             </motion.p>
@@ -149,35 +149,35 @@ const Services = () => {
               >
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-hero-gradient flex items-center justify-center">
-                      <service.icon className="text-primary-foreground" size={28} />
+                    <div className="w-14 h-14 rounded-2xl bg-[#0f6cbd] flex items-center justify-center">
+                      <service.icon className="text-white" size={28} />
                     </div>
                     <h2 className="text-3xl md:text-4xl font-display font-bold">
                       {service.title}
                     </h2>
                   </div>
-                  <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
+                  <p className="mb-8 text-lg leading-relaxed text-slate-600">
                     {service.description}
                   </p>
 
                   <div className="grid sm:grid-cols-2 gap-3 mb-8">
                     {service.features.map((feature) => (
                       <div key={feature} className="flex items-center gap-3">
-                        <CheckCircle className="text-accent flex-shrink-0" size={18} />
-                        <span className="text-sm text-foreground">{feature}</span>
+                        <CheckCircle className="flex-shrink-0 text-sky-600" size={18} />
+                        <span className="text-sm text-slate-700">{feature}</span>
                       </div>
                     ))}
                   </div>
 
                   <Link to="/contact">
-                    <Button className="bg-hero-gradient hover:opacity-90 hover:scale-105 transition-all gap-2">
+                    <Button className="bg-[#0f6cbd] hover:bg-blue-700 hover:scale-105 transition-all gap-2">
                       Get Started <ArrowRight size={18} />
                     </Button>
                   </Link>
                 </div>
 
                 <div className={`relative ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <div className="rounded-2xl overflow-hidden shadow-card-hover">
+                  <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)]">
                     <img
                       src={service.image}
                       alt={service.title}
@@ -187,8 +187,8 @@ const Services = () => {
                   <div
                     className={`absolute w-32 h-32 rounded-2xl -z-10 opacity-40 ${
                       index % 2 === 0
-                        ? "bg-hero-gradient -bottom-6 -right-6"
-                        : "bg-accent -bottom-6 -left-6"
+                        ? "bg-sky-100 -bottom-6 -right-6"
+                        : "bg-blue-50 -bottom-6 -left-6"
                     }`}
                   />
                 </div>
@@ -223,28 +223,28 @@ const Services = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-hero-gradient">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0f6cbd]">
                   <service.icon className="text-white" size={28} />
                 </div>
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-white">
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900">
                   {service.title}
                 </h2>
               </div>
-              <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
+              <p className="mb-8 text-lg leading-relaxed text-slate-600">
                 {service.description}
               </p>
 
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
                 {service.features.map((feature) => (
                   <div key={feature} className="flex items-center gap-3">
-                    <CheckCircle className="flex-shrink-0 text-cyan-300" size={18} />
-                    <span className="text-sm text-slate-300">{feature}</span>
+                    <CheckCircle className="flex-shrink-0 text-sky-600" size={18} />
+                    <span className="text-sm text-slate-700">{feature}</span>
                   </div>
                 ))}
               </div>
 
               <Link to="/contact">
-                <Button className="bg-hero-gradient hover:opacity-90 hover:scale-105 transition-all gap-2">
+                <Button className="bg-[#0f6cbd] hover:bg-blue-700 hover:scale-105 transition-all gap-2">
                   Get Started <ArrowRight size={18} />
                 </Button>
               </Link>
@@ -258,7 +258,7 @@ const Services = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }} // Halka sa delay pro look ke liye
             >
-              <div className="overflow-hidden rounded-[24px] border border-white/10 bg-white/5 shadow-[0_24px_80px_rgba(2,6,23,0.35)] backdrop-blur-lg">
+              <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)]">
                 <img
                   src={service.image}
                   alt={service.title}
@@ -268,8 +268,8 @@ const Services = () => {
               <div
                 className={`absolute w-32 h-32 rounded-2xl -z-10 opacity-40 ${
                   isEven
-                    ? "bg-hero-gradient -bottom-6 -right-6"
-                    : "bg-accent -bottom-6 -left-6"
+                    ? "bg-sky-100 -bottom-6 -right-6"
+                    : "bg-blue-50 -bottom-6 -left-6"
                 }`}
               />
             </motion.div>
@@ -289,13 +289,13 @@ const Services = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="text-accent font-medium text-sm uppercase tracking-wider">
+            <span className="text-sky-600 font-medium text-sm uppercase tracking-wider">
               More Solutions
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-4">
               Additional Services
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-slate-400">
+            <p className="mx-auto mt-4 max-w-2xl text-slate-600">
               Beyond our core offerings, we provide a range of specialized services to
               support your complete digital journey.
             </p>
@@ -309,18 +309,18 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="rounded-[24px] border border-white/10 bg-white/5 p-6 shadow-[0_16px_50px_rgba(2,6,23,0.25)] backdrop-blur-lg transition-all duration-300 group hover:-translate-y-2 hover:scale-[1.02] hover:bg-white/10"
+                className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_16px_50px_rgba(15,23,42,0.08)] transition-all duration-300 group hover:-translate-y-2 hover:scale-[1.02] hover:border-sky-200"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 transition-colors duration-300 group-hover:bg-hero-gradient">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 transition-colors duration-300 group-hover:bg-[#0f6cbd]">
                   <service.icon
-                    className="text-cyan-300 transition-colors duration-300 group-hover:text-white"
+                    className="text-sky-600 transition-colors duration-300 group-hover:text-white"
                     size={24}
                   />
                 </div>
-                <h3 className="mb-2 text-xl font-display font-semibold text-white">
+                <h3 className="mb-2 text-xl font-display font-semibold text-slate-900">
                   {service.title}
                 </h3>
-                <p className="text-sm text-slate-400">{service.description}</p>
+                <p className="text-sm text-slate-600">{service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -336,7 +336,7 @@ const Services = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="text-accent font-medium text-sm uppercase tracking-wider">
+            <span className="text-sky-600 font-medium text-sm uppercase tracking-wider">
               Our Process
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-4">
@@ -359,13 +359,13 @@ const Services = () => {
                 transition={{ delay: index * 0.15 }}
                 className="relative text-center"
               >
-                <div className="mb-4 text-6xl font-display font-bold text-cyan-400/30">
+                <div className="mb-4 text-6xl font-display font-bold text-sky-200">
                   {item.step}
                 </div>
-                <h3 className="mb-2 text-xl font-display font-semibold text-white">{item.title}</h3>
-                <p className="text-sm text-slate-400">{item.desc}</p>
+                <h3 className="mb-2 text-xl font-display font-semibold text-slate-900">{item.title}</h3>
+                <p className="text-sm text-slate-600">{item.desc}</p>
                 {index < 3 && (
-                  <div className="absolute left-[60%] top-8 hidden h-0.5 w-[80%] bg-white/10 md:block" />
+                  <div className="absolute left-[60%] top-8 hidden h-0.5 w-[80%] bg-slate-200 md:block" />
                 )}
               </motion.div>
             ))}
@@ -374,17 +374,17 @@ const Services = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 lg:py-32 bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.22),_transparent_60%)]">
+      <section className="py-20 lg:py-32 bg-[radial-gradient(circle_at_top,_rgba(2,132,199,0.08),_transparent_60%)]">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="mb-6 text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white">
+            <h2 className="mb-6 text-3xl md:text-4xl lg:text-5xl font-display font-bold text-slate-900">
               Let's Build Your Next Big Thing
             </h2>
-            <p className="mx-auto mb-8 max-w-2xl text-slate-300/80">
+            <p className="mx-auto mb-8 max-w-2xl text-slate-600">
               Ready to transform your ideas into reality? Our team is here to help
               you every step of the way.
             </p>

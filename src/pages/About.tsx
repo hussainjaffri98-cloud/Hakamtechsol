@@ -333,7 +333,7 @@ const About = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-[#0B0F1A] text-slate-300">
+      <div className="min-h-screen bg-white text-slate-700">
         <Navbar />
 
         {/* Hero Section */}
@@ -358,7 +358,7 @@ const About = () => {
 
               <motion.h1
                 variants={fadeInUp}
-                className="mb-6 text-4xl font-display font-bold text-white md:text-5xl lg:text-6xl"
+                className="mb-6 text-4xl font-display font-bold text-slate-900 md:text-5xl lg:text-6xl"
               >
                 The Story Behind{" "}
                 <span className="text-gradient">Hakam TechSol</span>
@@ -381,7 +381,7 @@ const About = () => {
                 viewport={{ once: true }}
                 className="relative lg:pl-16"
               >
-                <div className="overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_24px_80px_rgba(2,6,23,0.35)] backdrop-blur-lg">
+                <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)]">
                   <img
                     src={teamImage}
                     alt="Hakam TechSol Team"
@@ -395,7 +395,7 @@ const About = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <span className="text-sm font-medium uppercase tracking-wider text-cyan-300">
+                <span className="text-sm font-medium uppercase tracking-wider text-sky-600">
                   Our Story
                 </span>
                 <h2 className="text-3xl md:text-4xl font-display font-bold mt-4 mb-6">
@@ -435,11 +435,11 @@ const About = () => {
                 viewport={{ once: true }}
                 className="bg-card rounded-2xl p-6 lg:p-8 shadow-card max-w-md mx-auto"
               >
-                <div className="w-16 h-16 rounded-2xl bg-hero-gradient flex items-center justify-center mb-6">
-                  <Target className="text-primary-foreground" size={32} />
+                <div className="w-16 h-16 rounded-2xl bg-[#0f6cbd] flex items-center justify-center mb-6">
+                  <Target className="text-white" size={32} />
                 </div>
-                <h3 className="mb-4 text-2xl font-display font-bold text-white lg:text-3xl">Our Mission</h3>
-                <p className="font-semibold leading-relaxed text-slate-400">
+                <h3 className="mb-4 text-2xl font-display font-bold text-slate-900 lg:text-3xl">Our Mission</h3>
+                <p className="font-semibold leading-relaxed text-slate-600">
                   To empower businesses with innovative technology solutions that transform
                   challenges into opportunities, enabling our clients to achieve their goals
                   and stay ahead in an ever-evolving digital landscape. We are committed to
@@ -456,10 +456,10 @@ const About = () => {
                 className="bg-card rounded-2xl p-6 lg:p-8 shadow-card max-w-md mx-auto"
               >
                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/20">
-                  <Eye className="text-cyan-300" size={24} />
+                  <Eye className="text-sky-600" size={24} />
                 </div>
-                <h3 className="mb-4 text-2xl font-display font-bold text-white lg:text-3xl">Our Vision</h3>
-                <p className="font-semibold leading-relaxed text-slate-400">
+                <h3 className="mb-4 text-2xl font-display font-bold text-slate-900 lg:text-3xl">Our Vision</h3>
+                <p className="font-semibold leading-relaxed text-slate-600">
                   To be a global leader in technology innovation, recognized for our ability
                   to turn visionary ideas into reality. We aspire to create a future where
                   technology seamlessly enhances every aspect of business and life, making
@@ -521,13 +521,13 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="rounded-[24px] border border-white/10 bg-white/5 p-6 text-center shadow-[0_16px_50px_rgba(2,6,23,0.2)] backdrop-blur-lg"
+                  className="rounded-[24px] border border-slate-200 bg-white p-6 text-center shadow-[0_16px_50px_rgba(15,23,42,0.08)]"
                 >
                   <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10">
-                    <value.icon className="text-cyan-300" size={32} />
+                    <value.icon className="text-sky-600" size={32} />
                   </div>
-                  <h3 className="mb-3 text-xl font-display font-semibold text-white">{value.title}</h3>
-                  <p className="text-sm font-medium text-slate-400">{value.description}</p>
+                  <h3 className="mb-3 text-xl font-display font-semibold text-slate-900">{value.title}</h3>
+                  <p className="text-sm font-medium text-slate-600">{value.description}</p>
                 </motion.div>
               ))}
             </div>

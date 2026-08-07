@@ -6,7 +6,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 bg-[#030712] text-slate-300">
+    <footer className="border-t border-slate-200 bg-slate-50 text-slate-700">
       <div className="container mx-auto px-14 py-14 lg:py-18">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
@@ -18,34 +18,34 @@ const Footer = () => {
     // className="h-50 w-auto   antialiased [image-rendering:crisp-edges] [image-rendering:-webkit-optimize-contrast]" 
   />
 </Link>
-            <p className="text-sm leading-relaxed text-slate-400 ">
+            <p className="text-sm leading-relaxed text-slate-600 ">
               Digitalizing your businesses with innovative technology solutions. Your vision, our expertise.
             </p>
             <div className="flex gap-8 pt-12 items-start">
               <a
                 href="#"
-                className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors"
+                className="w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center hover:bg-sky-50 transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook size={18} />
               </a>
               <a
                 href="#"
-                className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors"
+                className="w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center hover:bg-sky-50 transition-colors"
                 aria-label="Twitter"
               >
                 <Twitter size={18} />
               </a>
               <a
                 href="#"
-                className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors"
+                className="w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center hover:bg-sky-50 transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={18} />
               </a>
               <a
                 href="#"
-                className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors"
+                className="w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center hover:bg-sky-50 transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram size={18} />
@@ -61,7 +61,7 @@ const Footer = () => {
                 <li key={link}>
                   <Link
                     to={link === "Home" ? "/" : `/${link.toLowerCase()}`}
-                    className="text-primary-foreground/70 hover:text-accent transition-colors text-sm"
+                    className="text-slate-600 hover:text-sky-600 transition-colors text-sm"
                   >
                     {link}
                   </Link>
@@ -78,7 +78,7 @@ const Footer = () => {
                 <li key={service}>
                   <Link
                     to="/services"
-                    className="text-primary-foreground/70 hover:text-accent transition-colors text-sm"
+                    className="text-slate-600 hover:text-sky-600 transition-colors text-sm"
                   >
                     {service}
                   </Link>
@@ -91,16 +91,16 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">Contact Us</h4>
             <ul className="space-y-3 items-start">
-              <li className="flex items-center gap-3 text-primary-foreground/70 text-sm">
-                <Mail size={16} className="flex-shrink-0 text-cyan-300" />
+              <li className="flex items-center gap-3 text-slate-600 text-sm">
+                <Mail size={16} className="flex-shrink-0 text-sky-600" />
                 <span>alhakamsofts@gmail.com</span>
               </li>
-              <li className="flex items-center gap-3 text-primary-foreground/70 text-sm">
-                <Phone size={16} className="flex-shrink-0 text-cyan-300" />
+              <li className="flex items-center gap-3 text-slate-600 text-sm">
+                <Phone size={16} className="flex-shrink-0 text-sky-600" />
                 <span>+92 309 2271214  , +92 320 123 5249</span>
               </li>
-              <li className="flex items-start gap-3 text-primary-foreground/70 text-sm">
-                <MapPin size={16} className="mt-0.5 flex-shrink-0 text-cyan-300" />
+              <li className="flex items-start gap-3 text-slate-600 text-sm">
+                <MapPin size={16} className="mt-0.5 flex-shrink-0 text-sky-600" />
                 <span>Glushan E Iqbal Block 6, Karachi, Pakistan</span>
               </li>
             </ul>
@@ -122,11 +122,11 @@ const Footer = () => {
           </div>
         </div> */}
         {/* --- Footer Bottom Bar --- */}
-<div className="mt-12 w-full border-t border-white/10 pt-8">
+<div className="mt-12 w-full border-t border-slate-200 pt-8">
   <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-6">
     
     {/* Left Side: Copyright */}
-    <p className="text-sm text-slate-400">
+    <p className="text-sm text-slate-600">
       © 2026 Hakam TechSol. All rights reserved.
     </p>
 
