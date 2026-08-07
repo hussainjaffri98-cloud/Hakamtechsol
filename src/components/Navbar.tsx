@@ -1,107 +1,211 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 
-const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Services", path: "/services" },
-  { name: "Contact", path: "/contact" },
+const servicesItems = [
+  "Mobile App Development",
+  "Game Development",
+  "Staff Augmentation",
+  "Custom Software Development",
+  "Artificial Intelligence",
+  "Blockchain Development",
+  "Web Development",
+  "Cloud Services",
+  "Digital Marketing Services",
+];
+
+const portfolioItems = [
+  { name: "Fintech Mobile App", category: "Mobile App", accent: "from-cyan-400 to-sky-600" },
+  { name: "AI Operations Suite", category: "AI", accent: "from-violet-500 to-fuchsia-500" },
+  { name: "B2B SaaS Platform", category: "SaaS", accent: "from-emerald-500 to-teal-500" },
+  { name: "Growth Analytics Hub", category: "Data", accent: "from-amber-500 to-orange-500" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<"services" | "portfolio" | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (value) => setIsScrolled(value > 24));
+
+  useEffect(() => {
+    setIsOpen(false);
+    setActiveDropdown(null);
+  }, [location.pathname]);
 
   return (
     <motion.nav
       initial={{ y: -24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.45, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-background/70 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_10px_30px_rgba(2,6,23,0.08)]"
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
+        isScrolled ? "border-white/10 bg-slate-950/70 backdrop-blur-2xl" : "border-white/10 bg-transparent"
+      }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
+        <div className="flex h-16 items-center justify-between lg:h-20">
           <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="Hakam TechSol Logo" className="h-10 w-auto" />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+          <div className="hidden items-center gap-7 lg:flex">
+            {[
+              { name: "Home", path: "/" },
+              { name: "About", path: "/about" },
+            ].map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`group relative font-medium transition-all duration-300 hover:text-accent hover:scale-105 ${
-                  location.pathname === link.path
-                    ? "text-accent"
-                    : "text-muted-foreground"
+                className={`group relative text-sm font-medium transition-colors duration-300 ${
+                  location.pathname === link.path ? "text-white" : "text-slate-300 hover:text-white"
                 }`}
               >
                 <span>{link.name}</span>
-                <span className="absolute left-0 -bottom-1 h-0.5 w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-cyan-400 to-sky-600 transition-transform duration-300 group-hover:scale-x-100" />
-                {location.pathname === link.path && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-gradient-to-r from-cyan-400 to-sky-600"
-                  />
-                )}
+                <span className="absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
             ))}
+
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown("services")}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className="flex items-center gap-1 text-sm font-medium text-slate-300 transition-colors duration-300 hover:text-white">
+                Services
+                <ChevronDown size={16} />
+              </button>
+              <AnimatePresence>
+                {activeDropdown === "services" && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="absolute left-1/2 top-10 w-[720px] -translate-x-1/2 rounded-[24px] border border-white/10 bg-slate-950/95 p-6 shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur-2xl"
+                  >
+                    <div className="grid grid-cols-[1.05fr_0.95fr] gap-6">
+                      <div className="rounded-[20px] border border-white/10 bg-white/5 p-5">
+                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">Build to win</p>
+                        <h3 className="mt-3 text-2xl font-semibold text-white">Premium digital products for modern teams.</h3>
+                        <p className="mt-3 text-sm leading-7 text-slate-400">
+                          From strategy to launch, we create elegant experiences with measurable business impact.
+                        </p>
+                        <div className="mt-5 overflow-hidden rounded-2xl">
+                          <img src={logo} alt="Service showcase" className="h-36 w-full object-cover" />
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        {servicesItems.map((item) => (
+                          <a key={item} href="/services" className="group flex items-center justify-between rounded-2xl border border-white/10 bg-slate-900/70 px-3 py-3 text-sm text-slate-300 transition-all duration-300 hover:border-cyan-400/40 hover:bg-slate-900 hover:text-white">
+                            <span>{item}</span>
+                            <ArrowRight size={15} className="opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="mt-5 flex justify-end">
+                      <Link to="/services" className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300 transition-all duration-300 hover:scale-[1.02] hover:bg-cyan-500/20">
+                        View All Services <ArrowRight size={15} />
+                      </Link>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown("portfolio")}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className="flex items-center gap-1 text-sm font-medium text-slate-300 transition-colors duration-300 hover:text-white">
+                Portfolio
+                <ChevronDown size={16} />
+              </button>
+              <AnimatePresence>
+                {activeDropdown === "portfolio" && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="absolute left-1/2 top-10 w-[480px] -translate-x-1/2 rounded-[24px] border border-white/10 bg-slate-950/95 p-5 shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur-2xl"
+                  >
+                    <div className="grid gap-3">
+                      {portfolioItems.map((project) => (
+                        <motion.a
+                          key={project.name}
+                          whileHover={{ scale: 1.01, y: -2 }}
+                          href="/contact"
+                          className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-900/70 p-3 transition-all duration-300 hover:border-cyan-400/40 hover:bg-slate-900"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className={`h-10 w-10 rounded-xl bg-gradient-to-br ${project.accent}`} />
+                            <div>
+                              <p className="text-sm font-semibold text-white">{project.name}</p>
+                              <p className="text-xs uppercase tracking-[0.2em] text-slate-400">{project.category}</p>
+                            </div>
+                          </div>
+                          <ArrowRight size={16} className="text-slate-400" />
+                        </motion.a>
+                      ))}
+                    </div>
+                    <div className="mt-4 text-right">
+                      <a href="/services" className="text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200">
+                        View All Projects
+                      </a>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <Link to="/contact" className="text-sm font-medium text-slate-300 transition-colors duration-300 hover:text-white">
+              Contact
+            </Link>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Link to="/contact">
-              <Button className="bg-hero-gradient px-6 shadow-[0_12px_30px_rgba(14,165,233,0.25)] hover:shadow-[0_16px_36px_rgba(14,165,233,0.35)]">
-                Get Started
+              <Button className="bg-hero-gradient px-6 text-white shadow-[0_16px_45px_rgba(34,211,238,0.22)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_22px_60px_rgba(34,211,238,0.28)]">
+                Book a Call
               </Button>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-foreground"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          <button className="rounded-full border border-white/10 p-2 text-white lg:hidden" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-card border-b border-border"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", stiffness: 220, damping: 24 }}
+            className="fixed inset-y-0 right-0 top-16 w-[88vw] max-w-sm border-l border-white/10 bg-slate-950/95 p-6 backdrop-blur-2xl lg:hidden"
           >
-            <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`py-2 font-medium transition-colors ${
-                    location.pathname === link.path
-                      ? "text-accent"
-                      : "text-muted-foreground"
-                  }`}
-                >
+            <div className="flex flex-col gap-4">
+              {[
+                { name: "Home", path: "/" },
+                { name: "About", path: "/about" },
+                { name: "Services", path: "/services" },
+                { name: "Contact", path: "/contact" },
+              ].map((link) => (
+                <Link key={link.path} to={link.path} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-slate-200" onClick={() => setIsOpen(false)}>
                   {link.name}
                 </Link>
               ))}
               <Link to="/contact" onClick={() => setIsOpen(false)}>
-                <Button className="w-full bg-hero-gradient hover:opacity-90">
-                  Get Started
-                </Button>
+                <Button className="w-full bg-hero-gradient text-white">Book a Call</Button>
               </Link>
             </div>
           </motion.div>
