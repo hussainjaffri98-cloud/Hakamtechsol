@@ -89,7 +89,7 @@ const Navbar = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute left-1/2 top-full z-[999] mt-4 w-[min(100vw-2rem,1280px)] -translate-x-1/2 overflow-hidden rounded-[32px] border border-slate-800 bg-[#0b0f19] shadow-[0_24px_80px_rgba(2,6,23,0.45)]"
+                    className="fixed left-1/2 top-[5.25rem] z-[999] w-[min(92vw,1120px)] -translate-x-1/2 overflow-hidden rounded-[32px] border border-slate-800 bg-[#0b0f19] shadow-[0_24px_80px_rgba(2,6,23,0.45)]"
                   >
                     <div className="grid grid-cols-12">
                       <div className="col-span-12 min-w-[280px] w-full border-b border-slate-800 bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.16),_transparent_55%),_linear-gradient(135deg,_#111936,_#0b1329)] p-6 lg:col-span-4 lg:border-b-0 lg:border-r">
