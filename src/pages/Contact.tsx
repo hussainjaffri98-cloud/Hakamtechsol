@@ -1,365 +1,221 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-
-import { Mail, Phone, MapPin, Send, Clock, MessageSquare } from "lucide-react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin, Send, Facebook, Twitter, Instagram, Linkedin, MessageCircle, Bell, Paperclip, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
-
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
+import { FaqSection } from "@/components/FaqSection";
 
 const Contact = () => {
-  const { toast } = useToast();
+  const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
-    message: "",
+    message: ""
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you as soon as possible.",
-    });
-
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setIsSubmitting(false);
+    setSubmitted(true);
   };
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email Us",
-      details: "info@hakamtechsol.com",
-      subtext: "We reply within 24 hours",
-    },
-    {
-      icon: Phone,
-      title: "Call Us",
-      details: "+92 309 2271214 ",
-      subtext: "Mon-Fri, 9am-6pm EST",
-    },
-    {
-      icon: MapPin,
-      title: "Visit Us",
-      details: "123 Tech Street",
-      subtext: "Innovation City, IC 12345",
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      // details: "Monday - Friday",
-      subtext: "24/7 Available",
-    },
-  ];
 
   return (
     <PageTransition>
-    <div className="min-h-screen bg-white text-slate-700">
-      <Navbar />
+      <div className="min-h-screen bg-[#0f6cbd] text-slate-800 flex flex-col justify-between">
+        <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            
-            <motion.h1
-              variants={fadeInUp}
-              className="mb-6 text-4xl font-display font-bold text-slate-900 md:text-5xl lg:text-6xl"
-            >
-              Let's Start a{" "}
-              <span className="text-gradient">Conversation</span>
-            </motion.h1>
-            <motion.p variants={fadeInUp} className="text-lg text-slate-600">
-              Have a project in mind or just want to say hello? We'd love to hear from
-              you. Reach out and let's create something amazing together.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+        {/* Hero & Card Section (Unified Blue & White Theme) */}
+        <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#0f6cbd] via-sky-600 to-blue-800 flex items-center justify-center">
+          {/* Background glow circles */}
+          <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-white/10 blur-3xl pointer-events-none" />
+          <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-sky-400/20 blur-3xl pointer-events-none" />
 
-      {/* Contact Info Cards */}
-      <section className="py-12 -mt-8 px-4 lg:px-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactInfo.map((info, index) => (
-              <motion.div
-                key={info.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="rounded-[24px] border border-slate-200 bg-white p-6 text-center shadow-[0_16px_50px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-sky-200"
-              >
-                <div className="w-12 h-12 rounded-xl bg-[#0f6cbd] flex items-center justify-center mx-auto mb-4">
-                  <info.icon className="text-white" size={24} />
-                </div>
-                <h3 className="mb-2 font-display text-lg font-semibold text-slate-900">
-                  {info.title}
-                </h3>
-                <p className="font-medium text-slate-700">{info.details}</p>
-                <p className="text-sm text-slate-600">{info.subtext}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form & Map */}
-      <section className="py-20 lg:py-32 px-4 lg:px-16">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <MessageSquare className="text-sky-600" size={28} />
-                <h2 className="text-3xl font-display font-bold text-slate-900">Send Us a Message</h2>
-              </div>
-              <p className="mb-8 text-slate-600">
-                Fill out the form below and we'll get back to you as soon as possible.
-                All fields are required.
-              </p>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Your Name
-                    </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="John Doe"
-                      required
-                      className="h-12"
-                    />
+          <div className="container mx-auto max-w-5xl relative z-10">
+            {/* White Card Container */}
+            <div className="bg-white rounded-[32px] sm:rounded-[44px] p-6 sm:p-12 lg:p-14 shadow-[0_30px_90px_rgba(0,0,0,0.25)] relative overflow-hidden border border-white/40">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                
+                {/* Left Side: Contact Form */}
+                <div className="lg:col-span-7 space-y-6">
+                  <div className="space-y-2">
+                    <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0f6cbd] tracking-tight">
+                      Let’s talk
+                    </h1>
+                    <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-medium max-w-md">
+                      To request a quote or want to meet up for coffee, contact us directly or fill out the form and we will get back to you promptly.
+                    </p>
                   </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Email Address
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="john@example.com"
-                      required
-                      className="h-12"
-                    />
-                  </div>
-                </div>
 
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Subject
-                  </label>
-                  <Input
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="How can we help you?"
-                    required
-                    className="h-12"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell us about your project..."
-                    required
-                    rows={6}
-                    className="resize-none"
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full gap-2 bg-[#0f6cbd] transition-all duration-300 hover:scale-[1.02] hover:bg-blue-700"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    "Sending..."
+                  {submitted ? (
+                    <div className="p-8 rounded-3xl bg-sky-50 border border-sky-100 text-center space-y-3">
+                      <div className="w-14 h-14 bg-[#0f6cbd] text-white rounded-full flex items-center justify-center mx-auto text-2xl font-bold shadow-md">
+                        ✓
+                      </div>
+                      <h3 className="text-xl font-bold text-[#0f6cbd]">Message Received!</h3>
+                      <p className="text-xs text-slate-600 max-w-xs mx-auto">
+                        Thank you for reaching out. Our team will get back to you within 24 hours.
+                      </p>
+                    </div>
                   ) : (
-                    <>
-                      Send Message <Send size={18} />
-                    </>
+                    <form onSubmit={handleSubmit} className="space-y-4 pt-1">
+                      {/* Name Input */}
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Your Name
+                        </label>
+                        <input
+                          required
+                          type="text"
+                          placeholder="John Doe"
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          className="w-full px-5 py-3.5 rounded-2xl bg-slate-100/90 border-0 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-[#0f6cbd] transition-all font-medium"
+                        />
+                      </div>
+
+                      {/* Email Input */}
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Your Email
+                        </label>
+                        <input
+                          required
+                          type="email"
+                          placeholder="john@example.com"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className="w-full px-5 py-3.5 rounded-2xl bg-slate-100/90 border-0 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-[#0f6cbd] transition-all font-medium"
+                        />
+                      </div>
+
+                      {/* Message Input */}
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Your Message
+                        </label>
+                        <textarea
+                          required
+                          rows={4}
+                          placeholder="Type something if you want..."
+                          value={formData.message}
+                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                          className="w-full px-5 py-3.5 rounded-2xl bg-slate-100/90 border-0 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-[#0f6cbd] transition-all font-medium resize-none"
+                        />
+                      </div>
+
+                      {/* Pill Shaped Submit Button */}
+                      <div className="pt-2">
+                        <Button
+                          type="submit"
+                          className="w-full sm:w-auto px-10 py-6 rounded-full bg-[#0f6cbd] hover:bg-blue-700 text-white font-extrabold text-sm shadow-xl shadow-blue-500/30 hover:shadow-blue-600/40 hover:scale-[1.03] transition-all duration-300"
+                        >
+                          Send Message
+                        </Button>
+                      </div>
+                    </form>
                   )}
-                </Button>
-              </form>
-            </motion.div>
-
-            {/* Map */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="sticky top-32">
-                <h2 className="mb-6 text-3xl font-display font-bold text-slate-900">Our Location</h2>
-                <p className="mb-8 text-slate-600">
-                  Visit our office or schedule a virtual meeting. We're always excited
-                  to meet new clients and discuss potential collaborations.
-                </p>
-
-                {/* Map Embed */}
-                <div className="h-[400px] overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)]">
-                  <iframe
-                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7236.505274815302!2d67.09204843914836!3d24.92346206155236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb338cb9fb8217f%3A0x9b93f73c2303295c!2sBlock%206%20Gulshan-e-Iqbal%2C%20Karachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1773937132996!5m2!1sen!2s"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Hakam TechSol Office Location"
-                  />
                 </div>
 
-                {/* Quick Actions */}
-                <div className="mt-8 flex flex-wrap gap-4">
-                  {/* <a
-                    href="mailto:alhakamsofts@gmail.com"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors"
-                  >
-                    <Mail size={18} className="text-sky-600" />
-                    <span className="text-sm font-medium">Email Us Directly</span>
-                  </a> */}
- 
-<a
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=alhakamsofts@gmail.com"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 transition-colors hover:bg-slate-100"
->
-  <Mail size={18} className="text-sky-600" />
-  <span className="text-sm font-medium">Email Us Directly</span>
-</a> 
-                  <a
-                    href="tel:+923092271214"
-                    className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 transition-colors hover:bg-slate-100"
-                  >
-                    <Phone size={18} className="text-sky-600" />
-                    <span className="text-sm font-medium">Call Now</span>
-                  </a>
+                {/* Right Side: Illustration & Contact Info */}
+                <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
+                  {/* Floating Graphic Illustration Box */}
+                  <div className="relative w-full h-56 sm:h-64 rounded-3xl bg-gradient-to-br from-sky-50/80 via-blue-50/60 to-sky-100/60 border border-sky-100/80 flex items-center justify-center p-6 overflow-hidden shadow-inner">
+                    {/* Floating Confetti Shapes */}
+                    <div className="absolute top-4 left-6 w-3 h-3 rounded-full bg-sky-400 opacity-80" />
+                    <div className="absolute top-8 right-10 w-2.5 h-2.5 rounded-full bg-blue-400 opacity-80" />
+                    <div className="absolute bottom-6 left-12 w-2 h-2 rounded-full bg-sky-300 opacity-80" />
+                    <div className="absolute bottom-10 right-8 w-3.5 h-3.5 rounded-full bg-indigo-400 opacity-70" />
+
+                    {/* Speech Bubble Icon */}
+                    <div className="absolute top-6 left-10 p-2.5 rounded-2xl bg-[#0f6cbd] text-white shadow-lg rotate-[-12deg]">
+                      <MessageCircle size={18} />
+                    </div>
+
+                    {/* Notification Bell Icon */}
+                    <div className="absolute top-4 right-14 p-2 rounded-full bg-sky-400 text-white shadow-md rotate-[15deg]">
+                      <Bell size={16} />
+                    </div>
+
+                    {/* Central Envelope Graphic Illustration */}
+                    <div className="relative z-10 w-32 h-24 bg-gradient-to-tr from-[#0f6cbd] to-sky-500 rounded-2xl p-3 text-white shadow-2xl flex flex-col justify-between rotate-[-4deg] border border-white/20">
+                      <div className="w-full h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                        <Mail size={24} className="text-white" />
+                      </div>
+                      <div className="space-y-1">
+                        <div className="h-1 bg-white/40 rounded w-3/4" />
+                        <div className="h-1 bg-white/30 rounded w-1/2" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Contact Info Items */}
+                  <div className="space-y-3 text-xs sm:text-sm text-slate-600">
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-4 h-4 text-[#0f6cbd] shrink-0 mt-0.5" />
+                      <span className="font-medium">Gulshan-e-Iqbal Block 6, Karachi, Pakistan</span>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <Phone className="w-4 h-4 text-[#0f6cbd] shrink-0" />
+                      <span className="font-medium">+92 309 2271214 / +92 320 123 5249</span>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <Mail className="w-4 h-4 text-[#0f6cbd] shrink-0" />
+                      <span className="font-medium">alhakamsofts@gmail.com</span>
+                    </div>
+                  </div>
+
+                  {/* Social Buttons Bar */}
+                  <div className="flex items-center gap-3 pt-2">
+                    <a
+                      href="#"
+                      className="w-10 h-10 rounded-full bg-[#0f6cbd] text-white flex items-center justify-center hover:scale-110 transition-all shadow-md"
+                      aria-label="Facebook"
+                    >
+                      <Facebook size={18} />
+                    </a>
+                    <a
+                      href="#"
+                      className="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center hover:scale-110 transition-all shadow-md"
+                      aria-label="Twitter"
+                    >
+                      <Twitter size={18} />
+                    </a>
+                    <a
+                      href="#"
+                      className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:scale-110 transition-all shadow-md"
+                      aria-label="Instagram"
+                    >
+                      <Instagram size={18} />
+                    </a>
+                    <a
+                      href="#"
+                      className="w-10 h-10 rounded-full bg-indigo-700 text-white flex items-center justify-center hover:scale-110 transition-all shadow-md"
+                      aria-label="LinkedIn"
+                    >
+                      <Linkedin size={18} />
+                    </a>
+                  </div>
                 </div>
+
               </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Teaser */}
-      <section className="py-20 lg:py-32">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="mb-4 text-3xl font-display font-bold text-slate-900 md:text-4xl">
-              Frequently Asked Questions
-            </h2>
-            <p className="mx-auto mb-8 max-w-2xl text-slate-600">
-              Have questions? We've compiled answers to the most common inquiries
-              to help you get started quickly.
-            </p>
-            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              {[
-                {
-                  q: "How long does a typical project take?",
-                  a: "Project timelines vary based on complexity. Simple websites take 2-4 weeks, while complex apps may take 2-6 months.",
-                },
-                {
-                  q: "Do you provide ongoing support?",
-                  a: "Yes! We offer maintenance packages and 24/7 support for all our clients after project completion.",
-                },
-                {
-                  q: "What's your pricing structure?",
-                  a: "We offer both fixed-price and hourly rates depending on project scope. Contact us for a custom quote.",
-                },
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="rounded-[24px] border border-slate-200 bg-white p-6 text-left shadow-[0_16px_50px_rgba(15,23,42,0.08)]"
-                >
-                  <h3 className="mb-2 font-display font-semibold text-slate-900">{faq.q}</h3>
-                  <p className="text-sm text-slate-600">{faq.a}</p>
-                </motion.div>
-              ))}
             </div>
-          </motion.div>
-        </div>
-      </section>
-      
+          </div>
+        </section>
 
-      <Footer />
-    </div>
+        {/* FAQ Section */}
+        <FaqSection
+          title="Frequently Asked"
+          highlightText="Questions"
+          subtitle="Everything you need to know about our project consultation, delivery timelines, intellectual property, and 24/7 post-launch maintenance."
+        />
+
+        <Footer />
+      </div>
     </PageTransition>
   );
 };
 
 export default Contact;
-
-
-

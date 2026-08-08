@@ -1,51 +1,47 @@
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-slate-200 bg-slate-50 text-slate-700">
-      <div className="container mx-auto px-14 py-14 lg:py-18">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Brand */}
-          <div className="space-y-4 ">
-           <Link to="/" className="flex items-center gap-3">
-  <img 
-    // src={logo} 
-    // alt="Hakam TechSol Logo" 
-    // className="h-50 w-auto   antialiased [image-rendering:crisp-edges] [image-rendering:-webkit-optimize-contrast]" 
-  />
-</Link>
-            <p className="text-sm leading-relaxed text-slate-600 ">
-              Digitalizing your businesses with innovative technology solutions. Your vision, our expertise.
+    <footer className="bg-slate-950 text-white border-t border-slate-800 pt-16 pb-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+          {/* Brand Info */}
+          <div className="lg:col-span-2 space-y-4">
+            <Link to="/" className="inline-block">
+              <img src={logo} alt="Hakam TechSol Logo" className="h-10 w-auto bg-white/90 p-1.5 rounded-xl shadow-md" />
+            </Link>
+            <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
+              Digitalizing your businesses with innovative, high-growth technology solutions. Custom web portals, mobile applications, and AI platforms tailored for global success.
             </p>
-            <div className="flex gap-8 pt-12 items-start">
+            <div className="flex items-center gap-3 pt-2">
               <a
                 href="#"
-                className="w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center hover:bg-sky-50 transition-colors"
+                className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-[#f97316] hover:border-[#f97316] transition-all"
                 aria-label="Facebook"
               >
                 <Facebook size={18} />
               </a>
               <a
                 href="#"
-                className="w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center hover:bg-sky-50 transition-colors"
+                className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-[#f97316] hover:border-[#f97316] transition-all"
                 aria-label="Twitter"
               >
                 <Twitter size={18} />
               </a>
               <a
                 href="#"
-                className="w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center hover:bg-sky-50 transition-colors"
+                className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-[#f97316] hover:border-[#f97316] transition-all"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={18} />
               </a>
               <a
                 href="#"
-                className="w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center hover:bg-sky-50 transition-colors"
+                className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-[#f97316] hover:border-[#f97316] transition-all"
                 aria-label="Instagram"
               >
                 <Instagram size={18} />
@@ -53,95 +49,59 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation Links */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Quick Links</h4>
-            <ul className="space-y-3">
-              {["Home", "About", "Services", "Contact"].map((link) => (
-                <li key={link}>
-                  <Link
-                    to={link === "Home" ? "/" : `/${link.toLowerCase()}`}
-                    className="text-slate-600 hover:text-sky-600 transition-colors text-sm"
-                  >
-                    {link}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="font-extrabold text-white text-sm uppercase tracking-wider mb-4">Quick Links</h4>
+            <ul className="space-y-2.5 text-xs text-slate-400">
+              <li><Link to="/" className="hover:text-[#f97316] transition-colors">Home</Link></li>
+              <li><Link to="/about" className="hover:text-[#f97316] transition-colors">About Us</Link></li>
+              <li><Link to="/services" className="hover:text-[#f97316] transition-colors">Services</Link></li>
+              <li><Link to="/portfolio" className="hover:text-[#f97316] transition-colors">Portfolio & Case Studies</Link></li>
+              <li><Link to="/contact" className="hover:text-[#f97316] transition-colors">Contact & Quote</Link></li>
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Core Services */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Services</h4>
-            <ul className="space-y-3 items-start">
-              {["Web Development", "Mobile Development", "AI Automation", "Consulting"].map((service) => (
-                <li key={service}>
-                  <Link
-                    to="/services"
-                    className="text-slate-600 hover:text-sky-600 transition-colors text-sm"
-                  >
-                    {service}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="font-extrabold text-white text-sm uppercase tracking-wider mb-4">Solutions</h4>
+            <ul className="space-y-2.5 text-xs text-slate-400">
+              <li><Link to="/services" className="hover:text-[#f97316] transition-colors">Mobile App Development</Link></li>
+              <li><Link to="/services" className="hover:text-[#f97316] transition-colors">Custom ERP & Software</Link></li>
+              <li><Link to="/services" className="hover:text-[#f97316] transition-colors">Web Development & Portals</Link></li>
+              <li><Link to="/services" className="hover:text-[#f97316] transition-colors">Artificial Intelligence & SaaS</Link></li>
+              <li><Link to="/services" className="hover:text-[#f97316] transition-colors">Cloud & Staff Augmentation</Link></li>
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Contact Details */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Contact Us</h4>
-            <ul className="space-y-3 items-start">
-              <li className="flex items-center gap-3 text-slate-600 text-sm">
-                <Mail size={16} className="flex-shrink-0 text-sky-600" />
+            <h4 className="font-extrabold text-white text-sm uppercase tracking-wider mb-4">Contact Us</h4>
+            <ul className="space-y-3 text-xs text-slate-400">
+              <li className="flex items-start gap-2.5">
+                <Mail size={16} className="text-[#f97316] shrink-0 mt-0.5" />
                 <span>alhakamsofts@gmail.com</span>
               </li>
-              <li className="flex items-center gap-3 text-slate-600 text-sm">
-                <Phone size={16} className="flex-shrink-0 text-sky-600" />
-                <span>+92 309 2271214  , +92 320 123 5249</span>
+              <li className="flex items-start gap-2.5">
+                <Phone size={16} className="text-[#f97316] shrink-0 mt-0.5" />
+                <span>+92 309 2271214<br />+92 320 123 5249</span>
               </li>
-              <li className="flex items-start gap-3 text-slate-600 text-sm">
-                <MapPin size={16} className="mt-0.5 flex-shrink-0 text-sky-600" />
-                <span>Glushan E Iqbal Block 6, Karachi, Pakistan</span>
+              <li className="flex items-start gap-2.5">
+                <MapPin size={16} className="text-[#f97316] shrink-0 mt-0.5" />
+                <span>Gulshan-e-Iqbal Block 6, Karachi, Pakistan</span>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        {/* <div className="mt-12 pt-8 border-t border-primary-foreground/10 flex items-start flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-primary-foreground/60 text-sm">
-            © {currentYear} Hakam TechSol. All rights reserved.
-          </p>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <p>© {currentYear} Hakam TechSol. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="text-primary-foreground/60 hover:text-accent text-sm transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-primary-foreground/60 hover:text-accent text-sm transition-colors">
-              Terms of Service
-            </a>
+            <a href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-slate-300 transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-slate-300 transition-colors">Security Audit</a>
           </div>
-        </div> */}
-        {/* --- Footer Bottom Bar --- */}
-<div className="mt-12 w-full border-t border-slate-200 pt-8">
-  <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-6">
-    
-    {/* Left Side: Copyright */}
-    <p className="text-sm text-slate-600">
-      © 2026 Hakam TechSol. All rights reserved.
-    </p>
-
-    {/* Right Side: Links */}
-    <div className="flex gap-6 mt-4 md:mt-0">
-      <a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">
-        Privacy Policy
-      </a>
-      <a href="#" className="text-sm opacity-70 hover:opacity-100 transition-opacity">
-        Terms of Service
-      </a>
-    </div>
-
-  </div>
-</div>
+        </div>
       </div>
     </footer>
   );

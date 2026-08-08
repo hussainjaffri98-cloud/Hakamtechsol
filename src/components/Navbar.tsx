@@ -1,40 +1,77 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 
-const megaMenuGroups = [
+const servicesMegaMenu = [
   {
-    title: "Product Engineering",
-    items: ["Mobile App Development", "Custom Software Development", "Web Development", "Game Development"],
+    category: "Mobile App Development",
+    items: ["iOS App Development", "Android App Development", "Cross Platform App Development"],
   },
   {
-    title: "Data & AI",
-    items: ["Artificial Intelligence", "Cloud Services", "Blockchain Development", "Staff Augmentation"],
+    category: "Custom Software Development",
+    items: ["ERP Solution", "CRM Solution", "CMS Solution"],
   },
   {
-    title: "Growth & Marketing",
-    items: ["Digital Marketing Services", "Brand Systems", "Product Launches", "Revenue Enablement"],
+    category: "Web Development",
+    items: ["Ecommerce Website Development", "Web Portals"],
+  },
+  {
+    category: "Game Development",
+    items: ["2D Game Development", "3D Game Development", "Web3 Game Development"],
+  },
+  {
+    category: "Artificial Intelligence",
+    items: ["Generative AI", "Natural Language Processing", "AI Agent Development"],
+  },
+  {
+    category: "Cloud Services",
+    items: ["Cloud Application Development", "Cloud Migration", "Cloud Support & Maintenance"],
+  },
+  {
+    category: "Staff Augmentation",
+    items: ["Hire Android App Developer", "Hire iOS App Developer", "Hire NodeJs Developer"],
+  },
+  {
+    category: "Blockchain Development",
+    items: ["Metaverse Development", "NFT Development"],
+  },
+  {
+    category: "Digital Marketing Services",
+    items: ["Social Media Marketing", "Search Engine Marketing", "Search Engine Optimization"],
   },
 ];
 
+const industriesMegaMenu = [
+  { title: "Automotive", desc: "Transforming automotive industry with bespoke tech." },
+  { title: "Healthcare", desc: "Better, accessible healthcare through tailored tech solutions." },
+  { title: "On-Demand", desc: "Elevating on-demand services with innovative tech." },
+  { title: "Education", desc: "Enhancing education with new-age EdTech." },
+  { title: "Music", desc: "Advancing music industry with digital innovations." },
+  { title: "ECommerce", desc: "Driving e-commerce growth with smart tech." },
+  { title: "Real Estate", desc: "Innovating real estate with custom tech." },
+  { title: "SAAS", desc: "Developing custom solutions for SAAS platforms." },
+  { title: "Fintech", desc: "Empowering fintech with specialized tech services." },
+  { title: "Logistics", desc: "Optimizing logistics with intelligent tech." },
+  { title: "Retail", desc: "Scaling retail businesses through advanced technology." },
+];
+
 const portfolioItems = [
-  { name: "Fintech Mobile App", category: "Mobile App", accent: "from-cyan-400 to-sky-600" },
-  { name: "AI Operations Suite", category: "AI", accent: "from-violet-500 to-fuchsia-500" },
-  { name: "B2B SaaS Platform", category: "SaaS", accent: "from-emerald-500 to-teal-500" },
-  { name: "Growth Analytics Hub", category: "Data", accent: "from-amber-500 to-orange-500" },
+  { id: "kls-property-portal", name: "KLS Property Portal", category: "Laravel / PHP" },
+  { id: "parking-alert-app", name: "Parking Alert App", category: "FlutterFlow" },
+  { id: "players-evaluation-system", name: "Players Evaluation System", category: "SaaS Analytics" },
+  { id: "learning-management-system", name: "Learning Management System", category: "EdTech App" },
+  { id: "hospital-management-system", name: "Hospital Management System", category: "Healthcare PHP" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<"services" | "portfolio" | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<"services" | "industries" | "portfolio" | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isServicesHovered, setIsServicesHovered] = useState(false);
   const location = useLocation();
   const { scrollY } = useScroll();
-  const isServicesMenuOpen = activeDropdown === "services";
 
   useMotionValueEvent(scrollY, "change", (value) => setIsScrolled(value > 24));
 
@@ -44,267 +81,228 @@ const Navbar = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = isServicesMenuOpen ? "hidden" : "";
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isServicesMenuOpen]);
-
-  useEffect(() => {
-    if (!isServicesMenuOpen) return;
+    if (!activeDropdown) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setActiveDropdown(null);
-        setIsServicesHovered(false);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isServicesMenuOpen]);
-
-  useEffect(() => {
-    if (isServicesHovered) {
-      setActiveDropdown("services");
-      return;
-    }
-
-    if (isServicesMenuOpen) {
-      setActiveDropdown(null);
-    }
-  }, [isServicesHovered, isServicesMenuOpen]);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeDropdown]);
 
   return (
     <>
       <motion.nav
-      initial={{ y: -24, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.45, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
-        isScrolled ? "border-gray-200 bg-white/90 backdrop-blur-md" : "border-gray-100 bg-white"
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between lg:h-20">
-          <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="Hakam TechSol Logo" className="h-10 w-auto" />
-          </Link>
+        initial={{ y: -24, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+          isScrolled ? "bg-white/95 backdrop-blur-md border-slate-200 shadow-sm" : "bg-white border-slate-150"
+        }`}
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 lg:h-20 items-center justify-between">
+            {/* Brand Logo */}
+            <Link to="/" className="flex items-center gap-3">
+              <img src={logo} alt="Hakam TechSol Logo" className="h-9 sm:h-11 w-auto object-contain" />
+            </Link>
 
-          <div className="hidden items-center gap-7 lg:flex">
-            {[
-              { name: "Home", path: "/" },
-              { name: "About", path: "/about" },
-            ].map((link) => (
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-6 xl:gap-8">
               <Link
-                key={link.path}
-                to={link.path}
-                className={`group relative text-sm font-medium transition-colors duration-300 ${
-                  location.pathname === link.path ? "text-sky-600" : "text-slate-700 hover:text-sky-600"
+                to="/"
+                className={`text-sm font-semibold transition-colors ${
+                  location.pathname === "/" ? "text-[#0f6cbd]" : "text-slate-800 hover:text-[#0f6cbd]"
                 }`}
               >
-                <span>{link.name}</span>
-                <span className="absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-sky-500 to-blue-600 transition-transform duration-300 group-hover:scale-x-100" />
+                Home
               </Link>
-            ))}
 
-            <div
-              className="relative"
-              onMouseEnter={() => setIsServicesHovered(true)}
-              onMouseLeave={() => setIsServicesHovered(false)}
-            >
-              <button className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors duration-300 hover:text-sky-600">
-                Services
-                <ChevronDown size={16} />
-              </button>
-            </div>
-
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveDropdown("portfolio")}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors duration-300 hover:text-sky-600">
-                Portfolio
-                <ChevronDown size={16} />
-              </button>
-              <AnimatePresence>
-                {activeDropdown === "portfolio" && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute left-0 top-full mt-4 w-[360px] rounded-2xl border border-gray-200 bg-white p-5 shadow-[0_24px_80px_rgba(15,23,42,0.12)]"
-                  >
-                    <div className="grid gap-3">
-                      {portfolioItems.map((project) => (
-                        <motion.a
-                          key={project.name}
-                          whileHover={{ scale: 1.01, y: -2 }}
-                          href="/contact"
-                          className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-900/70 p-3 transition-all duration-300 hover:border-cyan-400/40 hover:bg-slate-900"
-                        >
-                          <div className="flex items-center gap-3">
-                            <div className={`h-10 w-10 rounded-xl bg-gradient-to-br ${project.accent}`} />
-                            <div>
-                              <p className="text-sm font-semibold text-slate-900">{project.name}</p>
-                              <p className="text-xs uppercase tracking-[0.2em] text-slate-500">{project.category}</p>
-                            </div>
-                          </div>
-                          <ArrowRight size={16} className="text-slate-500" />
-                        </motion.a>
-                      ))}
-                    </div>
-                    <div className="mt-4 text-right">
-                      <a href="/services" className="text-sm font-medium text-sky-600 transition-colors hover:text-sky-700">
-                        View All Projects
-                      </a>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            <Link to="/contact" className="text-sm font-medium text-slate-700 transition-colors duration-300 hover:text-sky-600">
-              Contact
-            </Link>
-          </div>
-
-          <div className="hidden lg:block">
-            <Link to="/contact">
-              <Button className="bg-[#0f6cbd] px-6 text-white transition-all duration-300 hover:scale-[1.03] hover:bg-blue-700">
-                Book a Call
-              </Button>
-            </Link>
-          </div>
-
-          <button className="rounded-full border border-gray-200 p-2 text-slate-700 lg:hidden" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-      </div>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", stiffness: 220, damping: 24 }}
-            className="fixed inset-y-0 right-0 top-16 w-[88vw] max-w-sm border-l border-gray-200 bg-white p-6 shadow-xl lg:hidden"
-          >
-            <div className="flex flex-col gap-4">
-              {[
-                { name: "Home", path: "/" },
-                { name: "About", path: "/about" },
-                { name: "Services", path: "/services" },
-                { name: "Contact", path: "/contact" },
-              ].map((link) => (
-                link.name === "Services" ? (
-                  <button
-                    key={link.path}
-                    type="button"
-                    className="rounded-2xl border border-gray-200 bg-slate-50 px-4 py-3 text-left text-sm font-medium text-slate-700"
-                    onClick={() => {
-                      setIsOpen(false);
-                      setActiveDropdown("services");
-                    }}
-                  >
-                    {link.name}
-                  </button>
-                ) : (
-                  <Link key={link.path} to={link.path} className="rounded-2xl border border-gray-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700" onClick={() => setIsOpen(false)}>
-                    {link.name}
-                  </Link>
-                )
-              ))}
-              <Link to="/contact" onClick={() => setIsOpen(false)}>
-                <Button className="w-full bg-[#0f6cbd] text-white hover:bg-blue-700">Book a Call</Button>
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      </motion.nav>
-
-      <AnimatePresence>
-        {isServicesMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed left-0 right-0 top-[4.5rem] z-[60] overflow-y-auto bg-slate-950/20 pb-8 backdrop-blur-[2px] lg:top-[5rem]"
-            onClick={() => setActiveDropdown(null)}
-          >
-            <motion.div
-              initial={{ y: 24, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 24, opacity: 0 }}
-              transition={{ duration: 0.22, ease: "easeOut" }}
-              className="mx-auto mt-4 w-[min(92vw,1400px)] overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_30px_100px_rgba(15,23,42,0.16)]"
-              onClick={(event) => event.stopPropagation()}
-              onMouseEnter={() => setIsServicesHovered(true)}
-              onMouseLeave={() => setIsServicesHovered(false)}
-            >
-              <div className="flex justify-end border-b border-slate-200 px-6 py-4 lg:px-8">
+              {/* Services Dropdown Button */}
+              <div
+                className="relative"
+                onMouseEnter={() => setActiveDropdown("services")}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
                 <button
-                  type="button"
-                  className="rounded-full border border-slate-200 bg-white p-2 text-slate-700 shadow-sm transition-colors duration-300 hover:text-sky-600"
-                  onClick={() => {
-                    setActiveDropdown(null);
-                    setIsServicesHovered(false);
-                  }}
-                  aria-label="Close services menu"
+                  onClick={() => setActiveDropdown(activeDropdown === "services" ? null : "services")}
+                  className={`flex items-center gap-1 text-sm font-semibold transition-colors py-2 ${
+                    activeDropdown === "services" || location.pathname === "/services"
+                      ? "text-[#0f6cbd]"
+                      : "text-slate-800 hover:text-[#0f6cbd]"
+                  }`}
                 >
-                  <X size={20} />
+                  Services
+                  <ChevronDown size={15} className={`transition-transform duration-200 ${activeDropdown === "services" ? "rotate-180 text-[#0f6cbd]" : ""}`} />
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_2.2fr]">
-                <div className="border-b border-slate-200 bg-slate-50 p-8 lg:border-b-0 lg:border-r lg:p-10">
-                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600">Build to win</p>
-                  <h3 className="mt-4 text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl">
-                    Launch premium digital products with clarity and momentum.
-                  </h3>
-                  <p className="mt-4 max-w-xl text-base leading-8 text-slate-600">
-                    From product strategy to delivery, we create modern software experiences that help ambitious teams move faster and grow stronger.
-                  </p>
-                  <div className="mt-8 rounded-[24px] border border-slate-200 bg-white p-5 shadow-sm">
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-100 text-sky-600">
-                        <ArrowRight size={20} />
+              {/* Industries Dropdown Button */}
+              <div
+                className="relative"
+                onMouseEnter={() => setActiveDropdown("industries")}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <button
+                  onClick={() => setActiveDropdown(activeDropdown === "industries" ? null : "industries")}
+                  className={`flex items-center gap-1 text-sm font-semibold transition-colors py-2 ${
+                    activeDropdown === "industries" ? "text-[#0f6cbd]" : "text-slate-800 hover:text-[#0f6cbd]"
+                  }`}
+                >
+                  Industries
+                  <ChevronDown size={15} className={`transition-transform duration-200 ${activeDropdown === "industries" ? "rotate-180 text-[#0f6cbd]" : ""}`} />
+                </button>
+              </div>
+
+              <Link
+                to="/services"
+                className="text-sm font-semibold text-slate-800 hover:text-[#0f6cbd] transition-colors"
+              >
+                Technologies
+              </Link>
+
+              <Link
+                to="/about"
+                className="text-sm font-semibold text-slate-800 hover:text-[#0f6cbd] transition-colors"
+              >
+                Insights
+              </Link>
+
+              {/* Portfolio Link & Hover Menu */}
+              <div
+                className="relative"
+                onMouseEnter={() => setActiveDropdown(null)}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <Link
+                  to="/portfolio"
+                  className={`text-sm font-semibold transition-colors py-2 ${
+                    location.pathname.startsWith("/portfolio") ? "text-[#0f6cbd]" : "text-slate-800 hover:text-[#0f6cbd]"
+                  }`}
+                >
+                  Portfolio
+                </Link>
+
+                <AnimatePresence>
+                  {false && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.18 }}
+                      className="absolute right-0 top-full mt-2 w-[340px] rounded-2xl border border-slate-200 bg-white p-4 shadow-xl z-50"
+                    >
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2 px-2">Featured Case Studies</p>
+                      <div className="space-y-1">
+                        {portfolioItems.map((item) => (
+                          <Link
+                            key={item.id}
+                            to={`/portfolio/${item.id}`}
+                            onClick={() => setActiveDropdown(null)}
+                            className="flex items-center justify-between rounded-xl p-2.5 hover:bg-sky-50 transition-colors group"
+                          >
+                            <div>
+                              <div className="text-sm font-bold text-slate-800 group-hover:text-[#0f6cbd]">{item.name}</div>
+                              <div className="text-xs text-slate-500">{item.category}</div>
+                            </div>
+                            <ArrowRight size={14} className="text-slate-400 group-hover:text-[#0f6cbd]" />
+                          </Link>
+                        ))}
                       </div>
-                      <div>
-                        <p className="text-base font-semibold text-slate-900">Hakam TechSol</p>
-                        <p className="text-sm text-slate-600">Modern software, built for ambitious teams.</p>
+                      <div className="mt-3 pt-3 border-t border-slate-100 text-right">
+                        <Link
+                          to="/portfolio"
+                          onClick={() => setActiveDropdown(null)}
+                          className="text-xs font-bold text-[#0f6cbd] hover:underline"
+                        >
+                          View All Projects →
+                        </Link>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Right GET A QUOTE CTA Button */}
+            <div className="hidden lg:flex items-center gap-4">
+              <Link to="/contact">
+                <Button className="bg-[#0f6cbd] hover:bg-blue-700 text-white font-extrabold px-7 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all text-sm tracking-wide">
+                  GET A QUOTE
+                </Button>
+              </Link>
+            </div>
+
+            {/* Mobile Menu Toggle Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden p-2 rounded-xl text-slate-800 hover:bg-slate-100 border border-slate-200"
+              aria-label="Toggle Navigation"
+            >
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* Services Mega Menu Overlay */}
+      <AnimatePresence>
+        {activeDropdown === "services" && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            onMouseEnter={() => setActiveDropdown("services")}
+            onMouseLeave={() => setActiveDropdown(null)}
+            className="fixed left-0 right-0 top-[4rem] lg:top-[5rem] z-40 bg-white border-b border-slate-200 shadow-2xl overflow-y-auto max-h-[85vh]"
+          >
+            <div className="container mx-auto px-6 py-8 lg:py-10">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                {/* Left Side Highlight Box */}
+                <div className="lg:col-span-3 bg-slate-50 p-6 rounded-2xl border border-slate-200/80 flex flex-col justify-between">
+                  <div className="space-y-3">
+                    <h3 className="text-2xl font-extrabold text-slate-900 leading-tight">Built to Win</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Transforming business with our future-ready tech solutions. Get custom products for accelerated digital transformation across industries globally.
+                    </p>
+                  </div>
+                  
+                  {/* Smartphone Illustration Graphic */}
+                  <div className="mt-6 flex justify-center">
+                    <div className="relative w-36 h-44 bg-slate-900 rounded-3xl border-4 border-slate-700 shadow-xl p-2 flex flex-col justify-between items-center overflow-hidden">
+                      <div className="w-10 h-2 bg-slate-800 rounded-full" />
+                      <div className="w-12 h-12 rounded-full bg-sky-500/20 border border-sky-500/40 flex items-center justify-center text-sky-400 font-extrabold text-xl">
+                        S
+                      </div>
+                      <div className="w-full bg-[#0f6cbd] text-white text-[9px] font-bold text-center py-1 rounded-lg">
+                        Tech Solutions
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 gap-0 p-6 sm:p-8 lg:grid-cols-3 lg:gap-6 lg:p-10">
-                  {megaMenuGroups.map((group, index) => (
-                    <div key={group.title} className={`${index < megaMenuGroups.length - 1 ? "lg:border-r lg:border-slate-200 lg:pr-6" : ""}`}>
-                      <h4 className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-900">{group.title}</h4>
-                      <ul className="mt-4 space-y-2">
+                {/* Right Columns Grid */}
+                <div className="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-6">
+                  {servicesMegaMenu.map((group) => (
+                    <div key={group.category} className="space-y-2 border-b sm:border-b-0 border-slate-100 pb-4 sm:pb-0">
+                      <h4 className="text-sm font-extrabold text-slate-900 tracking-tight">
+                        {group.category}
+                      </h4>
+                      <ul className="space-y-1.5 text-xs text-slate-600">
                         {group.items.map((item) => (
                           <li key={item}>
-                            <a
-                              href="/services"
-                              className="block rounded-xl px-2 py-2 text-sm leading-7 text-slate-600 transition-all duration-300 hover:translate-x-1 hover:text-sky-600"
-                              onClick={() => {
-                                setActiveDropdown(null);
-                                setIsServicesHovered(false);
-                              }}
+                            <Link
+                              to="/services"
+                              onClick={() => setActiveDropdown(null)}
+                              className="inline-flex items-center gap-1.5 hover:text-[#0f6cbd] transition-colors group"
                             >
-                              {item}
-                            </a>
+                              <span className="text-slate-400 group-hover:text-[#0f6cbd]">›</span>
+                              <span>{item}</span>
+                            </Link>
                           </li>
                         ))}
                       </ul>
@@ -312,22 +310,100 @@ const Navbar = () => {
                   ))}
                 </div>
               </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-              <div className="border-t border-slate-200 bg-white px-6 py-5 lg:px-8">
-                <div className="flex justify-end">
-                  <Link
-                    to="/services"
-                    className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-600 transition-all duration-300 hover:scale-[1.02] hover:bg-sky-100"
-                    onClick={() => {
-                      setActiveDropdown(null);
-                      setIsServicesHovered(false);
-                    }}
-                  >
-                    View All Services <ArrowRight size={15} />
-                  </Link>
+      {/* Industries Mega Menu Overlay */}
+      <AnimatePresence>
+        {activeDropdown === "industries" && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            onMouseEnter={() => setActiveDropdown("industries")}
+            onMouseLeave={() => setActiveDropdown(null)}
+            className="fixed left-0 right-0 top-[4rem] lg:top-[5rem] z-40 bg-white border-b border-slate-200 shadow-2xl overflow-y-auto max-h-[85vh]"
+          >
+            <div className="container mx-auto px-6 py-8 lg:py-10">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                {/* Left Side Highlight Box */}
+                <div className="lg:col-span-3 bg-slate-50 p-6 rounded-2xl border border-slate-200/80 flex flex-col justify-between">
+                  <div className="space-y-3">
+                    <h3 className="text-2xl font-extrabold text-slate-900 leading-tight">Built to Win</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Transforming business with our future-ready tech solutions. Get custom products for accelerated digital transformation across industries globally.
+                    </p>
+                  </div>
+                  
+                  {/* Smartphone Graphic */}
+                  <div className="mt-6 flex justify-center">
+                    <div className="relative w-36 h-44 bg-slate-900 rounded-3xl border-4 border-slate-700 shadow-xl p-2 flex flex-col justify-between items-center overflow-hidden">
+                      <div className="w-10 h-2 bg-slate-800 rounded-full" />
+                      <div className="w-12 h-12 rounded-full bg-sky-500/20 border border-sky-500/40 flex items-center justify-center text-sky-400 font-extrabold text-xl">
+                        S
+                      </div>
+                      <div className="w-full bg-[#0f6cbd] text-white text-[9px] font-bold text-center py-1 rounded-lg">
+                        Custom Tech
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Grid */}
+                <div className="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                  {industriesMegaMenu.map((ind) => (
+                    <div key={ind.title} className="space-y-1">
+                      <Link
+                        to="/services"
+                        onClick={() => setActiveDropdown(null)}
+                        className="text-sm font-extrabold text-slate-900 hover:text-[#0f6cbd] transition-colors block"
+                      >
+                        {ind.title}
+                      </Link>
+                      <p className="text-xs text-slate-500 leading-relaxed">
+                        {ind.desc}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", stiffness: 240, damping: 25 }}
+            className="fixed inset-y-0 right-0 top-16 w-[88vw] max-w-sm bg-white border-l border-slate-200 p-6 shadow-2xl z-50 lg:hidden overflow-y-auto"
+          >
+            <div className="flex flex-col gap-4">
+              <Link to="/" onClick={() => setIsOpen(false)} className="text-base font-bold text-slate-800 hover:text-[#0f6cbd] py-2 border-b border-slate-100">
+                Home
+              </Link>
+              <Link to="/services" onClick={() => setIsOpen(false)} className="text-base font-bold text-slate-800 hover:text-[#0f6cbd] py-2 border-b border-slate-100">
+                Services & Mega Menu
+              </Link>
+              <Link to="/portfolio" onClick={() => setIsOpen(false)} className="text-base font-bold text-slate-800 hover:text-[#0f6cbd] py-2 border-b border-slate-100">
+                Portfolio & Case Studies
+              </Link>
+              <Link to="/about" onClick={() => setIsOpen(false)} className="text-base font-bold text-slate-800 hover:text-[#0f6cbd] py-2 border-b border-slate-100">
+                About & Insights
+              </Link>
+              <Link to="/contact" onClick={() => setIsOpen(false)}>
+                <Button className="w-full bg-[#0f6cbd] hover:bg-blue-700 text-white font-extrabold mt-4 py-3 rounded-full shadow-md">
+                  GET A QUOTE
+                </Button>
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
