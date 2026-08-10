@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import { projectsData } from "@/data/projectsData";
 import { ProjectFlipCard } from "@/components/ProjectFlipCard";
+import portfolioBackgroundImage from "@/assets/portfolio-bg.jpg";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 
@@ -38,17 +39,26 @@ const Portfolio: React.FC = () => {
       <div className="min-h-screen bg-slate-50 text-slate-800">
         <Navbar />
         {/* Hero Header Section */}
-        <section className="relative overflow-hidden bg-white pt-28 pb-16 md:pt-36 md:pb-20 border-b border-slate-200">
+        <section className="relative flex min-h-screen w-full items-center overflow-hidden border-b border-slate-900 pt-28 pb-16 md:pt-36 md:pb-20">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${portfolioBackgroundImage})` }}
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-black/80 via-slate-950/70 to-black/60"
+            aria-hidden="true"
+          />
           <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center space-y-4">
-              <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0f6cbd]">
-                <Sparkles className="w-4 h-4 text-[#0f6cbd]" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-sky-300/40 bg-slate-950/30 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-sky-200 backdrop-blur-sm">
+                <Sparkles className="w-4 h-4 text-sky-200" />
                 <span>Our Portfolio & Case Studies</span>
               </div>
-              <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
-                Explore Our <span className="text-[#0f6cbd]">Featured Digital Projects</span>
+              <h1 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                Explore Our <span className="text-sky-300">Featured Digital Projects</span>
               </h1>
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl mx-auto">
                 Hover over any project card to flip it and view the full case study overview, key metrics, store links, and detailed statistics.
               </p>
             </div>
@@ -81,7 +91,7 @@ const Portfolio: React.FC = () => {
                     className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 ${
                       (new URLSearchParams(window.location.search).get('category') || 'All') === cat
                         ? "bg-[#0f6cbd] text-white shadow-md scale-105"
-                        : "bg-white text-slate-700 border border-slate-200 hover:border-sky-300 hover:text-[#0f6cbd]"
+                        : "border border-white/40 bg-white/10 text-white backdrop-blur-sm hover:border-sky-300 hover:bg-white/20"
                     }`}
                   >
                     {cat}
