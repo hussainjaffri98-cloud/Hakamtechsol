@@ -78,7 +78,7 @@ const Index = () => {
                 </h1>
 
                 <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl">
-                  Hakam TechSol partners with ambitious teams globally to engineer web portals, mobile apps, SaaS platforms, and enterprise software.
+                  HakamTechSol partners with ambitious teams globally to engineer web portals, mobile apps, SaaS platforms, and enterprise software.
                 </p>
 
                 <div className="pt-2 flex flex-col sm:flex-row gap-4">
@@ -120,7 +120,7 @@ const Index = () => {
                 <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-3 shadow-2xl">
                   <img
                     src={heroImage}
-                    alt="Hakam TechSol Engineering"
+                    alt="HakamTechSol Engineering"
                     className="h-[380px] sm:h-[460px] w-full rounded-2xl object-cover"
                   />
                   <div className="absolute inset-x-6 bottom-6 bg-slate-950/90 backdrop-blur-md p-4 rounded-2xl border border-white/10 text-white shadow-xl">

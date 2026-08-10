@@ -7,7 +7,7 @@ const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const whatsappNumber = "+923092271214";
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi Hakam TechSol! I'd like to discuss a project.")}`;
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi HakamTechSol! I'd like to discuss a project.")}`;
 
   return (
     <>
@@ -24,7 +24,7 @@ const ChatWidget = () => {
             <div className="bg-hero-gradient p-4 text-primary-foreground">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="font-display font-semibold text-lg">Hakam TechSol</h3>
+                  <h3 className="font-display font-semibold text-lg">HakamTechSol</h3>
                   <p className="text-primary-foreground/80 text-xs">We typically reply instantly</p>
                 </div>
                 <button

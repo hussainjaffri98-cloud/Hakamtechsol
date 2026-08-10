@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="inline-block">
-              <img src={logo} alt="Hakam TechSol Logo" className="h-10 w-auto bg-white/90 p-1.5 rounded-xl shadow-md" />
+              <img src={logo} alt="HakamTechSol Logo" className="h-10 w-auto bg-white/90 p-1.5 rounded-xl shadow-md" />
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
               Digitalizing your businesses with innovative, high-growth technology solutions. Custom web portals, mobile applications, and AI platforms tailored for global success.
@@ -95,7 +95,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {currentYear} Hakam TechSol. All rights reserved.</p>
+          <p>© {currentYear} HakamTechSol. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-slate-300 transition-colors">Terms of Service</a>

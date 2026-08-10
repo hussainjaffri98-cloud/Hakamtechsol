@@ -107,7 +107,7 @@ const Navbar = () => {
           <div className="flex h-16 lg:h-20 items-center justify-between">
             {/* Brand Logo */}
             <Link to="/" className="flex items-center gap-3">
-              <img src={logo} alt="Hakam TechSol Logo" className="h-9 sm:h-11 w-auto object-contain" />
+              <img src={logo} alt="HakamTechSol Logo" className="h-9 sm:h-11 w-auto object-contain" />
             </Link>
 
             {/* Desktop Navigation */}

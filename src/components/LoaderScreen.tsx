@@ -31,7 +31,7 @@ const LoaderScreen = () => {
               transition={{ duration: 1.6, repeat: Infinity, ease: "linear" }}
               className="rounded-full border border-white/15 p-3 shadow-[0_0_60px_rgba(56,189,248,0.18)]"
             >
-              <img src={logo} alt="Hakam TechSol logo" className="h-14 w-auto" />
+              <img src={logo} alt="HakamTechSol logo" className="h-14 w-auto" />
             </motion.div>
             <p className="text-sm uppercase tracking-[0.35em] text-slate-300">
               Loading experience

@@ -42,7 +42,7 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({ project,
       {/* Top HakamTechSol Branding Header */}
       <div className="flex items-center justify-between border-b border-slate-200/80 pb-3 mb-4">
         <div className="flex items-center gap-3">
-          <img src={logo} alt="Hakam TechSol Logo" className="h-7 w-auto object-contain" />
+          <img src={logo} alt="HakamTechSol Logo" className="h-7 w-auto object-contain" />
         </div>
         <div className="flex items-center gap-2">
           <span className="hidden sm:inline-block text-[11px] font-semibold tracking-wider text-slate-600 uppercase">

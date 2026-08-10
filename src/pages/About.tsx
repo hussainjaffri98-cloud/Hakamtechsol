@@ -44,7 +44,7 @@ const About = () => {
               variants={fadeInUp}
               className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6"
             >
-              The Story Behind <span className="text-[#0f6cbd]">Hakam TechSol</span>
+              The Story Behind <span className="text-[#0f6cbd]">HakamTechSol</span>
             </motion.h1>
             <motion.p
               variants={fadeInUp}
@@ -73,7 +73,7 @@ const About = () => {
                 className="relative lg:pl-16"
               >
                 <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)]">
-                  <img src={teamImage} alt="Hakam TechSol Team" className="h-full w-full object-cover" />
+                  <img src={teamImage} alt="HakamTechSol Team" className="h-full w-full object-cover" />
                 </div>
               </motion.div>
               <motion.div
@@ -85,7 +85,7 @@ const About = () => {
                 <h2 className="text-3xl md:text-4xl font-display font-bold mt-4 mb-6">Building Dreams, One Line of Code at a Time</h2>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    Hakam TechSol was founded with a simple yet powerful vision: to bridge the gap between cutting‑edge technology and real‑world business needs.
+                    HakamTechSol was founded with a simple yet powerful vision: to bridge the gap between cutting‑edge technology and real‑world business needs.
                   </p>
                   <p>
                     Our journey has been fueled by an unwavering commitment to excellence and a deep understanding that every business is unique. We craft digital experiences that drive growth, enhance efficiency, and create lasting value.
@@ -198,7 +198,7 @@ const About = () => {
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Ready to Join Our Journey?</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-                Let's work together to bring your ideas to life. Contact us today and discover how Hakam TechSol can transform your business.
+                Let's work together to bring your ideas to life. Contact us today and discover how HakamTechSol can transform your business.
               </p>
               <Link to="/contact">
                 <Button size="lg" className="bg-hero-gradient hover:opacity-90 hover:scale-105 transition-all gap-2">
