@@ -59,6 +59,13 @@ const industriesMegaMenu = [
   { title: "Retail", desc: "Scaling retail businesses through advanced technology." },
 ];
 
+const technologiesMegaMenu = [
+  { category: "Frontend", items: ["HTML", "CSS", "JavaScript", "React.js"] },
+  { category: "Backend", items: ["Python", "Laravel", "PHP", ".NET", "C#"] },
+  { category: "Mobile", items: ["React Native", "Flutter", "Dart"] },
+  { category: "Commerce & CMS", items: ["WordPress", "Shopify"] },
+];
+
 const portfolioItems = [
   { id: "kls-property-portal", name: "KLS Property Portal", category: "Laravel / PHP" },
   { id: "parking-alert-app", name: "Parking Alert App", category: "FlutterFlow" },
@@ -69,7 +76,7 @@ const portfolioItems = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<"services" | "industries" | "portfolio" | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<"services" | "industries" | "technology" | "portfolio" | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const { scrollY } = useScroll();
@@ -158,12 +165,22 @@ const Navbar = () => {
                 </button>
               </div>
 
-              <Link
-                to="/services"
-                className="text-sm font-semibold text-slate-800 hover:text-[#0f6cbd] transition-colors"
+              {/* Technologies Dropdown Button */}
+              <div
+                className="relative"
+                onMouseEnter={() => setActiveDropdown("technology")}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                Technologies
-              </Link>
+                <button
+                  onClick={() => setActiveDropdown(activeDropdown === "technology" ? null : "technology")}
+                  className={`flex items-center gap-1 text-sm font-semibold transition-colors py-2 ${
+                    activeDropdown === "technology" ? "text-[#0f6cbd]" : "text-slate-800 hover:text-[#0f6cbd]"
+                  }`}
+                >
+                  Technologies
+                  <ChevronDown size={15} className={`transition-transform duration-200 ${activeDropdown === "technology" ? "rotate-180 text-[#0f6cbd]" : ""}`} />
+                </button>
+              </div>
 
               <Link
                 to="/about"
@@ -372,6 +389,54 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
+      {/* Technologies Mega Menu Overlay */}
+      <AnimatePresence>
+        {activeDropdown === "technology" && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            onMouseEnter={() => setActiveDropdown("technology")}
+            onMouseLeave={() => setActiveDropdown(null)}
+            className="fixed left-0 right-0 top-[4rem] lg:top-[5rem] z-40 border-b border-slate-200 bg-white shadow-2xl"
+          >
+            <div className="container mx-auto px-6 py-8 lg:py-10">
+              <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+                <div className="lg:col-span-3 rounded-2xl border border-slate-200/80 bg-slate-50 p-6">
+                  <h3 className="text-2xl font-extrabold leading-tight text-slate-900">Technologies</h3>
+                  <p className="mt-3 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                    Modern, production-ready technologies selected for scalable digital products.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 lg:col-span-9 lg:grid-cols-4">
+                  {technologiesMegaMenu.map((group) => (
+                    <div key={group.category} className="space-y-2 border-b border-slate-100 pb-4 sm:border-b-0 sm:pb-0">
+                      <h4 className="text-sm font-extrabold tracking-tight text-slate-900">{group.category}</h4>
+                      <ul className="space-y-1.5 text-xs text-slate-600">
+                        {group.items.map((item) => (
+                          <li key={item}>
+                            <Link
+                              to="/services"
+                              onClick={() => setActiveDropdown(null)}
+                              className="inline-flex items-center gap-1.5 transition-colors hover:text-[#0f6cbd] group"
+                            >
+                              <span className="text-slate-400 transition-colors group-hover:text-[#0f6cbd]">›</span>
+                              <span>{item}</span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
@@ -389,6 +454,16 @@ const Navbar = () => {
               <Link to="/services" onClick={() => setIsOpen(false)} className="text-base font-bold text-slate-800 hover:text-[#0f6cbd] py-2 border-b border-slate-100">
                 Services & Mega Menu
               </Link>
+              <details className="border-b border-slate-100 py-2">
+                <summary className="cursor-pointer text-base font-bold text-slate-800 hover:text-[#0f6cbd]">Technologies</summary>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-2 pt-3 text-sm text-slate-600">
+                  {technologiesMegaMenu.flatMap((group) => group.items).map((item) => (
+                    <Link key={item} to="/services" onClick={() => setIsOpen(false)} className="hover:text-[#0f6cbd]">
+                      {item}
+                    </Link>
+                  ))}
+                </div>
+              </details>
               <Link to="/portfolio" onClick={() => setIsOpen(false)} className="text-base font-bold text-slate-800 hover:text-[#0f6cbd] py-2 border-b border-slate-100">
                 Portfolio & Case Studies
               </Link>
