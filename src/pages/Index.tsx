@@ -73,9 +73,8 @@ const Index = () => {
           <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 items-center">
               <div className="flex flex-col items-center space-y-6 text-center">
-                <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-sky-300">
-                  <Sparkles size={14} /> Built To Win • Digital Product Studio
-                </div>
+                {/* <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-sky-300">
+                </div> */}
 
                 <h1 className="max-w-6xl text-4xl font-extrabold leading-tight text-white sm:text-6xl">
                   Design and Build your <span className="text-sky-400">Digital Reality</span> with Clarity.

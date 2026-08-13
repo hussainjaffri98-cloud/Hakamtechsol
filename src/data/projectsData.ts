@@ -1,3 +1,18 @@
+import myPlaysOperationsImage from "@/assets/myplays-operations.jpeg";
+import khyratnaEcommerceImage from "@/assets/khyratna-ecommerce.jpeg";
+import khyratnaScreensImage from "@/assets/khyratna-screens.png";
+import matchProLoginImage from "@/assets/matchpro-login.jpeg";
+import matchProDashboardImage from "@/assets/matchpro-dashboard.jpeg";
+import matchProCustomersImage from "@/assets/matchpro-customers.jpeg";
+import klsNotariesImage from "@/assets/kls-notaries.jpeg";
+import klsProfileImage from "@/assets/kls-profile.jpeg";
+import klsReceptionImage from "@/assets/kls-reception.jpeg";
+import klsAdministrationImage from "@/assets/kls-administration.jpeg";
+import klsNotaryDetailsImage from "@/assets/kls-notary-details.jpeg";
+import klsNotarySummaryImage from "@/assets/kls-notary-summary.jpeg";
+import klsLoginImage from "@/assets/kls-login.jpeg";
+import klsDashboardImage from "@/assets/kls-dashboard.jpeg";
+
 export interface Project {
   id: string;
   title: string;
@@ -19,6 +34,11 @@ export interface Project {
   platforms: ("appStore" | "googlePlay" | "webPortal")[];
   rolesSupported: string[];
   mockupScreens: { title: string; subtitle: string; description: string }[];
+  visualImages?: {
+    card: string;
+    detail?: string;
+  };
+  galleryImages?: { src: string; alt: string }[];
 }
 
 export const projectsData: Project[] = [
@@ -67,6 +87,16 @@ export const projectsData: Project[] = [
     badge: "Web Platform",
     platforms: ["webPortal"],
     rolesSupported: ["Super Administrator", "Realtor / Agent", "Property Owner", "Prospective Client"],
+    galleryImages: [
+      { src: klsLoginImage, alt: "Notary Software sign-in screen" },
+      { src: klsDashboardImage, alt: "Notary Software dashboard" },
+      { src: klsNotariesImage, alt: "Notary Software records list" },
+      { src: klsReceptionImage, alt: "Notary Software reception form" },
+      { src: klsNotaryDetailsImage, alt: "Notary Software record details" },
+      { src: klsNotarySummaryImage, alt: "Notary Software notary summary" },
+      { src: klsProfileImage, alt: "Notary Software profile editor" },
+      { src: klsAdministrationImage, alt: "Notary Software administration settings" }
+    ],
     mockupScreens: [
       {
         title: "Reports & Analytics Dashboard",
@@ -445,6 +475,14 @@ export const projectsData: Project[] = [
     badge: "Operations Platform",
     platforms: ["webPortal"],
     rolesSupported: ["Owner", "Administrator", "Manager", "Operations Staff"],
+    visualImages: {
+      card: myPlaysOperationsImage,
+    },
+    galleryImages: [
+      { src: matchProLoginImage, alt: "MyPlays login screen" },
+      { src: matchProDashboardImage, alt: "MyPlays dashboard" },
+      { src: matchProCustomersImage, alt: "MyPlays customer management screen" }
+    ],
     mockupScreens: [
       { title: "Operations Dashboard", subtitle: "Check-ins & Points Overview", description: "At-a-glance analytics for customers, match points, and ticket-out activity." },
       { title: "Machine & Shift Control", subtitle: "Readings & Shift Workflow", description: "Operational workspace for machine records and start/end shift processes." },
@@ -492,6 +530,10 @@ export const projectsData: Project[] = [
     badge: "eCommerce Mobile App",
     platforms: ["appStore", "googlePlay"],
     rolesSupported: ["Customer", "Store Manager", "Delivery Partner", "Administrator"],
+    visualImages: {
+      card: khyratnaEcommerceImage,
+      detail: khyratnaScreensImage,
+    },
     mockupScreens: [
       { title: "Product Discovery", subtitle: "Curated Product Listings", description: "Easy-to-browse product catalog designed for quick discovery and shopping." },
       { title: "Cart & Checkout", subtitle: "Payment & Delivery Options", description: "Flexible cart, payment, delivery, and pickup experience for customers." },

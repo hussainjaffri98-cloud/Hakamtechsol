@@ -51,10 +51,10 @@ const Portfolio: React.FC = () => {
           />
           <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center space-y-4">
-              <div className="inline-flex items-center gap-2 rounded-full border border-sky-300/40 bg-slate-950/30 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-sky-200 backdrop-blur-sm">
+              {/* <div className="inline-flex items-center gap-2 rounded-full border border-sky-300/40 bg-slate-950/30 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-sky-200 backdrop-blur-sm">
                 <Sparkles className="w-4 h-4 text-sky-200" />
                 <span>Our Portfolio & Case Studies</span>
-              </div>
+              </div> */}
               <h1 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
                 Explore Our <span className="text-sky-300">Featured Digital Projects</span>
               </h1>

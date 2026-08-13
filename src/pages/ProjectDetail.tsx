@@ -111,13 +111,21 @@ const ProjectDetail: React.FC = () => {
 
               {/* Right Hero Phone Showcase Container */}
               <div className="lg:col-span-5">
-                <div className="rounded-3xl bg-slate-900 p-6 border-4 border-slate-800 shadow-2xl space-y-4">
-                  <div className="flex justify-between items-center text-xs text-slate-400 border-b border-slate-800 pb-3">
-                    <span className="font-bold text-sky-400">Featured Production UI</span>
-                    <span className="px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold text-[10px]">VERIFIED CASE STUDY</span>
+                {project.visualImages ? (
+                  <img
+                    src={project.visualImages.detail ?? project.visualImages.card}
+                    alt={`${project.title} project showcase`}
+                    className="h-auto w-full object-contain"
+                  />
+                ) : (
+                  <div className="rounded-3xl bg-slate-900 p-6 border-4 border-slate-800 shadow-2xl space-y-4">
+                    <div className="flex justify-between items-center text-xs text-slate-400 border-b border-slate-800 pb-3">
+                      <span className="font-bold text-sky-400">Featured Production UI</span>
+                      <span className="px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold text-[10px]">VERIFIED CASE STUDY</span>
+                    </div>
+                    <ProjectMockupFrame project={project} variant="detail" />
                   </div>
-                  <ProjectMockupFrame project={project} variant="detail" />
-                </div>
+                )}
               </div>
             </div>
           </div>
@@ -185,8 +193,19 @@ const ProjectDetail: React.FC = () => {
               </p>
             </div>
 
-            {/* 10-Phone Screen Mockup Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            {project.galleryImages ? (
+              <div className="grid grid-cols-1 gap-6">
+                {project.galleryImages.map((image) => (
+                  <img
+                    key={image.src}
+                    src={image.src}
+                    alt={image.alt}
+                    className="h-auto w-full rounded-2xl object-contain shadow-md"
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
               {[
                 "Login & Authentication",
                 "User Profile Dashboard",
@@ -224,7 +243,8 @@ const ProjectDetail: React.FC = () => {
                   </div>
                 </div>
               ))}
-            </div>
+              </div>
+            )}
           </div>
         </section>
 

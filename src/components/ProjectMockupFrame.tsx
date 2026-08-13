@@ -12,6 +12,8 @@ interface ProjectMockupFrameProps {
 }
 
 export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({ project, variant = "card" }) => {
+  const projectImage = project.visualImages?.[variant] ?? project.visualImages?.card;
+
   const getIcon = () => {
     switch (project.id) {
       case "kls-property-portal":
@@ -34,6 +36,20 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({ project,
         return <Cpu className="w-6 h-6 text-sky-500" />;
     }
   };
+
+  if (projectImage) {
+    return (
+      <div className={`relative h-full w-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl ${
+        variant === "detail" ? "p-3 md:p-4" : "p-2"
+      }`}>
+        <img
+          src={projectImage}
+          alt={`${project.title} project showcase`}
+          className="h-full w-full rounded-xl object-contain"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={`relative h-full w-full overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-100 shadow-xl ${
