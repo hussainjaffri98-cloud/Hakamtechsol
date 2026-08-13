@@ -52,43 +52,8 @@ export const ProjectFlipCard: React.FC<ProjectFlipCardProps> = ({ project }) => 
           </div>
 
           {/* Visual Device Frame */}
-          <div className="my-2 flex-1 flex items-center justify-center">
+          <div className="my-2 flex min-h-0 flex-1 items-center justify-center overflow-hidden">
             <ProjectMockupFrame project={project} variant="card" />
-          </div>
-
-          {/* Title & Features Preview */}
-          <div className="space-y-3 pt-3 border-t border-slate-100">
-            <div>
-              <h3 className="text-xl font-extrabold text-slate-900 line-clamp-1">
-                {project.title}
-              </h3>
-              <p className="text-xs text-slate-600 line-clamp-2 font-medium mt-0.5">
-                {project.subtitle}
-              </p>
-            </div>
-
-            <div className="flex items-center justify-between gap-2 pt-1">
-              <div className="flex flex-wrap gap-1">
-                {project.techStack.slice(0, 3).map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[10px] font-bold border border-slate-200"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Front Side View Button */}
-              <Link
-                to={`/portfolio/${project.id}`}
-                className="inline-flex items-center gap-1.5 bg-[#0f6cbd] hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-xs font-bold shadow transition-all shrink-0 z-20"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <span>View Details</span>
-                <ArrowRight size={14} />
-              </Link>
-            </div>
           </div>
         </div>
 

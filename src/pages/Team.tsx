@@ -8,8 +8,11 @@ const Team = () => (
   <PageTransition>
     <div className="min-h-screen bg-white text-slate-800">
       <Navbar />
-      <section className="border-b border-slate-200 bg-white pb-12 pt-28 md:pb-16 md:pt-36">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-to-br from-white via-sky-50 to-blue-100/70 pb-12 pt-28 md:pb-16 md:pt-36">
+        <div className="pointer-events-none absolute -left-20 top-12 h-72 w-72 animate-pulse rounded-full bg-sky-300/20 blur-3xl" />
+        <div className="pointer-events-none absolute -right-24 bottom-0 h-80 w-80 animate-pulse rounded-full bg-blue-400/20 blur-3xl [animation-delay:1.5s]" />
+        <div className="pointer-events-none absolute inset-0 opacity-30 bg-[radial-gradient(#60a5fa_1px,transparent_1px)] [background-size:18px_18px]" />
+        <div className="container relative mx-auto flex flex-col items-center px-4 text-center sm:px-6 lg:px-8">
           <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#0f6cbd]">HakamTechSol</span>
           <h1 className="mt-2 text-4xl font-extrabold text-[#0f5c99] sm:text-5xl">Our Team</h1>
           <div className="mt-3 h-1 w-28 bg-[#0f6cbd]" />

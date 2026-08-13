@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { ChevronDown, Menu, X, ArrowRight, Smartphone } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight, Car, Cross, Clock3, GraduationCap, Music2, ShoppingCart, Building2, Layers3, Landmark, Truck, Store } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 import builtToWinImage from "@/assets/built-to-win-phones.png";
@@ -47,17 +47,17 @@ const servicesMegaMenu = [
 ];
 
 const industriesMegaMenu = [
-  { title: "Automotive", desc: "Transforming automotive industry with bespoke tech." },
-  { title: "Healthcare", desc: "Better, accessible healthcare through tailored tech solutions." },
-  { title: "On-Demand", desc: "Elevating on-demand services with innovative tech." },
-  { title: "Education", desc: "Enhancing education with new-age EdTech." },
-  { title: "Music", desc: "Advancing music industry with digital innovations." },
-  { title: "ECommerce", desc: "Driving e-commerce growth with smart tech." },
-  { title: "Real Estate", desc: "Innovating real estate with custom tech." },
-  { title: "SAAS", desc: "Developing custom solutions for SAAS platforms." },
-  { title: "Fintech", desc: "Empowering fintech with specialized tech services." },
-  { title: "Logistics", desc: "Optimizing logistics with intelligent tech." },
-  { title: "Retail", desc: "Scaling retail businesses through advanced technology." },
+  { title: "Automotive", desc: "Transforming automotive industry with bespoke tech.", icon: Car },
+  { title: "Healthcare", desc: "Better, accessible healthcare through tailored tech solutions.", icon: Cross },
+  { title: "On-Demand", desc: "Elevating on-demand services with innovative tech.", icon: Clock3 },
+  { title: "Education", desc: "Enhancing education with new-age EdTech.", icon: GraduationCap },
+  { title: "Music", desc: "Advancing music industry with digital innovations.", icon: Music2 },
+  { title: "ECommerce", desc: "Driving e-commerce growth with smart tech.", icon: ShoppingCart },
+  { title: "Real Estate", desc: "Innovating real estate with custom tech.", icon: Building2 },
+  { title: "SAAS", desc: "Developing custom solutions for SAAS platforms.", icon: Layers3 },
+  { title: "Fintech", desc: "Empowering fintech with specialized tech services.", icon: Landmark },
+  { title: "Logistics", desc: "Optimizing logistics with intelligent tech.", icon: Truck },
+  { title: "Retail", desc: "Scaling retail businesses through advanced technology.", icon: Store },
 ];
 
 const technologiesMegaMenu = [
@@ -206,7 +206,7 @@ const Navbar = () => {
                 </Link>
 
                 <AnimatePresence>
-                  {false && (
+                  {activeDropdown === "portfolio" && (
                     <motion.div
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -373,20 +373,24 @@ const Navbar = () => {
 
                 {/* Right Grid */}
                 <div className="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                  {industriesMegaMenu.map((ind) => (
+                  {industriesMegaMenu.map((ind) => {
+                    const Icon = ind.icon;
+                    return (
                     <div key={ind.title} className="space-y-1">
                       <Link
                         to="/services"
                         onClick={() => setActiveDropdown(null)}
-                        className="text-sm font-extrabold text-slate-900 hover:text-[#0f6cbd] transition-colors block"
+                        className="flex items-center gap-2 text-sm font-extrabold text-slate-900 hover:text-[#0f6cbd] transition-colors"
                       >
+                        <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-100 text-[#0f6cbd]"><Icon size={15} /></span>
                         {ind.title}
                       </Link>
                       <p className="text-xs text-slate-500 leading-relaxed">
                         {ind.desc}
                       </p>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>

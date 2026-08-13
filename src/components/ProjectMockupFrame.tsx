@@ -36,7 +36,7 @@ export const ProjectMockupFrame: React.FC<ProjectMockupFrameProps> = ({ project,
   };
 
   return (
-    <div className={`relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-100 shadow-xl ${
+    <div className={`relative h-full w-full overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-100 shadow-xl ${
       variant === "detail" ? "p-6 md:p-8" : "p-4"
     }`}>
       {/* Top HakamTechSol Branding Header */}
