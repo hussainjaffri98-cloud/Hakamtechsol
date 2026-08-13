@@ -16,6 +16,7 @@ export interface Project {
   accentColor: string;
   gradient: string;
   badge: string;
+  platforms: ("appStore" | "googlePlay" | "webPortal")[];
   rolesSupported: string[];
   mockupScreens: { title: string; subtitle: string; description: string }[];
 }
@@ -64,6 +65,7 @@ export const projectsData: Project[] = [
     accentColor: "from-blue-600 to-cyan-500",
     gradient: "bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400",
     badge: "Web Platform",
+    platforms: ["webPortal"],
     rolesSupported: ["Super Administrator", "Realtor / Agent", "Property Owner", "Prospective Client"],
     mockupScreens: [
       {
@@ -128,6 +130,7 @@ export const projectsData: Project[] = [
     accentColor: "from-sky-500 to-indigo-600",
     gradient: "bg-gradient-to-r from-sky-500 via-indigo-500 to-blue-600",
     badge: "iOS & Android App",
+    platforms: ["appStore", "googlePlay"],
     rolesSupported: ["Vehicle Owner", "Community Admin", "Building Manager"],
     mockupScreens: [
       {
@@ -193,6 +196,7 @@ export const projectsData: Project[] = [
     accentColor: "from-emerald-500 to-teal-700",
     gradient: "bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-600",
     badge: "Sports Tech Platform",
+    platforms: ["webPortal"],
     rolesSupported: ["Head Coach", "Scouting Administrator", "Assistant Coach", "Sports Director", "Athlete"],
     mockupScreens: [
       {
@@ -259,6 +263,7 @@ export const projectsData: Project[] = [
     accentColor: "from-blue-500 to-indigo-600",
     gradient: "bg-gradient-to-r from-blue-500 via-sky-500 to-indigo-600",
     badge: "EdTech Mobile App",
+    platforms: ["appStore", "googlePlay", "webPortal"],
     rolesSupported: ["Super Administrator", "Teacher / Qari", "Student", "Parent / Guardian"],
     mockupScreens: [
       {
@@ -323,6 +328,7 @@ export const projectsData: Project[] = [
     accentColor: "from-cyan-600 to-blue-700",
     gradient: "bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-700",
     badge: "Enterprise Healthcare",
+    platforms: ["webPortal"],
     rolesSupported: ["Hospital Administrator", "Senior Consultant / Doctor", "Surgical Specialist", "Reception / Receptionist", "Lab Technician"],
     mockupScreens: [
       {
@@ -386,6 +392,7 @@ export const projectsData: Project[] = [
     accentColor: "from-rose-500 to-violet-600",
     gradient: "bg-gradient-to-r from-rose-500 via-fuchsia-500 to-violet-600",
     badge: "Loyalty Mobile App",
+    platforms: ["appStore", "googlePlay"],
     rolesSupported: ["Customer", "Store Manager", "Administrator"],
     mockupScreens: [
       { title: "Rewards Home", subtitle: "Points & Gift Offers", description: "Customer dashboard for viewing available rewards, active points, and promotional offers." },
@@ -436,6 +443,7 @@ export const projectsData: Project[] = [
     accentColor: "from-amber-500 to-orange-600",
     gradient: "bg-gradient-to-r from-amber-500 via-orange-500 to-red-500",
     badge: "Operations Platform",
+    platforms: ["webPortal"],
     rolesSupported: ["Owner", "Administrator", "Manager", "Operations Staff"],
     mockupScreens: [
       { title: "Operations Dashboard", subtitle: "Check-ins & Points Overview", description: "At-a-glance analytics for customers, match points, and ticket-out activity." },
@@ -482,6 +490,7 @@ export const projectsData: Project[] = [
     accentColor: "from-emerald-500 to-lime-600",
     gradient: "bg-gradient-to-r from-emerald-500 via-green-500 to-lime-500",
     badge: "eCommerce Mobile App",
+    platforms: ["appStore", "googlePlay"],
     rolesSupported: ["Customer", "Store Manager", "Delivery Partner", "Administrator"],
     mockupScreens: [
       { title: "Product Discovery", subtitle: "Curated Product Listings", description: "Easy-to-browse product catalog designed for quick discovery and shopping." },

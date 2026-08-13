@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Star, CheckCircle2, Eye } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Project } from "@/data/projectsData";
 import { ProjectMockupFrame } from "./ProjectMockupFrame";
+import { PlatformBadges } from "./PlatformBadges";
 
 interface ProjectFlipCardProps {
   project: Project;
@@ -126,17 +127,7 @@ export const ProjectFlipCard: React.FC<ProjectFlipCardProps> = ({ project }) => 
               <div className="text-[10px] font-extrabold text-slate-700 uppercase tracking-wider">
                 Available on
               </div>
-              <div className="flex flex-wrap gap-1.5">
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-900 text-white text-[11px] font-semibold">
-                  <span> App Store</span>
-                </span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-sky-700 text-white text-[11px] font-semibold">
-                  <span>► Google Play</span>
-                </span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-blue-700 text-white text-[11px] font-semibold">
-                  <span>⚡ Web Portal</span>
-                </span>
-              </div>
+              <PlatformBadges platforms={project.platforms} size="compact" />
             </div>
           </div>
 

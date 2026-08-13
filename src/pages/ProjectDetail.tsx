@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { 
-  ArrowLeft, ArrowRight, CheckCircle2, ShieldCheck, Clock, UserCheck, 
-  ChevronRight, Share2, Sparkles, Star, Download, Send, Smartphone, Monitor, Check
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronRight, Sparkles, Send, Check } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import { getProjectById, projectsData } from "@/data/projectsData";
 import { ProjectMockupFrame } from "@/components/ProjectMockupFrame";
+import { PlatformBadges } from "@/components/PlatformBadges";
 import { Button } from "@/components/ui/button";
 
 const ProjectDetail: React.FC = () => {
@@ -94,16 +92,8 @@ const ProjectDetail: React.FC = () => {
                 </p>
 
                 {/* Store Availability Badges */}
-                <div className="flex flex-wrap items-center gap-3 pt-2">
-                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold shadow-md">
-                    <span> App Store</span>
-                  </span>
-                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-700 text-white text-xs font-bold shadow-md">
-                    <span>► Google Play</span>
-                  </span>
-                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-700 text-white text-xs font-bold shadow-md">
-                    <span>⚡ Live Production</span>
-                  </span>
+                <div className="pt-2">
+                  <PlatformBadges platforms={project.platforms} />
                 </div>
 
                 {/* Tech Stack Pills */}

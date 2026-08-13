@@ -13,6 +13,7 @@ import PageTransition from "@/components/PageTransition";
 import { ProjectFlipCard } from "@/components/ProjectFlipCard";
 import { FaqSection } from "@/components/FaqSection";
 import { projectsData } from "@/data/projectsData";
+import servicesHeroBackground from "@/assets/services-hero-tech-background.jpeg";
 
 const servicesList = [
   {
@@ -147,6 +148,12 @@ const Services = () => {
 
         {/* 1. Hero Section */}
         <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-slate-950 text-white border-b border-slate-800">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${servicesHeroBackground})` }}
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-slate-950/68" aria-hidden="true" />
           <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 

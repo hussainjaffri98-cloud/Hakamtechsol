@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-
 import { ChevronDown, Menu, X, ArrowRight, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
+import builtToWinImage from "@/assets/built-to-win-phones.png";
 
 const servicesMegaMenu = [
   {
@@ -271,16 +272,14 @@ const Navbar = () => {
                     </p>
                   </div>
                   
-                  {/* Smartphone Illustration Graphic */}
+                  {/* Product Visual */}
                   <div className="mt-6 flex justify-center">
-                    <div className="relative w-36 h-44 bg-slate-900 rounded-3xl border-4 border-slate-700 shadow-xl p-2 flex flex-col justify-between items-center overflow-hidden">
-                      <div className="w-10 h-2 bg-slate-800 rounded-full" />
-                      <div className="w-12 h-12 rounded-full bg-sky-500/20 border border-sky-500/40 flex items-center justify-center text-sky-400 font-extrabold text-xl">
-                        S
-                      </div>
-                      <div className="w-full bg-[#0f6cbd] text-white text-[9px] font-bold text-center py-1 rounded-lg">
-                        Tech Solutions
-                      </div>
+                    <div className="flex h-44 w-full items-center justify-center overflow-hidden rounded-2xl sm:h-52 lg:h-44">
+                      <img
+                        src={builtToWinImage}
+                        alt="Mobile dashboard and digital wallet applications"
+                        className="h-full w-full object-contain object-center"
+                      />
                     </div>
                   </div>
                 </div>
@@ -338,16 +337,14 @@ const Navbar = () => {
                     </p>
                   </div>
                   
-                  {/* Smartphone Graphic */}
+                  {/* Product Visual */}
                   <div className="mt-6 flex justify-center">
-                    <div className="relative w-36 h-44 bg-slate-900 rounded-3xl border-4 border-slate-700 shadow-xl p-2 flex flex-col justify-between items-center overflow-hidden">
-                      <div className="w-10 h-2 bg-slate-800 rounded-full" />
-                      <div className="w-12 h-12 rounded-full bg-sky-500/20 border border-sky-500/40 flex items-center justify-center text-sky-400 font-extrabold text-xl">
-                        S
-                      </div>
-                      <div className="w-full bg-[#0f6cbd] text-white text-[9px] font-bold text-center py-1 rounded-lg">
-                        Custom Tech
-                      </div>
+                    <div className="flex h-44 w-full items-center justify-center overflow-hidden rounded-2xl sm:h-52 lg:h-44">
+                      <img
+                        src={builtToWinImage}
+                        alt="Mobile dashboard and digital wallet applications"
+                        className="h-full w-full object-contain object-center"
+                      />
                     </div>
                   </div>
                 </div>
