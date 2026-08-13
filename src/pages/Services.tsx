@@ -13,7 +13,7 @@ import PageTransition from "@/components/PageTransition";
 import { ProjectFlipCard } from "@/components/ProjectFlipCard";
 import { FaqSection } from "@/components/FaqSection";
 import { projectsData } from "@/data/projectsData";
-import servicesHeroBackground from "@/assets/services-hero-tech-background.jpeg";
+import servicesHeroBackground from "@/assets/services-hero-background.jpg";
 
 const servicesList = [
   {
@@ -153,7 +153,7 @@ const Services = () => {
             style={{ backgroundImage: `url(${servicesHeroBackground})` }}
             aria-hidden="true"
           />
-          <div className="absolute inset-0 bg-slate-950/68" aria-hidden="true" />
+          <div className="absolute inset-0 bg-slate-950/78" aria-hidden="true" />
           <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
