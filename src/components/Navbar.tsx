@@ -5,6 +5,7 @@ import { ChevronDown, Menu, X, ArrowRight, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 import builtToWinImage from "@/assets/built-to-win-phones.png";
+import technologiesDropdownImage from "@/assets/technologies-dropdown.png";
 
 const servicesMegaMenu = [
   {
@@ -183,8 +184,8 @@ const Navbar = () => {
               </div>
 
               <Link
-                to="/about"
-                className="text-sm font-semibold text-slate-800 hover:text-[#0f6cbd] transition-colors"
+                to="/insights"
+                className={`text-sm font-semibold transition-colors ${location.pathname === "/insights" ? "text-[#0f6cbd]" : "text-slate-800 hover:text-[#0f6cbd]"}`}
               >
                 Insights
               </Link>
@@ -243,6 +244,10 @@ const Navbar = () => {
                   )}
                 </AnimatePresence>
               </div>
+
+              <Link to="/team" className={`text-sm font-semibold transition-colors ${location.pathname === "/team" ? "text-[#0f6cbd]" : "text-slate-800 hover:text-[#0f6cbd]"}`}>
+                Team
+              </Link>
             </div>
 
             {/* Right GET A QUOTE CTA Button */}
@@ -403,11 +408,12 @@ const Navbar = () => {
           >
             <div className="container mx-auto px-6 py-8 lg:py-10">
               <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-                <div className="lg:col-span-3 rounded-2xl border border-slate-200/80 bg-slate-50 p-6">
-                  <h3 className="text-2xl font-extrabold leading-tight text-slate-900">Technologies</h3>
-                  <p className="mt-3 text-xs leading-relaxed text-slate-600 sm:text-sm">
-                    Modern, production-ready technologies selected for scalable digital products.
-                  </p>
+                <div className="h-52 overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-950 lg:col-span-3 lg:h-[220px]">
+                  <img
+                    src={technologiesDropdownImage}
+                    alt="Technology solutions for web, mobile, backend, and commerce development"
+                    className="h-full w-full object-cover object-center"
+                  />
                 </div>
 
                 <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 lg:col-span-9 lg:grid-cols-4">
@@ -467,8 +473,11 @@ const Navbar = () => {
               <Link to="/portfolio" onClick={() => setIsOpen(false)} className="text-base font-bold text-slate-800 hover:text-[#0f6cbd] py-2 border-b border-slate-100">
                 Portfolio & Case Studies
               </Link>
-              <Link to="/about" onClick={() => setIsOpen(false)} className="text-base font-bold text-slate-800 hover:text-[#0f6cbd] py-2 border-b border-slate-100">
-                About & Insights
+              <Link to="/team" onClick={() => setIsOpen(false)} className="text-base font-bold text-slate-800 hover:text-[#0f6cbd] py-2 border-b border-slate-100">
+                Team
+              </Link>
+              <Link to="/insights" onClick={() => setIsOpen(false)} className="text-base font-bold text-slate-800 hover:text-[#0f6cbd] py-2 border-b border-slate-100">
+                Insights
               </Link>
               <Link to="/contact" onClick={() => setIsOpen(false)}>
                 <Button className="w-full bg-[#0f6cbd] hover:bg-blue-700 text-white font-extrabold mt-4 py-3 rounded-full shadow-md">

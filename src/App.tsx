@@ -11,6 +11,8 @@ import Contact from "./pages/Contact";
 import Portfolio from "./pages/Portfolio";
 import ProjectDetail from "./pages/ProjectDetail";
 import NotFound from "./pages/NotFound";
+import Team from "./pages/Team";
+import Insights from "./pages/Insights";
 import ChatWidget from "./components/ChatWidget";
 import BackToTop from "./components/BackToTop";
 
@@ -28,6 +30,8 @@ const AnimatedRoutes = () => {
         <Route path="/portfolio/:id" element={<ProjectDetail />} />
         <Route path="/case-study/:id" element={<ProjectDetail />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/team" element={<Team />} />
+        <Route path="/insights" element={<Insights />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>

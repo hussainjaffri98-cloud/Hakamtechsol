@@ -10,11 +10,11 @@ import PageTransition from "@/components/PageTransition";
 import Footer from "@/components/Footer";
 import { ProjectFlipCard } from "@/components/ProjectFlipCard";
 import { projectsData } from "@/data/projectsData";
-import heroImage from "@/assets/hero-tech.jpg";
 import webDevImage from "@/assets/web-dev.jpg";
 import mobileDevImage from "@/assets/mobile-dev.jpg";
 import freelanceImage from "@/assets/freelance.jpg";
 import teamImage from "@/assets/team.jpg";
+import homeHeroVideo from "@/assets/home-hero-technology.mp4";
 
 const servicesList = [
   {
@@ -65,75 +65,60 @@ const Index = () => {
         <Navbar />
 
         {/* 1. Hero Section */}
-        <section className="relative overflow-hidden border-b border-slate-200 bg-white pt-28 pb-16 md:pt-36 md:pb-24">
+        <section className="relative overflow-hidden border-b border-slate-800 bg-slate-950 pt-28 pb-16 md:pt-36 md:pb-24">
+          <video autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" aria-hidden="true">
+            <source src={homeHeroVideo} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-slate-950/75" aria-hidden="true" />
           <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              <div className="lg:col-span-7 space-y-6">
-                <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0f6cbd]">
+            <div className="grid grid-cols-1 items-center">
+              <div className="flex flex-col items-center space-y-6 text-center">
+                <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-sky-300">
                   <Sparkles size={14} /> Built To Win • Digital Product Studio
                 </div>
 
-                <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-900 leading-tight">
-                  Design and Build your <span className="text-[#0f6cbd]">Digital Reality</span> with Clarity.
+                <h1 className="max-w-6xl text-4xl font-extrabold leading-tight text-white sm:text-6xl">
+                  Design and Build your <span className="text-sky-400">Digital Reality</span> with Clarity.
                 </h1>
 
-                <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl">
+                <p className="max-w-4xl text-lg leading-relaxed text-slate-200 sm:text-xl">
                   HakamTechSol partners with ambitious teams globally to engineer web portals, mobile apps, SaaS platforms, and enterprise software.
                 </p>
 
-                <div className="pt-2 flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col gap-4 pt-2 sm:flex-row">
                   <Link to="/contact">
                     <Button size="lg" className="w-full sm:w-auto bg-[#0f6cbd] hover:bg-blue-700 text-white font-extrabold px-8 py-6 text-base rounded-full shadow-lg">
                       GET A QUOTE <ArrowRight size={18} className="ml-2" />
                     </Button>
                   </Link>
                   <Link to="/portfolio">
-                    <Button size="lg" variant="outline" className="w-full sm:w-auto border-slate-300 bg-white hover:bg-slate-50 text-slate-800 font-bold px-8 py-6 text-base rounded-full shadow-sm">
+                    <Button size="lg" variant="outline" className="w-full sm:w-auto border-slate-600 bg-slate-900/80 hover:bg-slate-800 text-white font-bold px-8 py-6 text-base rounded-full shadow-sm">
                       Explore Case Studies
                     </Button>
                   </Link>
                 </div>
 
                 {/* Key Stats Bar */}
-                <div className="pt-8 border-t border-slate-200/80 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center sm:text-left">
+                <div className="grid w-full max-w-5xl grid-cols-2 gap-4 border-t border-slate-700 pt-8 text-center sm:grid-cols-4">
                   <div>
-                    <div className="text-2xl font-extrabold text-slate-900">50+</div>
-                    <div className="text-xs text-slate-500 font-medium">Projects Delivered</div>
+                    <div className="text-2xl font-extrabold text-white">50+</div>
+                    <div className="text-xs text-slate-300 font-medium">Projects Delivered</div>
                   </div>
                   <div>
                     <div className="text-2xl font-extrabold text-[#0f6cbd]">99.9%</div>
-                    <div className="text-xs text-slate-500 font-medium">Platform Uptime</div>
+                    <div className="text-xs text-slate-300 font-medium">Platform Uptime</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-extrabold text-slate-900">4.9 / 5.0</div>
-                    <div className="text-xs text-slate-500 font-medium">Client Rating</div>
+                    <div className="text-2xl font-extrabold text-white">4.9 / 5.0</div>
+                    <div className="text-xs text-slate-300 font-medium">Client Rating</div>
                   </div>
                   <div>
                     <div className="text-2xl font-extrabold text-[#0f6cbd]">24/7</div>
-                    <div className="text-xs text-slate-500 font-medium">Dedicated Support</div>
+                    <div className="text-xs text-slate-300 font-medium">Dedicated Support</div>
                   </div>
                 </div>
               </div>
 
-              {/* Right Hero Image Card */}
-              <div className="lg:col-span-5">
-                <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-3 shadow-2xl">
-                  <img
-                    src={heroImage}
-                    alt="HakamTechSol Engineering"
-                    className="h-[380px] sm:h-[460px] w-full rounded-2xl object-cover"
-                  />
-                  <div className="absolute inset-x-6 bottom-6 bg-slate-950/90 backdrop-blur-md p-4 rounded-2xl border border-white/10 text-white shadow-xl">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-xs font-bold uppercase tracking-wider text-sky-400">Product-Led Delivery</div>
-                        <div className="text-sm font-semibold">Web, Mobile & Enterprise Architecture</div>
-                      </div>
-                      <span className="w-3 h-3 rounded-full bg-sky-400 animate-pulse" />
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>

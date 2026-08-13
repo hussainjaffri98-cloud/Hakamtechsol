@@ -160,20 +160,23 @@ const Services = () => {
           <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Left Hero Text */}
-              <div className="lg:col-span-7 space-y-6">
+              <div className="lg:col-span-7 flex flex-col items-center space-y-6 text-center">
                 <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-500/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-sky-400">
                   <Sparkles size={14} /> Full-Spectrum Software Engineering
                 </div>
 
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
-                  Future-Proof Your Business With Scalable <span className="text-sky-400">Web, Mobile & AI</span> Solutions.
+                <h1 className="max-w-4xl text-3xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
+                  Future-Proof Your<br />
+                  Business With Scalable<br />
+                  <span className="text-sky-400">Web, Mobile & AI</span><br />
+                  Solutions.
                 </h1>
 
-                <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal">
+                <p className="max-w-3xl text-base font-normal leading-relaxed text-slate-300 sm:text-lg">
                   Transforming ambitious companies with custom products engineered for accelerated digital growth, high performance, and bank-grade security.
                 </p>
 
-                <div className="pt-2 flex flex-wrap gap-4">
+                <div className="flex flex-wrap justify-center gap-4 pt-2">
                   <a href="#consultation-form">
                     <Button size="lg" className="bg-[#0f6cbd] hover:bg-blue-700 text-white font-extrabold px-8 py-6 rounded-full text-base shadow-lg">
                       GET A FREE QUOTE <ArrowRight size={18} className="ml-2" />
