@@ -15,6 +15,12 @@ import mobileDevImage from "@/assets/mobile-dev.jpg";
 import freelanceImage from "@/assets/freelance.jpg";
 import teamImage from "@/assets/team.jpg";
 import homeHeroVideo from "@/assets/home-hero-technology.mp4";
+import automotiveImage from "@/assets/industries/automotive.jpg";
+import healthcareImage from "@/assets/industries/healthcare.jpg";
+import educationImage from "@/assets/industries/education.jpg";
+import realEstateImage from "@/assets/industries/real-estate.jpg";
+import sportsImage from "@/assets/industries/sports.jpg";
+import ecommerceImage from "@/assets/industries/ecommerce.jpg";
 
 const servicesList = [
   {
@@ -50,12 +56,12 @@ const servicesList = [
 ];
 
 const industriesList = [
-  { name: "Automotive", desc: "Transforming automotive logistics & vehicle coordination.", icon: Car },
-  { name: "Healthcare", desc: "Clinical patient records, visit tracking & medical reports.", icon: Stethoscope },
-  { name: "Education", desc: "Quranic learning portals & student progress tracking.", icon: GraduationCap },
-  { name: "Real Estate", desc: "Property portals, realtor dashboards & listing tools.", icon: Building2 },
-  { name: "Sports Analytics", desc: "Player evaluation, squad analytics & performance radar.", icon: Trophy },
-  { name: "ECommerce & Retail", desc: "High-conversion web stores & inventory management.", icon: ShoppingCart },
+  { name: "Automotive", desc: "Transforming automotive logistics & vehicle coordination.", icon: Car, image: automotiveImage },
+  { name: "Healthcare", desc: "Clinical patient records, visit tracking & medical reports.", icon: Stethoscope, image: healthcareImage },
+  { name: "Education", desc: "Quranic learning portals & student progress tracking.", icon: GraduationCap, image: educationImage },
+  { name: "Real Estate", desc: "Property portals, realtor dashboards & listing tools.", icon: Building2, image: realEstateImage },
+  { name: "Sports Analytics", desc: "Player evaluation, squad analytics & performance radar.", icon: Trophy, image: sportsImage },
+  { name: "ECommerce & Retail", desc: "High-conversion web stores & inventory management.", icon: ShoppingCart, image: ecommerceImage },
 ];
 
 const Index = () => {
@@ -195,14 +201,27 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
               {industriesList.map((ind, idx) => (
-                <div key={idx} className="p-6 rounded-2xl bg-slate-950 border border-slate-800 space-y-3 hover:border-sky-500/50 transition-all">
-                  <div className="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold">
-                    <ind.icon size={20} />
+                <div key={idx} className="group relative min-h-[248px] overflow-hidden rounded-2xl border border-sky-400/25 bg-slate-950 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/60 hover:shadow-sky-950/50">
+                  <img
+                    src={ind.image}
+                    alt={ind.name}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/65 to-slate-950/5" />
+                  <div className="absolute inset-x-0 bottom-0 flex items-end gap-3 p-4">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-sky-400/40 bg-slate-950/80 text-sky-400 backdrop-blur-sm">
+                      <ind.icon size={25} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-base font-bold text-white">{ind.name}</h3>
+                      <p className="mt-1 text-xs leading-relaxed text-slate-300">{ind.desc}</p>
+                    </div>
+                    <div className="mb-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition-colors group-hover:bg-sky-500">
+                      <ArrowRight size={17} />
+                    </div>
                   </div>
-                  <h3 className="text-lg font-bold text-white">{ind.name}</h3>
-                  <p className="text-xs text-slate-400 leading-relaxed">{ind.desc}</p>
                 </div>
               ))}
             </div>

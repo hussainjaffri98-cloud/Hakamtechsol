@@ -194,14 +194,24 @@ const ProjectDetail: React.FC = () => {
             </div>
 
             {project.galleryImages ? (
-              <div className="grid grid-cols-1 gap-6">
+              <div className={project.category === "Mobile App" ? "grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5" : "grid grid-cols-1 gap-6"}>
                 {project.galleryImages.map((image) => (
-                  <img
-                    key={image.src}
-                    src={image.src}
-                    alt={image.alt}
-                    className="h-auto w-full rounded-2xl object-contain shadow-md"
-                  />
+                  project.category === "Mobile App" ? (
+                    <div key={image.src} className="rounded-2xl border border-slate-200 bg-white p-2 shadow-md transition-shadow hover:shadow-xl">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="h-full w-full rounded-xl object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <img
+                      key={image.src}
+                      src={image.src}
+                      alt={image.alt}
+                      className="h-auto w-full rounded-2xl object-contain shadow-md"
+                    />
+                  )
                 ))}
               </div>
             ) : (

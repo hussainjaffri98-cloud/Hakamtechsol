@@ -1,6 +1,11 @@
 import myPlaysOperationsImage from "@/assets/myplays-operations.jpeg";
 import khyratnaEcommerceImage from "@/assets/khyratna-ecommerce.jpeg";
 import khyratnaScreensImage from "@/assets/khyratna-screens.png";
+import khyratnaCartImage from "@/assets/khyratna-cart.jpeg";
+import khyratnaAccountImage from "@/assets/khyratna-account.jpeg";
+import khyratnaHomeImage from "@/assets/khyratna-home.jpeg";
+import khyratnaProductImage from "@/assets/khyratna-product.jpeg";
+import khyratnaLoginImage from "@/assets/khyratna-login.jpeg";
 import matchProLoginImage from "@/assets/matchpro-login.jpeg";
 import matchProDashboardImage from "@/assets/matchpro-dashboard.jpeg";
 import matchProCustomersImage from "@/assets/matchpro-customers.jpeg";
@@ -12,6 +17,32 @@ import klsNotaryDetailsImage from "@/assets/kls-notary-details.jpeg";
 import klsNotarySummaryImage from "@/assets/kls-notary-summary.jpeg";
 import klsLoginImage from "@/assets/kls-login.jpeg";
 import klsDashboardImage from "@/assets/kls-dashboard.jpeg";
+import notaryManagementSystemImage from "@/assets/notary-management-system.jpeg";
+import klsPropertyPortalImage from "@/assets/kls-property-portal.png";
+import parkingAlertAppImage from "@/assets/parking-alert-app.jpeg";
+import learningManagementSystemImage from "@/assets/learning-management-system.jpeg";
+import hospitalManagementSystemImage from "@/assets/hospital-management-system.jpeg";
+import angelopoulosLoyaltyImage from "@/assets/angelopoulos-loyalty.jpeg";
+import playersEvaluationLoginImage from "@/assets/players-evaluation-login.jpeg";
+import playersEvaluationDashboardImage from "@/assets/players-evaluation-dashboard.jpeg";
+import playersEvaluationPlayerCardsImage from "@/assets/players-evaluation-player-cards.jpeg";
+import playersEvaluationManagementImage from "@/assets/players-evaluation-management.jpeg";
+import playersEvaluationAddPlayerImage from "@/assets/players-evaluation-add-player.jpeg";
+import playersEvaluationTeamsImage from "@/assets/players-evaluation-teams.jpeg";
+import playersEvaluationTeamRosterImage from "@/assets/players-evaluation-team-roster.jpeg";
+import playersEvaluationRadarImage from "@/assets/players-evaluation-radar.jpeg";
+import playersEvaluationComparisonImage from "@/assets/players-evaluation-comparison.jpeg";
+import playersEvaluationCoverImage from "@/assets/players-evaluation-cover.png";
+import klsAgentsImage from "@/assets/kls-agents.jpeg";
+import klsRealDashboardImage from "@/assets/kls-real-dashboard.jpeg";
+import klsClientsImage from "@/assets/kls-clients.jpeg";
+import klsExpensesImage from "@/assets/kls-expenses.jpeg";
+import klsRealLoginImage from "@/assets/kls-real-login.jpeg";
+import klsPropertiesImage from "@/assets/kls-properties.jpeg";
+import klsPropertyProfileImage from "@/assets/kls-property-profile.jpeg";
+import klsEmailReportsImage from "@/assets/kls-email-reports.jpeg";
+import klsSupportTicketsImage from "@/assets/kls-support-tickets.jpeg";
+import klsUsersImage from "@/assets/kls-users.jpeg";
 
 export interface Project {
   id: string;
@@ -87,15 +118,20 @@ export const projectsData: Project[] = [
     badge: "Web Platform",
     platforms: ["webPortal"],
     rolesSupported: ["Super Administrator", "Realtor / Agent", "Property Owner", "Prospective Client"],
+    visualImages: {
+      card: klsPropertyPortalImage,
+    },
     galleryImages: [
-      { src: klsLoginImage, alt: "Notary Software sign-in screen" },
-      { src: klsDashboardImage, alt: "Notary Software dashboard" },
-      { src: klsNotariesImage, alt: "Notary Software records list" },
-      { src: klsReceptionImage, alt: "Notary Software reception form" },
-      { src: klsNotaryDetailsImage, alt: "Notary Software record details" },
-      { src: klsNotarySummaryImage, alt: "Notary Software notary summary" },
-      { src: klsProfileImage, alt: "Notary Software profile editor" },
-      { src: klsAdministrationImage, alt: "Notary Software administration settings" }
+      { src: klsRealLoginImage, alt: "KLS Property Portal login screen" },
+      { src: klsRealDashboardImage, alt: "KLS Property Portal dashboard" },
+      { src: klsAgentsImage, alt: "KLS Property Portal agents management" },
+      { src: klsClientsImage, alt: "KLS Property Portal clients management" },
+      { src: klsPropertiesImage, alt: "KLS Property Portal properties list" },
+      { src: klsPropertyProfileImage, alt: "KLS Property Portal property profile" },
+      { src: klsExpensesImage, alt: "KLS Property Portal expenses management" },
+      { src: klsEmailReportsImage, alt: "KLS Property Portal email reports" },
+      { src: klsSupportTicketsImage, alt: "KLS Property Portal support tickets" },
+      { src: klsUsersImage, alt: "KLS Property Portal users management" }
     ],
     mockupScreens: [
       {
@@ -162,6 +198,9 @@ export const projectsData: Project[] = [
     badge: "iOS & Android App",
     platforms: ["appStore", "googlePlay"],
     rolesSupported: ["Vehicle Owner", "Community Admin", "Building Manager"],
+    visualImages: {
+      card: parkingAlertAppImage,
+    },
     mockupScreens: [
       {
         title: "Vehicle Registration & Search",
@@ -228,6 +267,21 @@ export const projectsData: Project[] = [
     badge: "Sports Tech Platform",
     platforms: ["webPortal"],
     rolesSupported: ["Head Coach", "Scouting Administrator", "Assistant Coach", "Sports Director", "Athlete"],
+    visualImages: {
+      card: playersEvaluationCoverImage,
+      detail: playersEvaluationDashboardImage,
+    },
+    galleryImages: [
+      { src: playersEvaluationLoginImage, alt: "Players Evaluation System login screen" },
+      { src: playersEvaluationDashboardImage, alt: "Coach performance dashboard" },
+      { src: playersEvaluationPlayerCardsImage, alt: "Player evaluation cards" },
+      { src: playersEvaluationManagementImage, alt: "Players management table" },
+      { src: playersEvaluationAddPlayerImage, alt: "Add player workflow" },
+      { src: playersEvaluationTeamsImage, alt: "Teams management table" },
+      { src: playersEvaluationTeamRosterImage, alt: "Team player roster" },
+      { src: playersEvaluationRadarImage, alt: "Player competency radar chart" },
+      { src: playersEvaluationComparisonImage, alt: "Player versus team comparison" },
+    ],
     mockupScreens: [
       {
         title: "Squad Analytics & Comparison",
@@ -295,6 +349,9 @@ export const projectsData: Project[] = [
     badge: "EdTech Mobile App",
     platforms: ["appStore", "googlePlay", "webPortal"],
     rolesSupported: ["Super Administrator", "Teacher / Qari", "Student", "Parent / Guardian"],
+    visualImages: {
+      card: learningManagementSystemImage,
+    },
     mockupScreens: [
       {
         title: "Study Al-Quran Portal Sign-In",
@@ -360,6 +417,9 @@ export const projectsData: Project[] = [
     badge: "Enterprise Healthcare",
     platforms: ["webPortal"],
     rolesSupported: ["Hospital Administrator", "Senior Consultant / Doctor", "Surgical Specialist", "Reception / Receptionist", "Lab Technician"],
+    visualImages: {
+      card: hospitalManagementSystemImage,
+    },
     mockupScreens: [
       {
         title: "Outpatient Visits & Filter",
@@ -424,6 +484,9 @@ export const projectsData: Project[] = [
     badge: "Loyalty Mobile App",
     platforms: ["appStore", "googlePlay"],
     rolesSupported: ["Customer", "Store Manager", "Administrator"],
+    visualImages: {
+      card: angelopoulosLoyaltyImage,
+    },
     mockupScreens: [
       { title: "Rewards Home", subtitle: "Points & Gift Offers", description: "Customer dashboard for viewing available rewards, active points, and promotional offers." },
       { title: "Receipt Scanner", subtitle: "Quick Points Collection", description: "Barcode scanning flow that makes it easy to collect loyalty points after a purchase." },
@@ -534,10 +597,76 @@ export const projectsData: Project[] = [
       card: khyratnaEcommerceImage,
       detail: khyratnaScreensImage,
     },
+    galleryImages: [
+      { src: khyratnaHomeImage, alt: "Khyratna home and product discovery screen" },
+      { src: khyratnaProductImage, alt: "Khyratna product details screen" },
+      { src: khyratnaCartImage, alt: "Khyratna shopping cart screen" },
+      { src: khyratnaAccountImage, alt: "Khyratna account screen" },
+      { src: khyratnaLoginImage, alt: "Khyratna login screen" }
+    ],
     mockupScreens: [
       { title: "Product Discovery", subtitle: "Curated Product Listings", description: "Easy-to-browse product catalog designed for quick discovery and shopping." },
       { title: "Cart & Checkout", subtitle: "Payment & Delivery Options", description: "Flexible cart, payment, delivery, and pickup experience for customers." },
       { title: "Order Tracking", subtitle: "GPS & Push Updates", description: "Location-aware order tracking with timely notifications and updates." }
+    ]
+  },
+  {
+    id: "notary-management-system",
+    title: "NOTARY MANAGEMENT SYSTEM",
+    subtitle: "Secure, Centralized Legal Workflow Platform for Notaries and Legal Professionals",
+    category: "Web Application",
+    client: "Notary System",
+    duration: "Web Platform Delivery",
+    role: "Full-Stack Development & System Architecture",
+    summary: "A centralized Notary Software platform that replaces manual paperwork with secure record management, case workflows, reporting, and role-based access.",
+    fullDescription: "Notary Management System is a complete digital solution for notaries, lawyers, and legal professionals. It manages legal documents, clients, agreements, financial records, cases, and reports through a secure, centralized workflow. Developed using React, Laravel, and MySQL.",
+    techStack: ["React", "Laravel", "MySQL", "Role-Based Access", "Reporting", "REST API"],
+    keyFeatures: [
+      "Transfer, Agency, Money, Proof, Guarantee & Agreement Management",
+      "Case Registration, Service Management & Fee Calculation",
+      "Active and Historical Notary Record Tracking",
+      "Detailed Reports with Date, Office & Service Filters",
+      "Staff, Roles, Permissions & Secure Access Management",
+      "Branding, Contact Details & System Settings Customization",
+      "Paperless Legal Workflow with Organized Digital Records"
+    ],
+    challenges: [
+      "Replacing manual legal paperwork with a reliable and organized digital workflow.",
+      "Managing sensitive records while giving each staff member appropriate access.",
+      "Keeping legal services, fees, documents, and reports connected in one system."
+    ],
+    solutions: [
+      "Built centralized case, agreement, document, and financial management modules.",
+      "Implemented role-based access control for administrators, notaries, and staff.",
+      "Created flexible reporting and historical record tools for faster legal operations."
+    ],
+    metrics: [
+      { label: "Workflow", value: "Paperless" },
+      { label: "Access", value: "Role-Based" },
+      { label: "Records", value: "Centralized" },
+      { label: "Platform", value: "Web" }
+    ],
+    accentColor: "from-violet-600 to-indigo-700",
+    gradient: "bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-700",
+    badge: "Legal Management Platform",
+    platforms: ["webPortal"],
+    rolesSupported: ["System Administrator", "Notary", "Legal Assistant", "Office Staff"],
+    visualImages: {
+      card: notaryManagementSystemImage,
+    },
+    galleryImages: [
+      { src: klsLoginImage, alt: "Notary Management System sign-in screen" },
+      { src: klsDashboardImage, alt: "Notary Management System dashboard" },
+      { src: klsNotariesImage, alt: "Notary Management System records list" },
+      { src: klsReceptionImage, alt: "Notary Management System case registration" },
+      { src: klsNotaryDetailsImage, alt: "Notary Management System case details" },
+      { src: klsProfileImage, alt: "Notary Management System profile editor" },
+      { src: klsAdministrationImage, alt: "Notary Management System administration settings" }
+    ],
+    mockupScreens: [
+      { title: "Notary Dashboard", subtitle: "Legal Workflow Overview", description: "Centralized dashboard for active legal services, records, and administration." },
+      { title: "Case Registration", subtitle: "Services & Fee Management", description: "Structured workflow for registering cases, agreements, services, and financial details." },
+      { title: "Reports & Records", subtitle: "Historical Legal Data", description: "Searchable digital records with detailed filtering and reporting tools." }
     ]
   }
 ];
