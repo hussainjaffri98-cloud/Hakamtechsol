@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2, Cloud, Code2, Cpu, Globe, Megaphone, PenTool, Smartphone, Users } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import PageTransition from "@/components/PageTransition";
 import servicesHeroBackground from "@/assets/services-hero-background.jpg";
+import { ServiceIllustration, ServiceIllustrationType } from "@/components/ServiceIllustration";
 
-const services = [
-  { icon: Smartphone, title: "Mobile App Development", subtitle: "Native iOS, Android & cross-platform applications", features: ["iOS & Android engineering", "Flutter & React Native", "Push notifications and offline sync"] },
-  { icon: Code2, title: "Custom Software Development", subtitle: "ERP, CRM and workflow software built around your business", features: ["ERP & CRM platforms", "Role-based access control", "Reports and integrations"] },
-  { icon: Globe, title: "Web Development & Portals", subtitle: "Modern client portals, web apps and commerce experiences", features: ["React & Node.js applications", "E-commerce and payments", "SEO-ready responsive platforms"] },
-  { icon: Cpu, title: "AI & Automations", subtitle: "AI-enabled workflows, intelligent assistants and data insights", features: ["Custom AI agents", "NLP and analytics", "Automated business workflows"] },
-  { icon: PenTool, title: "Graphic Designing", subtitle: "Visual identity and product design that makes your brand memorable", features: ["Brand identity systems", "Product UI/UX design", "Campaign-ready creative assets"] },
-  { icon: Megaphone, title: "Social Media Marketing", subtitle: "Content and performance campaigns designed for measurable growth", features: ["Social content strategy", "Paid campaign management", "Audience and performance reporting"] },
-  { icon: Cloud, title: "Cloud Infrastructure & DevOps", subtitle: "Reliable cloud delivery, monitoring and scalable deployments", features: ["Cloud migration and setup", "CI/CD delivery pipelines", "Monitoring and disaster recovery"] },
-  { icon: Users, title: "Staff Augmentation", subtitle: "Experienced engineers who integrate with your delivery team", features: ["Mobile and full-stack talent", "Flexible sprint engagement", "Direct collaboration and ownership"] },
+const services: { illustration: ServiceIllustrationType; title: string; subtitle: string; features: string[] }[] = [
+  { illustration: "mobile", title: "Mobile App Development", subtitle: "Native iOS, Android & cross-platform applications", features: ["iOS & Android engineering", "Flutter & React Native", "Push notifications and offline sync"] },
+  { illustration: "software", title: "Custom Software Development", subtitle: "ERP, CRM and workflow software built around your business", features: ["ERP & CRM platforms", "Role-based access control", "Reports and integrations"] },
+  { illustration: "web", title: "Web Development & Portals", subtitle: "Modern client portals, web apps and commerce experiences", features: ["React & Node.js applications", "E-commerce and payments", "SEO-ready responsive platforms"] },
+  { illustration: "ai", title: "AI & Automations", subtitle: "AI-enabled workflows, intelligent assistants and data insights", features: ["Custom AI agents", "NLP and analytics", "Automated business workflows"] },
+  { illustration: "design", title: "Graphic Designing", subtitle: "Visual identity and product design that makes your brand memorable", features: ["Brand identity systems", "Product UI/UX design", "Campaign-ready creative assets"] },
+  { illustration: "marketing", title: "Social Media Marketing", subtitle: "Content and performance campaigns designed for measurable growth", features: ["Social content strategy", "Paid campaign management", "Audience and performance reporting"] },
+  { illustration: "cloud", title: "Cloud Infrastructure & DevOps", subtitle: "Reliable cloud delivery, monitoring and scalable deployments", features: ["Cloud migration and setup", "CI/CD delivery pipelines", "Monitoring and disaster recovery"] },
+  { illustration: "team", title: "Staff Augmentation", subtitle: "Experienced engineers who integrate with your delivery team", features: ["Mobile and full-stack talent", "Flexible sprint engagement", "Direct collaboration and ownership"] },
 ];
 
 const Services = () => (
@@ -40,9 +41,8 @@ const Services = () => (
           <div className="mx-auto mb-14 max-w-2xl text-center"><span className="rounded-full bg-sky-100 px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0f6cbd]">Our core services</span><h2 className="mt-4 text-3xl font-extrabold text-slate-900 sm:text-5xl">End-to-end technology capabilities</h2><p className="mt-3 text-sm text-slate-600">Choose the expertise that fits your next product, platform, or growth initiative.</p></div>
           <div className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => {
-              const Icon = service.icon;
               return <article key={service.title} className="flex min-h-[360px] flex-col rounded-3xl border border-slate-200 bg-slate-50 p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl">
-                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0f6cbd] text-white shadow-md"><Icon size={26} /></span>
+                <div className="flex h-14 items-center"><ServiceIllustration type={service.illustration} /></div>
                 <h2 className="mt-5 text-xl font-extrabold text-slate-900">{service.title}</h2><p className="mt-2 text-sm font-semibold text-[#0f6cbd]">{service.subtitle}</p>
                 <ul className="mt-5 flex-1 space-y-2 text-sm text-slate-600">{service.features.map((feature) => <li key={feature} className="flex gap-2"><CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#0f6cbd]" />{feature}</li>)}</ul>
                 <Link to={`/quote?service=${encodeURIComponent(service.title)}`} className="mt-7"><Button className="w-full rounded-xl bg-[#0f6cbd] font-extrabold text-white hover:bg-blue-700">Get Service Quote <ArrowRight size={15} className="ml-2" /></Button></Link>
