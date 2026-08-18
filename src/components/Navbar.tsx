@@ -347,17 +347,11 @@ const Navbar = () => {
             className="fixed left-0 right-0 top-[4rem] lg:top-[5rem] z-40 bg-white border-b border-slate-200 shadow-2xl overflow-y-auto max-h-[85vh]"
           >
             <div className="container mx-auto px-6 py-8 lg:py-10">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                {/* Left Side Highlight Box */}
-                <div className="lg:col-span-3 bg-slate-50 p-6 rounded-2xl border border-slate-200/80 flex flex-col justify-between">
-                  <div className="space-y-3">
-                    <h3 className="text-2xl font-extrabold text-slate-900 leading-tight">Built to Win</h3>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      Transforming business with our future-ready tech solutions. Get custom products for accelerated digital transformation across industries globally.
-                    </p>
-                  </div>
-                  
-                  {/* Product Visual */}
+              <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+                <div className="flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-slate-50 p-6 lg:col-span-3">
+                  <p className="text-xs leading-relaxed text-slate-600 sm:text-sm">
+                    Transforming business with our future-ready tech solutions. Get custom products for accelerated digital transformation across industries globally.
+                  </p>
                   <div className="mt-6 flex justify-center">
                     <div className="flex h-44 w-full items-center justify-center overflow-hidden rounded-2xl sm:h-52 lg:h-44">
                       <img
@@ -368,9 +362,7 @@ const Navbar = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Right Grid */}
-                <div className="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:col-span-9">
                   {industriesMegaMenu.map((ind) => {
                     const Icon = ind.icon;
                     return (
