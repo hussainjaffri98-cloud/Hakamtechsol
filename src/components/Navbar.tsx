@@ -4,7 +4,7 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-
 import { ChevronDown, Menu, X, ArrowRight, Car, Cross, Clock3, GraduationCap, ShoppingCart, Building2, Landmark, Truck, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
-import builtToWinImage from "@/assets/built-to-win-phones.png";
+import builtToWinImage from "@/assets/built-to-win-phones-transparent.png";
 import technologiesDropdownImage from "@/assets/technologies-dropdown.png";
 
 const servicesMegaMenu = [
@@ -348,11 +348,8 @@ const Navbar = () => {
           >
             <div className="container mx-auto px-6 py-8 lg:py-10">
               <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-                <div className="flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-slate-50 p-6 lg:col-span-3">
-                  <p className="text-xs leading-relaxed text-slate-600 sm:text-sm">
-                    Transforming business with our future-ready tech solutions. Get custom products for accelerated digital transformation across industries globally.
-                  </p>
-                  <div className="mt-6 flex justify-center">
+                <div className="flex rounded-2xl border border-slate-200/80 bg-slate-50 p-6 lg:col-span-3">
+                  <div className="flex w-full justify-center">
                     <div className="flex h-44 w-full items-center justify-center overflow-hidden rounded-2xl sm:h-52 lg:h-44">
                       <img
                         src={builtToWinImage}
