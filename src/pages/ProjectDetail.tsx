@@ -134,18 +134,18 @@ const ProjectDetail: React.FC = () => {
         {/* 3. Hero Spotlight Dark Card */}
         <section className="py-12 bg-slate-950 text-white border-b border-slate-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 p-8 sm:p-12 border border-sky-500/30 shadow-2xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-              <div className="md:col-span-7 space-y-4">
+            <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 p-8 text-center shadow-2xl sm:p-12 border border-sky-500/30">
+              <div className="space-y-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 text-xs font-bold uppercase">
                   <Sparkles className="w-3.5 h-3.5" /> {projectArchitectures[project.id].title}
                 </div>
                 <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
                   {projectArchitectures[project.id].title}
                 </h2>
-                <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                <p className="mx-auto max-w-3xl text-sm leading-relaxed text-slate-300 sm:text-base">
                   {projectArchitectures[project.id].description}
                 </p>
-                <div className="flex items-center gap-6 pt-2">
+                <div className="flex items-center justify-center gap-6 pt-2">
                   <div>
                     <div className="text-2xl font-extrabold text-sky-400">{project.metrics[0]?.value || "500K+"}</div>
                     <div className="text-xs text-slate-400">Active Users</div>
@@ -163,19 +163,6 @@ const ProjectDetail: React.FC = () => {
                 </div>
               </div>
 
-              <div className="md:col-span-5 flex justify-center">
-                <div className="w-48 h-80 bg-slate-900 rounded-[36px] border-4 border-slate-700 p-2 shadow-2xl flex flex-col justify-between overflow-hidden">
-                  <div className="w-12 h-3 bg-slate-800 rounded-full mx-auto" />
-                  <div className="p-3 bg-sky-900/50 rounded-2xl border border-sky-500/30 text-center space-y-2">
-                    <div className="text-xs font-bold text-sky-300">{project.title.split(" ")[0]} UI</div>
-                    <div className="text-[10px] text-slate-300">Live Dashboard Screen</div>
-                    <div className="w-full h-1 bg-sky-400 rounded-full" />
-                  </div>
-                  <div className="p-2 bg-[#0f6cbd] text-center text-white text-xs font-bold rounded-xl shadow">
-                    Active System
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
