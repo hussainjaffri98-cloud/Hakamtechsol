@@ -52,7 +52,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({
   const [activeIdx, setActiveIdx] = useState<number | null>(0);
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0b1320] text-white border-t border-slate-800">
+    <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0b1320] text-white border-t border-slate-800">
       <div className="container mx-auto max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column Text */}

@@ -72,6 +72,18 @@ export interface Project {
   galleryImages?: { src: string; alt: string }[];
 }
 
+export const projectArchitectures: Record<string, { title: string; description: string }> = {
+  "kls-property-portal": { title: "Role-Based Property Operations Architecture", description: "A Laravel and MySQL core separates property, agent, and administration workflows behind role-based permissions, with dashboard views optimized for fast listing and portfolio operations." },
+  "parking-alert-app": { title: "Real-Time Driver Coordination Architecture", description: "A FlutterFlow client uses Firebase services for authentication, real-time vehicle alerts, and lightweight coordination between drivers without a central call-center workflow." },
+  "players-evaluation-system": { title: "Scouting & Performance Analytics Architecture", description: "A SaaS analytics architecture combines structured player profiles, evaluation records, and comparison views so coaches can turn scouting data into consistent team decisions." },
+  "learning-management-system": { title: "Multi-Role Learning Platform Architecture", description: "The learning platform uses role-specific student, teacher, and administrator experiences with progress records, attendance workflows, and RTL-aware content delivery for Quranic education." },
+  "hospital-management-system": { title: "Secure Clinical Records Architecture", description: "A PHP and MySQL application organizes patient records, visits, investigations, and surgical history in a secure role-based clinical workflow with report generation." },
+  "angelopoulos-loyalty-app": { title: "Connected Loyalty & Rewards Architecture", description: "A Flutter and Firebase mobile architecture keeps customer accounts, rewards, barcode collection, and promotional notifications synchronized in real time with connected business systems." },
+  "matchpro-operations-platform": { title: "Centralized Operations Management Architecture", description: "React dashboards and .NET Web APIs provide a centralized operational layer for check-ins, machine readings, shifts, financial records, and role-specific reporting." },
+  "khyratna-ecommerce-app": { title: "Mobile Commerce Journey Architecture", description: "A Flutter and Firebase commerce experience connects product discovery, carts, checkout, OTP authentication, delivery choices, and GPS-aware order updates." },
+  "notary-management-system": { title: "Paperless Legal Workflow Architecture", description: "A React, Laravel, and MySQL platform centralizes cases, agreements, services, fees, documents, and reports behind configurable roles and permissions." },
+};
+
 export const projectsData: Project[] = [
   {
     id: "kls-property-portal",

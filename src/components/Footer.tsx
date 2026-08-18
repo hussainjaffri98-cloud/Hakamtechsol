@@ -55,8 +55,11 @@ const Footer = () => {
               <li><Link to="/" className="hover:text-[#f97316] transition-colors">Home</Link></li>
               <li><Link to="/about" className="hover:text-[#f97316] transition-colors">About Us</Link></li>
               <li><Link to="/services" className="hover:text-[#f97316] transition-colors">Services</Link></li>
-              <li><Link to="/portfolio" className="hover:text-[#f97316] transition-colors">Portfolio & Case Studies</Link></li>
-              <li><Link to="/contact" className="hover:text-[#f97316] transition-colors">Contact & Quote</Link></li>
+              <li><Link to="/portfolio" className="hover:text-[#f97316] transition-colors">Portfolio</Link></li>
+              <li><Link to="/portfolio" className="hover:text-[#f97316] transition-colors">Case Studies</Link></li>
+              <li><Link to="/contact" className="hover:text-[#f97316] transition-colors">Contact Us</Link></li>
+              <li><Link to="/quote" className="hover:text-[#f97316] transition-colors">Get a Quote</Link></li>
+              <li><Link to="/contact#faq" className="hover:text-[#f97316] transition-colors">FAQ</Link></li>
             </ul>
           </div>
 
@@ -67,7 +70,7 @@ const Footer = () => {
               <li><Link to="/services" className="hover:text-[#f97316] transition-colors">Mobile App Development</Link></li>
               <li><Link to="/services" className="hover:text-[#f97316] transition-colors">Custom ERP & Software</Link></li>
               <li><Link to="/services" className="hover:text-[#f97316] transition-colors">Web Development & Portals</Link></li>
-              <li><Link to="/services" className="hover:text-[#f97316] transition-colors">Artificial Intelligence & SaaS</Link></li>
+              <li><Link to="/services" className="hover:text-[#f97316] transition-colors">AI & Automations</Link></li>
               <li><Link to="/services" className="hover:text-[#f97316] transition-colors">Cloud & Staff Augmentation</Link></li>
             </ul>
           </div>
@@ -86,7 +89,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin size={16} className="text-[#f97316] shrink-0 mt-0.5" />
-                <span>Gulshan-e-Iqbal Block 6, Karachi, Pakistan</span>
+                <span>Karachi IT Park, Rashid Minhas Road, Gulshan-e-Jamal.</span>
               </li>
             </ul>
           </div>
@@ -96,9 +99,9 @@ const Footer = () => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© {currentYear} HakamTechSol. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-slate-300 transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-slate-300 transition-colors">Security Audit</a>
+            <Link to="/privacy-policy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-slate-300 transition-colors">Terms of Service</Link>
+            <Link to="/contact#faq" className="hover:text-slate-300 transition-colors">FAQ</Link>
           </div>
         </div>
       </div>

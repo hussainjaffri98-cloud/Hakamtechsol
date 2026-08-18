@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { 
   ArrowRight, CheckCircle2, Code2, Smartphone, Shield, Star, Users, Zap, 
-  Sparkles, Trophy, Cpu, Building2, Stethoscope, GraduationCap, Car, ShoppingCart, Activity 
+  Sparkles, Trophy, Cpu, Building2, Stethoscope, GraduationCap, Car, ShoppingCart, Activity, PenTool, Megaphone, Clock3, Landmark, Truck
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -39,7 +39,7 @@ const servicesList = [
     icon: Building2,
   },
   {
-    category: "Artificial Intelligence & SaaS",
+    category: "AI & Automations",
     desc: "Workflow automation, NLP, and intelligent data modeling.",
     icon: Cpu,
   },
@@ -47,6 +47,16 @@ const servicesList = [
     category: "Cloud Services & DevOps",
     desc: "Scalable cloud infrastructure, migration, and 24/7 support.",
     icon: Shield,
+  },
+  {
+    category: "Graphic Designing",
+    desc: "Distinctive visual identities, product interfaces, and campaign-ready creative assets.",
+    icon: PenTool,
+  },
+  {
+    category: "Social Media Marketing",
+    desc: "Audience-focused social strategy, content, and performance campaigns that drive growth.",
+    icon: Megaphone,
   },
   {
     category: "Staff Augmentation",
@@ -62,6 +72,9 @@ const industriesList = [
   { name: "Real Estate", desc: "Property portals, realtor dashboards & listing tools.", icon: Building2, image: realEstateImage },
   { name: "Sports Analytics", desc: "Player evaluation, squad analytics & performance radar.", icon: Trophy, image: sportsImage },
   { name: "ECommerce & Retail", desc: "High-conversion web stores & inventory management.", icon: ShoppingCart, image: ecommerceImage },
+  { name: "On-Demand", desc: "Fast, reliable booking and service-delivery platforms.", icon: Clock3, image: automotiveImage },
+  { name: "Fintech", desc: "Secure financial experiences, workflows, and digital products.", icon: Landmark, image: healthcareImage },
+  { name: "Logistics", desc: "Connected fleet, delivery, and operational visibility tools.", icon: Truck, image: realEstateImage },
 ];
 
 const Index = () => {
@@ -91,7 +104,7 @@ const Index = () => {
                 </p>
 
                 <div className="flex flex-col gap-4 pt-2 sm:flex-row">
-                  <Link to="/contact">
+                  <Link to="/quote">
                     <Button size="lg" className="w-full sm:w-auto bg-[#0f6cbd] hover:bg-blue-700 text-white font-extrabold px-8 py-6 text-base rounded-full shadow-lg">
                       GET A QUOTE <ArrowRight size={18} className="ml-2" />
                     </Button>
@@ -146,7 +159,7 @@ const Index = () => {
             </div>
 
             {/* 3D Flip Card Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
               {projectsData.slice(0, 4).map((project) => (
                 <ProjectFlipCard key={project.id} project={project} />
               ))}
@@ -201,7 +214,7 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {industriesList.map((ind, idx) => (
                 <div key={idx} className="group relative min-h-[248px] overflow-hidden rounded-2xl border border-sky-400/25 bg-slate-950 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/60 hover:shadow-sky-950/50">
                   <img
@@ -242,7 +255,7 @@ const Index = () => {
                 Schedule a consultation call with our solution architects to get a scope proposal and project estimation.
               </p>
               <div>
-                <Link to="/contact">
+                <Link to="/quote">
                   <Button size="lg" className="bg-[#0f6cbd] hover:bg-blue-700 text-white font-extrabold px-9 py-6 text-base rounded-full shadow-lg">
                     GET A QUOTE NOW
                   </Button>

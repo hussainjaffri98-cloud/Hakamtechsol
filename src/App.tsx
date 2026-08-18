@@ -13,6 +13,8 @@ import ProjectDetail from "./pages/ProjectDetail";
 import NotFound from "./pages/NotFound";
 import Team from "./pages/Team";
 import Insights from "./pages/Insights";
+import Quote from "./pages/Quote";
+import Legal from "./pages/Legal";
 import ChatWidget from "./components/ChatWidget";
 import BackToTop from "./components/BackToTop";
 
@@ -30,6 +32,9 @@ const AnimatedRoutes = () => {
         <Route path="/portfolio/:id" element={<ProjectDetail />} />
         <Route path="/case-study/:id" element={<ProjectDetail />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/quote" element={<Quote />} />
+        <Route path="/privacy-policy" element={<Legal type="privacy" />} />
+        <Route path="/terms" element={<Legal type="terms" />} />
         <Route path="/team" element={<Team />} />
         <Route path="/insights" element={<Insights />} />
         <Route path="*" element={<NotFound />} />

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, ChevronRight, Sparkles, Send, Check } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
-import { getProjectById, projectsData } from "@/data/projectsData";
+import { getProjectById, projectArchitectures, projectsData } from "@/data/projectsData";
+import { CaseStudyGallery } from "@/components/CaseStudyGallery";
 import { ProjectMockupFrame } from "@/components/ProjectMockupFrame";
 import { PlatformBadges } from "@/components/PlatformBadges";
 import { Button } from "@/components/ui/button";
@@ -137,13 +137,13 @@ const ProjectDetail: React.FC = () => {
             <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 p-8 sm:p-12 border border-sky-500/30 shadow-2xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
               <div className="md:col-span-7 space-y-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 text-xs font-bold uppercase">
-                  <Sparkles className="w-3.5 h-3.5" /> High Retention Product Architecture
+                  <Sparkles className="w-3.5 h-3.5" /> {projectArchitectures[project.id].title}
                 </div>
                 <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
-                  Achieving 60% Retention with Tailored Workflows
+                  {projectArchitectures[project.id].title}
                 </h2>
                 <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                  {project.summary} Engineered for sub-second performance, intuitive onboarding, and seamless data synchronization.
+                  {projectArchitectures[project.id].description}
                 </p>
                 <div className="flex items-center gap-6 pt-2">
                   <div>
@@ -180,8 +180,22 @@ const ProjectDetail: React.FC = () => {
           </div>
         </section>
 
+        {/* 4. Project gallery and feature breakdown */}
+        <section className="border-b border-slate-200 bg-slate-50 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+          <div className="container mx-auto max-w-6xl">
+            <div className="mb-12 max-w-2xl"><span className="inline-block rounded-full bg-sky-100 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0f6cbd]">Product experience</span><h2 className="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">Screens, architecture & key features</h2><p className="mt-3 text-sm leading-relaxed text-slate-600">Explore the product interface alongside the specific capabilities and technical approach behind this project.</p></div>
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
+              <CaseStudyGallery project={project} />
+              <div className="space-y-5 md:h-[500px] md:overflow-y-auto md:pr-3" style={{ scrollbarWidth: "thin", scrollbarColor: "#0f6cbd #e0f2fe" }}>
+                <article className="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm"><h3 className="text-lg font-extrabold text-slate-900">Architecture & technical approach</h3><p className="mt-3 text-sm leading-relaxed text-slate-600">{projectArchitectures[project.id].description}</p></article>
+                <div><div className="mb-4 flex items-center justify-between gap-4"><h3 className="text-lg font-extrabold text-slate-900">Key Features Included</h3><span className="rounded-full bg-[#0f6cbd] px-3 py-1 text-xs font-bold text-white">{project.keyFeatures.length} modules</span></div><div className="grid gap-3 sm:grid-cols-2">{project.keyFeatures.map((feature, index) => <article key={feature} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-sky-300 hover:shadow-md"><span className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-100 text-xs font-extrabold text-[#0f6cbd]">{index + 1}</span><h4 className="mt-3 text-sm font-bold leading-snug text-slate-900">{feature}</h4></article>)}</div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* 4. App Features Phone Screenshots Showcase Grid */}
-        <section className="py-16 sm:py-24 bg-slate-50 px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+        <section className="hidden">
           <div className="container mx-auto">
             <div className="text-center max-w-2xl mx-auto space-y-3 mb-14">
               <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100 text-[#0f6cbd] text-xs font-extrabold uppercase tracking-widest">
@@ -259,7 +273,7 @@ const ProjectDetail: React.FC = () => {
         </section>
 
         {/* 5. Key Features Specifications Grid */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-b border-slate-200">
+        <section className="hidden">
           <div className="container mx-auto max-w-6xl space-y-10">
             <div className="text-center max-w-2xl mx-auto space-y-3">
               <span className="inline-block px-4 py-1.5 rounded-full bg-[#0f6cbd] text-white text-xs font-extrabold uppercase tracking-widest shadow-md">
@@ -284,8 +298,18 @@ const ProjectDetail: React.FC = () => {
           </div>
         </section>
 
-        {/* 6. Contact / Get a Quote Form Section */}
-        <section id="contact-form" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white">
+        {/* Dedicated quote call to action */}
+        <section className="bg-slate-900 px-4 py-16 text-white sm:px-6 lg:px-8">
+          <div className="container mx-auto max-w-4xl rounded-3xl border border-sky-500/30 bg-slate-900 p-8 text-center shadow-2xl sm:p-12">
+            <span className="rounded-full bg-sky-500/20 px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-sky-300">Ready to start?</span>
+            <h2 className="mt-4 text-3xl font-extrabold">Get a personalized quote for your project</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-300">Tell our product team about the platform you want to build and receive a tailored scope, timeline, and estimate.</p>
+            <Link to="/quote" className="mt-7 inline-block"><Button className="rounded-full bg-[#0f6cbd] px-8 py-6 font-extrabold text-white hover:bg-blue-700">Get a Quote <ArrowRight size={16} className="ml-2" /></Button></Link>
+          </div>
+        </section>
+
+        {/* Retained source markup is hidden; quote requests use the shared Quote page above. */}
+        <section id="contact-form" className="hidden">
           <div className="container mx-auto max-w-5xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-5 space-y-6">

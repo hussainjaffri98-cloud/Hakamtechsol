@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { ChevronDown, Menu, X, ArrowRight, Car, Cross, Clock3, GraduationCap, Music2, ShoppingCart, Building2, Layers3, Landmark, Truck, Store } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight, Car, Cross, Clock3, GraduationCap, ShoppingCart, Building2, Landmark, Truck, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 import builtToWinImage from "@/assets/built-to-win-phones.png";
@@ -25,7 +25,7 @@ const servicesMegaMenu = [
     items: ["2D Game Development", "3D Game Development", "Web3 Game Development"],
   },
   {
-    category: "Artificial Intelligence",
+    category: "AI & Automations",
     items: ["Generative AI", "Natural Language Processing", "AI Agent Development"],
   },
   {
@@ -42,28 +42,26 @@ const servicesMegaMenu = [
   },
   {
     category: "Digital Marketing Services",
-    items: ["Social Media Marketing", "Search Engine Marketing", "Search Engine Optimization"],
+    items: ["Graphic Designing", "Social Media Marketing", "Search Engine Marketing", "Search Engine Optimization"],
   },
 ];
 
 const industriesMegaMenu = [
   { title: "Automotive", desc: "Transforming automotive industry with bespoke tech.", icon: Car },
   { title: "Healthcare", desc: "Better, accessible healthcare through tailored tech solutions.", icon: Cross },
-  { title: "On-Demand", desc: "Elevating on-demand services with innovative tech.", icon: Clock3 },
   { title: "Education", desc: "Enhancing education with new-age EdTech.", icon: GraduationCap },
-  { title: "Music", desc: "Advancing music industry with digital innovations.", icon: Music2 },
-  { title: "ECommerce", desc: "Driving e-commerce growth with smart tech.", icon: ShoppingCart },
+  { title: "Sports Analytics", desc: "Turning player and team data into actionable performance insights.", icon: Trophy },
+  { title: "ECommerce & Retail", desc: "Driving online growth with reliable commerce solutions.", icon: ShoppingCart },
   { title: "Real Estate", desc: "Innovating real estate with custom tech.", icon: Building2 },
-  { title: "SAAS", desc: "Developing custom solutions for SAAS platforms.", icon: Layers3 },
+  { title: "On-Demand", desc: "Elevating on-demand services with innovative tech.", icon: Clock3 },
   { title: "Fintech", desc: "Empowering fintech with specialized tech services.", icon: Landmark },
   { title: "Logistics", desc: "Optimizing logistics with intelligent tech.", icon: Truck },
-  { title: "Retail", desc: "Scaling retail businesses through advanced technology.", icon: Store },
 ];
 
 const technologiesMegaMenu = [
-  { category: "Frontend", items: ["HTML", "CSS", "JavaScript", "React.js"] },
-  { category: "Backend", items: ["Python", "Laravel", "PHP", ".NET", "C#"] },
-  { category: "Mobile", items: ["React Native", "Flutter", "Dart"] },
+  { category: "Frontend", items: ["HTML", "CSS", "JavaScript", "React", "React.js"] },
+  { category: "Backend", items: ["Node.js", "Python", "Laravel", "PHP", ".NET", "C#"] },
+  { category: "Mobile", items: ["React Native", "Flutter", "Dart", "Android", "iOS"] },
   { category: "Commerce & CMS", items: ["WordPress", "Shopify"] },
 ];
 
@@ -252,7 +250,7 @@ const Navbar = () => {
 
             {/* Right GET A QUOTE CTA Button */}
             <div className="hidden lg:flex items-center gap-4">
-              <Link to="/contact">
+              <Link to="/quote">
                 <Button className="bg-[#0f6cbd] hover:bg-blue-700 text-white font-extrabold px-7 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all text-sm tracking-wide">
                   GET A QUOTE
                 </Button>
@@ -427,14 +425,14 @@ const Navbar = () => {
                       <ul className="space-y-1.5 text-xs text-slate-600">
                         {group.items.map((item) => (
                           <li key={item}>
-                            <Link
-                              to="/services"
+                            <button
+                              type="button"
                               onClick={() => setActiveDropdown(null)}
-                              className="inline-flex items-center gap-1.5 transition-colors hover:text-[#0f6cbd] group"
+                              className="inline-flex items-center gap-1.5 text-left transition-colors hover:text-[#0f6cbd] group"
                             >
                               <span className="text-slate-400 transition-colors group-hover:text-[#0f6cbd]">›</span>
                               <span>{item}</span>
-                            </Link>
+                            </button>
                           </li>
                         ))}
                       </ul>
@@ -468,9 +466,9 @@ const Navbar = () => {
                 <summary className="cursor-pointer text-base font-bold text-slate-800 hover:text-[#0f6cbd]">Technologies</summary>
                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 pt-3 text-sm text-slate-600">
                   {technologiesMegaMenu.flatMap((group) => group.items).map((item) => (
-                    <Link key={item} to="/services" onClick={() => setIsOpen(false)} className="hover:text-[#0f6cbd]">
+                    <button key={item} type="button" onClick={() => setIsOpen(false)} className="text-left hover:text-[#0f6cbd]">
                       {item}
-                    </Link>
+                    </button>
                   ))}
                 </div>
               </details>
@@ -483,7 +481,7 @@ const Navbar = () => {
               <Link to="/insights" onClick={() => setIsOpen(false)} className="text-base font-bold text-slate-800 hover:text-[#0f6cbd] py-2 border-b border-slate-100">
                 Insights
               </Link>
-              <Link to="/contact" onClick={() => setIsOpen(false)}>
+              <Link to="/quote" onClick={() => setIsOpen(false)}>
                 <Button className="w-full bg-[#0f6cbd] hover:bg-blue-700 text-white font-extrabold mt-4 py-3 rounded-full shadow-md">
                   GET A QUOTE
                 </Button>
