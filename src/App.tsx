@@ -18,6 +18,7 @@ import Legal from "./pages/Legal";
 import Faq from "./pages/Faq";
 import ChatWidget from "./components/ChatWidget";
 import BackToTop from "./components/BackToTop";
+import SeoMeta from "./components/SeoMeta";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <SeoMeta />
         <AnimatedRoutes />
         <ChatWidget />
         <BackToTop />

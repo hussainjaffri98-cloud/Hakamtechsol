@@ -31,7 +31,7 @@ const sendSmtpEmail = async ({ host, username, password, from, to, replyTo, subj
   username: string;
   password: string;
   from: string;
-  to: string;
+  to: string[];
   replyTo: string;
   subject: string;
   html: string;
@@ -87,12 +87,15 @@ const sendSmtpEmail = async ({ host, username, password, from, to, replyTo, subj
     await command("EHLO hakamtechsol.com", 250);
     await command(`AUTH PLAIN ${encodeBase64(`\0${username}\0${password}`)}`, 235);
     await command(`MAIL FROM:<${from}>`, 250);
-    await command(`RCPT TO:<${to}>`, 250);
+    // Send RCPT TO for every recipient
+    for (const recipient of to) {
+      await command(`RCPT TO:<${recipient.trim()}>`, 250);
+    }
     await command("DATA", 354);
 
     const message = [
       `From: ${from}`,
-      `To: ${to}`,
+      `To: ${to.join(", ")}`,
       `Reply-To: ${replyTo}`,
       `Subject: =?UTF-8?B?${encodeBase64(subject)}?=`,
       "MIME-Version: 1.0",
@@ -110,6 +113,7 @@ const sendSmtpEmail = async ({ host, username, password, from, to, replyTo, subj
     connection?.close();
   }
 };
+
 
 Deno.serve(async (request) => {
   const headers = corsHeaders(request.headers.get("origin"));
@@ -156,7 +160,7 @@ Deno.serve(async (request) => {
       username: smtpUsername!,
       password: smtpPassword!,
       from: smtpFromEmail!,
-      to: notificationRecipientEmail!,
+      to: notificationRecipientEmail!.split(",").map((e) => e.trim()).filter(Boolean),
       replyTo: email,
       subject: `[HakamTechSol] ${title} from ${name}`,
       html: `<main style="font-family:Arial,sans-serif;color:#1e293b"><h2 style="color:#0f6cbd">${title}</h2><table style="border-collapse:collapse;width:100%;max-width:680px;border:1px solid #e2e8f0">${rows}</table></main>`,

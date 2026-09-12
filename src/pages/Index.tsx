@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { 
-  ArrowRight, CheckCircle2, Code2, Smartphone, Star, Users, Zap, Database,
+  ArrowRight, ArrowUpRight, CheckCircle2, Code2, Smartphone, Star, Users, Zap, Database,
   Sparkles, Trophy, Cpu, Building2, Stethoscope, GraduationCap, Car, ShoppingCart, Activity, PenTool, Megaphone, Clock3, Landmark, Truck, Plane, Clapperboard, Factory
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import PageTransition from "@/components/PageTransition";
 import Footer from "@/components/Footer";
-import { ProjectFlipCard } from "@/components/ProjectFlipCard";
+import { ProjectSlider } from "@/components/ProjectSlider";
 import { projectsData } from "@/data/projectsData";
 import webDevImage from "@/assets/web-dev.jpg";
 import mobileDevImage from "@/assets/mobile-dev.jpg";
@@ -109,7 +109,7 @@ const Index = () => {
                 <div className="flex w-full max-w-sm flex-col gap-3 pt-2 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
                   <Link to="/quote" className="w-full sm:w-auto">
                     <Button size="lg" className="w-full sm:w-auto bg-[#0f6cbd] hover:bg-blue-700 text-white font-extrabold px-8 py-6 text-base rounded-full shadow-lg">
-                      GET A QUOTE <ArrowRight size={18} className="ml-2" />
+                      GET A QUOTE <ArrowUpRight size={18} className="ml-2" />
                     </Button>
                   </Link>
                   <Link to="/portfolio" className="w-full sm:w-auto">
@@ -130,16 +130,16 @@ const Index = () => {
                     <div className="text-xs text-white font-medium">Client Satisfaction</div>
                   </div>
                   <div>
+                    <div className="text-2xl font-extrabold text-white">24/7</div>
+                    <div className="text-xs text-white font-medium">Dedicated Support</div>
+                  </div>
+                  <div>
                     <div className="text-2xl font-extrabold text-white">100%</div>
                     <div className="text-xs text-white font-medium">On-Time Delivery</div>
                   </div>
                   <div>
                     <div className="text-2xl font-extrabold text-white">100%</div>
                     <div className="text-xs text-white font-medium">Client Retention</div>
-                  </div>
-                  <div className="col-span-2 sm:col-span-1">
-                    <div className="text-2xl font-extrabold text-white">24/7</div>
-                    <div className="text-xs text-white font-medium">Dedicated Support</div>
                   </div>
                 </div>
               </div>
@@ -148,7 +148,7 @@ const Index = () => {
           </div>
         </section>
 
-        {/* 2. Featured Case Studies Section (With 3D Card Flip Effect!) */}
+        {/* 2. Featured Case Studies Section (Auto-Sliding Slider) */}
         <section className="border-b border-slate-200 bg-slate-50 px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
           <div className="container mx-auto max-w-6xl">
             <div className="mb-9 flex flex-col items-start justify-between gap-4 md:mb-12 md:flex-row md:items-end">
@@ -157,8 +157,7 @@ const Index = () => {
                   Featured Case Studies
                 </span>
                 <h2 className="mt-3 text-2xl font-extrabold text-slate-900 sm:text-4xl">
-                  <span className="flip-instruction flip-instruction--hover">Hover to Flip</span>
-                  <span className="flip-instruction flip-instruction--touch">Touch to Flip</span> & Explore Real Client Projects
+                  Real Client Projects We&apos;ve Delivered
                 </h2>
               </div>
               <Link to="/portfolio" className="text-sm font-extrabold text-[#0f6cbd] hover:underline flex items-center gap-1">
@@ -166,14 +165,11 @@ const Index = () => {
               </Link>
             </div>
 
-            {/* 3D Flip Card Grid */}
-            <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 md:gap-8">
-              {projectsData.filter((project) => ["khyratna-ecommerce-app", "matchpro-operations-platform", "players-evaluation-system", "kls-property-portal"].includes(project.id)).map((project) => (
-                <ProjectFlipCard key={project.id} project={project} />
-              ))}
-            </div>
+            {/* Project Slider – all projects, 5s auto-advance */}
+            <ProjectSlider projects={projectsData} />
           </div>
         </section>
+
 
         {/* 3. Services Grid */}
         <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
@@ -265,7 +261,7 @@ const Index = () => {
               <div>
                 <Link to="/quote">
                   <Button size="lg" className="bg-[#0f6cbd] hover:bg-blue-700 text-white font-extrabold px-9 py-6 text-base rounded-full shadow-lg">
-                    GET A QUOTE NOW
+                    GET A QUOTE NOW <ArrowUpRight size={18} className="ml-2" />
                   </Button>
                 </Link>
               </div>

@@ -43,8 +43,11 @@ const Services = () => (
           <div className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => {
               return <article key={service.title} className="flex min-h-[360px] flex-col rounded-3xl border border-slate-200 bg-slate-50 p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl">
-                <div className="flex h-14 items-center"><ServiceIllustration type={service.illustration} /></div>
-                <h2 className="mt-5 text-xl font-extrabold text-slate-900">{service.title}</h2><p className="mt-2 text-sm font-semibold text-[#0f6cbd]">{service.subtitle}</p>
+                <div className="flex items-center gap-3">
+                  <div className="flex h-14 shrink-0 items-center"><ServiceIllustration type={service.illustration} /></div>
+                  <h2 className="text-xl font-extrabold text-slate-900 leading-tight">{service.title}</h2>
+                </div>
+                <p className="mt-3 text-sm font-semibold text-[#0f6cbd]">{service.subtitle}</p>
                 <ul className="mt-5 flex-1 space-y-2 text-sm text-slate-600">{service.features.map((feature) => <li key={feature} className="flex gap-2"><CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#0f6cbd]" />{feature}</li>)}</ul>
                 <Link to={`/quote?service=${encodeURIComponent(service.title)}`} className="mt-7"><Button className="w-full rounded-xl bg-[#0f6cbd] font-extrabold text-white hover:bg-blue-700">Get Service Quote <ArrowRight size={15} className="ml-2" /></Button></Link>
               </article>;
@@ -53,7 +56,7 @@ const Services = () => (
         </div>
       </section>
 
-      <section className="border-b border-slate-200 bg-slate-50 px-4 py-20 sm:px-6 lg:px-8"><div className="container mx-auto max-w-5xl"><div className="mx-auto mb-12 max-w-2xl text-center"><span className="rounded-full bg-sky-100 px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0f6cbd]">Delivery workflow</span><h2 className="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">A clear path from idea to launch</h2></div><div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">{[["01", "Discover", "Align goals, users, and scope."], ["02", "Design", "Shape the experience and architecture."], ["03", "Build", "Deliver in transparent, iterative sprints."], ["04", "Scale", "Launch, monitor, and improve."]].map(([step, title, description]) => <div key={step} className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm"><div className="text-3xl font-extrabold text-[#0f6cbd]">{step}</div><h2 className="mt-2 font-extrabold text-slate-900">{title}</h2><p className="mt-2 text-xs leading-relaxed text-slate-600">{description}</p></div>)}</div></div></section>
+      <section className="border-b border-slate-200 bg-slate-50 px-4 py-20 sm:px-6 lg:px-8"><div className="container mx-auto max-w-6xl"><div className="mx-auto mb-12 max-w-2xl text-center"><span className="rounded-full bg-sky-100 px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0f6cbd]">Delivery workflow</span><h2 className="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">A clear path from idea to launch</h2></div><div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">{[["01", "Discover", "Align Goals, Users, & Scope."], ["02", "Design", "Shape the Experience & Architecture."], ["03", "Build", "Deliver in Transparent, Iterative Sprints."], ["04", "Deploy", "Ship Fast, Stable, & Production-ready."], ["05", "Support", "Maintain, Update, & Scale With Confidence."]].map(([step, title, description]) => <div key={step} className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm"><div className="text-3xl font-extrabold text-[#0f6cbd]">{step}</div><h2 className="mt-2 font-extrabold text-slate-900">{title}</h2><p className="mt-2 text-xs leading-relaxed text-slate-600">{description}</p></div>)}</div></div></section>
       <Footer />
     </div>
   </PageTransition>

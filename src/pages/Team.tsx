@@ -4,7 +4,7 @@ import PageTransition from "@/components/PageTransition";
 import { TeamCard } from "@/components/TeamCard";
 import { teamMembers } from "@/data/teamData";
 
-const teamOrder = ["Arbaz Ali", "Hunain Haider", "Sanawar Hussain Jaffri", "Mustufa Ali", "Talha Khan"];
+const teamOrder = ["Arbaz Ali", "Hunain Haider", "Fahad Mujtaba", "Sanawar Hussain Jaffri", "Mustufa Ali", "Talha Khan"];
 const orderedTeamMembers = [...teamMembers].sort((a, b) => teamOrder.indexOf(a.name) - teamOrder.indexOf(b.name));
 
 const Team = () => (

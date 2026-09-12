@@ -43,6 +43,15 @@ import klsPropertyProfileImage from "@/assets/kls-property-profile.jpeg";
 import klsEmailReportsImage from "@/assets/kls-email-reports.jpeg";
 import klsSupportTicketsImage from "@/assets/kls-support-tickets.jpeg";
 import klsUsersImage from "@/assets/kls-users.jpeg";
+import pestiqUsersImage from "@/assets/pestiq-users.jpg";
+import pestiqMeetingsImage from "@/assets/pestiq-meetings.jpg";
+import pestiqMediaImage from "@/assets/pestiq-media.jpg";
+import pestiqLoginWebImage from "@/assets/pestiq-login-web.png";
+import pestiqLoginMobileImage from "@/assets/pestiq-login-mobile.jpg";
+import pestiqLocationsImage from "@/assets/pestiq-locations.jpg";
+import pestiqMobileDashboardImage from "@/assets/pestiq-mobile-dashboard.jpg";
+import pestiqDashboardImage from "@/assets/pestiq-dashboard.png";
+import pestiqCoverImage from "@/assets/pestiq-cover.jpg";
 
 export interface Project {
   id: string;
@@ -82,6 +91,7 @@ export const projectArchitectures: Record<string, { title: string; description: 
   "matchpro-operations-platform": { title: "Centralized Operations Management Architecture", description: "React dashboards and .NET Web APIs provide a centralized operational layer for check-ins, machine readings, shifts, financial records, and role-specific reporting." },
   "khyratna-ecommerce-app": { title: "Mobile Commerce Journey Architecture", description: "A Flutter and Firebase commerce experience connects product discovery, carts, checkout, OTP authentication, delivery choices, and GPS-aware order updates." },
   "notary-management-system": { title: "Paperless Legal Workflow Architecture", description: "A React, Laravel, and MySQL platform centralizes cases, agreements, services, fees, documents, and reports behind configurable roles and permissions." },
+  "pest-iq": { title: "AI-Driven Field Operations Architecture", description: "A React and Node.js platform connects field mobile apps with a centralized web portal, integrating AI insect detection, meeting coordination, media management, and multi-role access for pest control operations." },
 };
 
 export const projectsData: Project[] = [
@@ -679,6 +689,71 @@ export const projectsData: Project[] = [
       { title: "Notary Dashboard", subtitle: "Legal Workflow Overview", description: "Centralized dashboard for active legal services, records, and administration." },
       { title: "Case Registration", subtitle: "Services & Fee Management", description: "Structured workflow for registering cases, agreements, services, and financial details." },
       { title: "Reports & Records", subtitle: "Historical Legal Data", description: "Searchable digital records with detailed filtering and reporting tools." }
+    ]
+  },
+  {
+    id: "pest-iq",
+    title: "PEST IQ",
+    subtitle: "AI-Powered Pest Monitoring & Field Operations Management Platform",
+    category: "Web Application",
+    client: "Pest IQ",
+    duration: "Web & Mobile App Delivery",
+    role: "Full-Stack Development & System Architecture",
+    summary: "A smart pest monitoring platform that connects customers, exterminators, and managers through AI-powered insect detection, field meeting management, and media reporting.",
+    fullDescription: "Pest IQ is an intelligent pest monitoring and operations management platform designed for pest control companies. It connects customers, exterminators, and administrators through a centralized system featuring AI-powered insect detection, field meeting management, media gallery, location management, and user management. The platform includes both a web application and a mobile app for exterminators in the field.",
+    techStack: ["React.js", "Node.js", "MySQL", "AI Detection", "REST API", "React Native", "Firebase"],
+    keyFeatures: [
+      "AI-Powered Insect Detection & Classification",
+      "Company Photos Gallery with Exterminator Media",
+      "Meeting Management & Scheduling",
+      "Customer Management & Profiles",
+      "User & Role Management",
+      "Location & Site Management",
+      "Secure Login (Web & Mobile)",
+      "Exterminator Mobile App",
+      "Date & Exterminator Filtered Media",
+      "Dashboard with Real-Time Insights",
+      "Multi-Role Access Control",
+      "Field Operations Coordination"
+    ],
+    challenges: [
+      "Building an AI system that accurately detects and classifies insects from field photos taken in varying conditions.",
+      "Coordinating field exterminators, customer meetings, and media uploads in real time across web and mobile.",
+      "Providing role-specific dashboards for administrators, managers, and field exterminators."
+    ],
+    solutions: [
+      "Integrated an AI detection engine that identifies insect species and counts from exterminator-captured images.",
+      "Built a centralized operations platform connecting field mobile app with the web admin portal in real time.",
+      "Implemented multi-role access with tailored dashboards for admins, managers, customers, and exterminators."
+    ],
+    metrics: [
+      { label: "Detection Accuracy", value: "AI-Powered" },
+      { label: "Platform", value: "Web + Mobile" },
+      { label: "Access", value: "Multi-Role" },
+      { label: "Operations", value: "Real-Time" }
+    ],
+    accentColor: "from-green-600 to-lime-500",
+    gradient: "bg-gradient-to-r from-green-600 via-lime-500 to-emerald-500",
+    badge: "Pest Tech Platform",
+    platforms: ["webPortal", "googlePlay"],
+    rolesSupported: ["Administrator", "Manager", "Exterminator", "Customer"],
+    visualImages: {
+      card: pestiqCoverImage,
+    },
+    galleryImages: [
+      { src: pestiqUsersImage, alt: "Pest IQ users management screen" },
+      { src: pestiqMeetingsImage, alt: "Pest IQ meeting list screen" },
+      { src: pestiqMediaImage, alt: "Pest IQ company photos gallery" },
+      { src: pestiqLoginWebImage, alt: "Pest IQ web login screen" },
+      { src: pestiqLoginMobileImage, alt: "Pest IQ mobile app login screen" },
+      { src: pestiqLocationsImage, alt: "Pest IQ location management screen" },
+      { src: pestiqMobileDashboardImage, alt: "Pest IQ mobile app dashboard" },
+      { src: pestiqDashboardImage, alt: "Pest IQ web dashboard overview" }
+    ],
+    mockupScreens: [
+      { title: "Users & Operations Dashboard", subtitle: "Role-Based User Management", description: "Centralized user management with company assignments, status tracking, and role-based access control." },
+      { title: "Meeting & Field Coordination", subtitle: "Exterminator Meeting Scheduling", description: "Field meeting management linking customers, exterminators, and locations with status tracking." },
+      { title: "AI Media Gallery", subtitle: "AI Insect Detection Photos", description: "Gallery of exterminator-captured field photos with AI insect detection counts, date, and location info." }
     ]
   }
 ];
